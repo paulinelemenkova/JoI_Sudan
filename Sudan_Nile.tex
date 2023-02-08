@@ -36,10 +36,10 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{Monitoring Desertification in the Khartoum Region of Sudan using Analysis of Vegetation Indices from Landsat 8-9 Images}
+\Title{Desertification in the Khartoum Region of Sudan Analysed from the Satellite-Derived Vegetation Indices}
 
 % MDPI internal command: Title for citation in the left column
-\TitleCitation{Monitoring Desertification in the Khartoum Region of Sudan using Analysis of Vegetation Indices from Landsat 8-9 Images}
+\TitleCitation{Desertification in the Khartoum Region of Sudan Analysed from the Satellite-Derived Vegetation Indices}
 
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
@@ -114,6 +114,8 @@ Recent clime change studies on Sudan confirm rising temperatures, declining rain
 The specifics of the Khartoum region is deeply connected to the Nile River system and the confluence of the White Nile and Blue Nile, Figure \ref{fig02}. The Nile River is a central water artery of the country of which 70\% belongs to its basin \cite{Melesse}. The hydrological processes of the Nile River result in diverse impacts on the environment, including occasional floods, soil erosion on the banks and accumulation of sedimentation, growth of aquatic plants and weeds \cite{PACINI2016242}. The Nile also provides a specific places for wetland habitat and biodiversity of rare species. The immense contribution of the Nile Basin for social development of Sudan can be illustrated by its crucial role for irrigated agricultural and hydropower. Thus, the Nile serves as a central source of life in Sudan providing water resources for about 85\% of Sudanese population and irrigated agriculture for mixed cultivation of beans, sorghum, and sugarcane \cite{Kauetal2023}. Additionally, it is a transport waterway connecting the country with neighbouring territories. Five from the total six Cataracts of Nile are located within Sudan (Figure \ref{fig01}), while only one (the First Cataract) is situated in Egypt near the Aswan Dam. 
 
 Further, the importance of the Nile River Basin can be illustrated by the fact that roughly 2/3 of its territory lies within Sudan and its major tributaries -- the While Nile and Blue Nile -- confluence near its capital, the Khartoum \cite{Hamad}. Intense practice of urban agriculture in Khartoum aims at meeting the increasing food demand of the rapidly growing population \cite{SCHUMACHER2009399} which necessarily results in additional pressure on the environment on the one hand, and the gradual increase of the built-up area on the other. The confluence of the Blue Nile and White Nile forming its major artery of the Greater Nile near the Khartoum city (Figure \ref{fig02}) results in the high concentration of population in this district which, as a consequence, leads to the increased environmental pressure in the region. The other important tributaries are the Atbara River (sometimes referred as Red Nile) with high mining activities related to gold and copper mining and cement production \cite{SASMAZ2020106539}.
+
+In this paper, we introduce the application of R libraries for remote sensing data processing, and, in discussing their technical details, focus on the calculating several satellite-derived vegetation indices based on Landsat 8-9 OLI/TIRS images collected on Khartoum city around the confluence of the White Nile and the Blue Nile. The method can be applied to other types of imagery besides the Landsat (e.g., MODIS, AVHRR, Sentinel). The goal in the presented series of the analysed images on Khartoum is to model the changes in vegetation patterns and greenness which can be analysed based on the comparison of the time series and to visualise the dynamics in vegetation coverage. The standard GIS-based approaches for this problem are based on using the traditional software and involve many manual opertations and routine work \cite{Hawash,YOUSSEF2020103777,6621869,Aldoma}. Instead of using such conventional approaches, we combined several libraries of R such as 'raster' and 'terra' with auxiliary packages in a principled way to obtain a better workflow for image processing and analysis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -208,11 +208,45 @@ NDVI=\dfrac{(NIR-Red)}{(NIR+Red)}
 
 \subsubsection{Normalized Difference Water Index (NDWI)}
 
-The NDWI is computed using Equation \ref{eq:2}:
+Developed by \cite{GAO1996257}, the NDWI is strongly related to the plant water content as it is sensitive to liquid water content of leaves. Moreover, it can be used to detect open water areas and evaluate the level of turbidity as a complementary to NDVI. The NDWI is computed using the arithmetics of the NIR Band and visible Green Band combination \cite{ZHENG2021129488} in the Equation \ref{eq:2}:
 
 \begin{equation}\label{eq:2}
-NDWI=\dfrac{(Green-NIR)}{(Green+NIR)}
+NDWI=\dfrac{(NIR- SWIR1)}{(NIR+ SWIR1)}
 \end{equation}
+
+The advantages of the NDWI is that it lessens the effects from the reflectance of soil and vegetation foliage thus is suitable for sandy areas such as in Sahelian Sudan. A special value of the NDWI for environmental monitoring is that it can be used for indicating areas with water deficit \cite{TENG2021107260}. Thus, during drought periods, foliage is strongly affected by water deficit which results in plant illness. Specifically for agricultural areas of Khartoum region, it leads to the crop failure and decreases production thus affecting harvest. Detecting plant water stress is essential to evaluate current state of plants and make a prognosis for future development, for instance, by indicating areas that are in need for irrigating. 
+
+Using R library 'terra', we computed the NDWI as follows:
+
+\begin{lstlisting}[language=R,caption=R code for computing the NDWI (here: a case of 2018),style=mystyle,label={lst:01}]
+library(terra)
+library(RColorBrewer)
+library(Hmisc)
+library(pals)
+# Normalized Difference Water Index (NDWI) = (Green-NIR) / (Green+NIR)
+# Nir = Band 5, SWIR1 = Band 3.
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bi - bk) / (bi + bk)
+  return(vi)
+}
+# For Landsat 8-9 OLI/TIRS, NIR = 5, Green = Band 3.
+filenames <- paste0('LC08_L2SP_173049_20181218_20200830_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+ndwi <- vi(landsat, 5, 3)
+options(scipen=10000)
+colors <- jet(100)
+plot(ndwi, col=colors, font.main = 1, main = "NDWI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20181218_20200830_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2018)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting histogram of the NDWI
+hist(ndwi, font.main = 1, main = "NDWI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20181218_20200830_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2018)", xlab = "RECI", ylab= "Frequency",
+    col = "mediumpurple1", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
+axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
 
 \subsubsection{Red-Edge Chlorophyll Vegetation Index (RECl)}
 The values of Red-Edge Chlorophyll Vegetation Index (RECl) depend the chlorophyll content in leaves. Developed by \cite{Gitelson2006}, ReCI indicates the photosynthetic activity of the canopy cover and total of chlorophylls. Further, it is especially suitable to indicate yellowish or shed leaves due to the adjusted spectral regions in the formula, since the chlorophyll content directly depends on nitrogen level in plants which contributes to greenness of foliage and is reflected in optical characteristics of the leaves. The RECI is suitable for the periods of active vegetation development due to the indication of leaf pigment content and variations. The RECl is computed using Equation \ref{eq:3}:
@@ -223,10 +257,6 @@ ReCI=\dfrac{NIR}{Red}-1
 
 The computation of RECI using R library 'terra' was done by the following code: 
 \begin{lstlisting}[language=R,caption=R code for computing the RECI (here: a case of 2013),style=mystyle,label={lst:01}]
-library(terra)
-library(RColorBrewer)
-library(Hmisc)
-library(pals)
 setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_RECI")
 # Red-Edge Chlorophyll Vegetation Index (RECl) = (NIR / R) - 1 where Nir = Band 5, Red = Band 4.
 vi <- function(img, k, i) {
@@ -235,7 +265,7 @@ vi <- function(img, k, i) {
   vi <- (bk / bi) - 1
   return(vi)
 }
-# For Landsat NIR = 5, red = 4.
+# For Landsat 8-9 OLI/TIRS, NIR = 5, Red = 4.
 filenames <- paste0('LC08_L2SP_173049_20131220_20200912_02_T1_SR_B', 1:7, ".tif")
 filenames
 landsat <- rast(filenames)
@@ -264,10 +294,6 @@ OSAVI=\dfrac{(NIR-Red)}{(NIR+Red+0.16)}
 In R language, we computed the OSAVI using the following script: 
 
 \begin{lstlisting}[language=R,caption=R code for computing the OSAVI (here: a case of 2022),style=mystyle,label={lst:01}]
-library(terra)
-library(RColorBrewer)
-library(Hmisc)
-library(pals)
 setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_OSAVI")
 # 1. Optimized Soil Adjusted Vegetation Index (OSAVI) = (NIR - R) / (NIR + R + 0.16), i.e., OSAVI = (Band 5 - Band 4) / (Band 5 + Band 4 + 0.16).
 vi <- function(img, k, i) {
@@ -300,7 +326,9 @@ The GNDVI index is an updated and modified NDVI to remotely sense the presence a
 GNDVI=\dfrac{(NIR-Green)}{(NIR+Green)}
 \end{equation}
 
-For the Landsat 8-9 OLI/TIRS bands, the Green channel corresponds to the Band 3 and Red channel -- to the Band 4. The adjustment so the GNDVI are based on the maximum sensitivity of reflectance of leaves since the reflectance near 670 nm of the Red Band is not sensitive to chlorophyll concentration due to the saturation of the relationship between absorptions and chlorophyll concentration \cite{GITELSON1996289}. Therefore, the replacement of the Red Band by the Green Band results in a more accurate to estimate the concentration of chlorophyll and the rate of photosynthesis. Further, the GNDVI estimates the chlorophyll content more precisely compared to the NDVI and enables to analyse photo synthetic activity in plants. The applications of the GNDVI are mostly intended at detecting wilted, ill or aging plants and monitoring plant stress. It is also suitable to estimate nitrogen content in plant leaves, as well as to monitor mature vegetation coverage in the final stages of the crop cycle, or vegetation with dense canopy. Similar to the NDVI, the range of values in the GNDVI also varies between -1 and 1, where negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation. 
+For the Landsat 8-9 OLI/TIRS bands, the Green channel corresponds to the Band 3 and Red channel -- to the Band 4. The adjustment so the GNDVI are based on the maximum sensitivity of reflectance of leaves since the reflectance near 670 nm of the Red Band is not sensitive to chlorophyll concentration due to the saturation of the relationship between absorptions and chlorophyll concentration \cite{GITELSON1996289}. Therefore, the replacement of the Red Band by the Green Band results in a more accurate to estimate the concentration of chlorophyll and the rate of photosynthesis. 
+
+Further, the GNDVI estimates the chlorophyll content more precisely compared to the NDVI and enables to analyse photo synthetic activity in plants. The applications of the GNDVI are mostly intended at detecting wilted, ill or aging plants and monitoring plant stress. It is also suitable to estimate nitrogen content in plant leaves, as well as to monitor mature vegetation coverage in the final stages of the crop cycle, or vegetation with dense canopy. Similar to the NDVI, the range of values in the GNDVI also varies between -1 and 1, where negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation. 
 
 Using R syntax, we computed the GNDVI as follows: 
 
@@ -376,6 +404,8 @@ minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 }
 \caption{NDWI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig04}
 \end{figure}
+
+The interpretation of the values of the NDWI follows the ranges: 0,2 to 1 – water area; 0.0 to 0,2 – flooded areas and high humidity, -0,3 to 0.0: moderate drought soil and non-water surfaces, -1 to -0.3: drylands, drought and non-water surfaces.
 
 \pagebreak
 \subsubsection{Red-Edge Chlorophyll Vegetation Index (RECl)}

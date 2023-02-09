@@ -160,11 +160,9 @@ In this paper, we introduce the application of R libraries for remote sensing da
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newpage
 \section{Materials and Methods}
 
 The importance of the use of the remote sensing data and advanced methods of image processing is raised in earlier studies \cite{ELBASTAWESY2017252,SOSNOWSKI201651,GORSEVSKI201364}. For examples, Landsat images are known for reliable source of data for relatively accurate technique for classifying time-series and detecting forest and land cover types \cite{WILSON2002385,Lemenkova202227,4293065,SALIH2017S21}, computing vegetation indices \cite{5416935,Lemenkova202229,1026428} and specifically desertification \cite{RIVERAMARIN2022104829} to show the advance or retreat of arid areas using analysis of the satellite images. Specifically, for the Sudan and Nile River Basin, data scarcity has been mentioned by \cite{Ali} such as regular measurements of rainfall, streams runoff, and the weather stations data. This highlights the importance of the remotely sensed data for climate-related studies and evaluation of ythe complex processes between the climatic variations and the vegetation responses.
-
 
 %----------- subsection ----------->
 \subsection{Data}
@@ -211,7 +209,7 @@ NDVI=\dfrac{(NIR-Red)}{(NIR+Red)}
 Developed by \cite{GAO1996257}, the NDWI is strongly related to the plant water content as it is sensitive to liquid water content of leaves. Moreover, it can be used to detect open water areas and evaluate the level of turbidity as a complementary to NDVI. The NDWI is computed using the arithmetics of the NIR Band and visible Green Band combination \cite{ZHENG2021129488} in the Equation \ref{eq:2}:
 
 \begin{equation}\label{eq:2}
-NDWI=\dfrac{(NIR- SWIR1)}{(NIR+ SWIR1)}
+NDWI=\dfrac{(Green-NIR)}{(Green+NIR)}
 \end{equation}
 
 The advantages of the NDWI is that it lessens the effects from the reflectance of soil and vegetation foliage thus is suitable for sandy areas such as in Sahelian Sudan. A special value of the NDWI for environmental monitoring is that it can be used for indicating areas with water deficit \cite{TENG2021107260}. Thus, during drought periods, foliage is strongly affected by water deficit which results in plant illness. Specifically for agricultural areas of Khartoum region, it leads to the crop failure and decreases production thus affecting harvest. Detecting plant water stress is essential to evaluate current state of plants and make a prognosis for future development, for instance, by indicating areas that are in need for irrigating. 

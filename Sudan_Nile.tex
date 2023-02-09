@@ -167,7 +167,7 @@ We processed the satellite images using libraries of R programming language \cit
 
 \subsubsection{Normalized Difference Vegetation Index (NDVI)}
 
-The NDVI is computed using Equation \ref{eq:1}  \cite{1974NASSP}:
+The NDVI is computed using Equation \ref{eq:1}  \cite{Rouse}:
 
 \begin{equation}\label{eq:1}
 NDVI=\dfrac{(NIR-Red)}{(NIR+Red)}
@@ -199,13 +199,13 @@ OSAVI=\dfrac{(NIR-Red)}{(NIR+Red+0.16)}
 
 \subsubsection{Green Normalized Difference Vegetation Index (GNDVI)}
 
-The GNDVI is computed using Equation \ref{eq:5}:
+The GNDVI index is an updated and modified NDVI to remotely sense the presence and vitality of vegetation. Compared to NDVI, it also uses NIR Band for computation but replaces the Green Band (Band 3 for the Landsat 8-9 OLI/TIRS with 530-590 nm wavelength) from the visible spectrum for the Red Band (i.e., Band 4 for the Landsat 8-9 OLI/TIRS with diapason of 640-670 nm of wavelength). The general formula for computing the GNDVI is given in Equation \ref{eq:5}:
 
 \begin{equation}\label{eq:5}
 GNDVI=\dfrac{(NIR-Green)}{(NIR+Green)}
 \end{equation}
 
-For the Landsat bands, the Blue channel corresponds to the Band 2, Green -- Band 3 and Red -- Band 4. 
+For the Landsat 8-9 OLI/TIRS bands, the Green channel corresponds to the Band 3 and Red channel -- to the Band 4. The adjustment so the GNDVI are based on the maximum sensitivity of reflectance of leaves since the reflectance near 670 nm of the Red Band is not sensitive to chlorophyll concentration due to the saturation of the relationship between absorptions and chlorophyll concentration \cite{GITELSON1996289}. Therefore, the replacement of the Red Band by the Green Band results in a more accurate to estimate the concentration of chlorophyll and the rate of photosynthesis. Further, the GNDVI estimates the chlorophyll content more precisely compared to the NDVI and enables to analyse photo synthetic activity in plants. The applications of the GNDVI are mostly intended at detecting wilted, ill or aging plants and monitoring plant stress. It is also suitable to estimate nitrogen content in plant leaves, as well as to monitor mature vegetation coverage in the final stages of the crop cycle, or vegetation with dense canopy. Similar to the NDVI, the range of values in the GNDVI also varies between -1 and 1, where negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
@@ -461,9 +461,14 @@ The following abbreviations are used in this manuscript:\\
 
 \noindent 
 \begin{tabular}{@{}ll}
-MDPI & Multidisciplinary Digital Publishing Institute\\
-DOAJ & Directory of open access journals\\
-LD & Linear dichroism
+GMT & Generic Mapping Tools \\
+GNDVI & Green Normalized Difference Vegetation Index \\
+Landsat 8-9 OLI/TIRS & Landsat 8-9 Operational Land Imager (OLI) and Thermal Infrared (TIRS) \\
+NDVI & Normalized Difference Vegetation Index \\
+NDWI & Normalized Difference Water Index \\
+OSAVI & Optimized Soil Adjusted Vegetation Index \\
+RECl & Red-Edge Chlorophyll Vegetation Index \\
+VIs & Vegetation Indices \\
 \end{tabular}
 }
 

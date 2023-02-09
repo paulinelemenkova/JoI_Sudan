@@ -68,7 +68,7 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 % Current address and/or shared authorship
 %\firstnote{Current address: Affiliation 3.} 
 
-\abstract{Desertification in Sudan-Sahel region of Africa has contributed to the growing interest in remote sensing data analysis. The vegetation indices (VIs) illustrate the important parameters of crop health and plant greenness. They present a crucial indicator of vegetation coverage, which reflect ecosystem structure and functional features of canopy that is essential for environmental and climate analytics. The Earth observing satellite sensors providing remote sensing data to support research enable to improve our understanding of links between the environmental parameters and vegetation responses to hydrological and climate processes leading to desertification. In this study, we calculated several VIs to compare the dynamics of the VIs in the region of confluence of Blue Nile and White Nile in Khartoum, southern Sudan. The data were compared for the periods of 2013, 2018 and 2022. We tested five following VIs for the Landsat 8-9 OLI/TIRS images covering Khartoum area: Normalized Difference Vegetation Index (NDVI), Normalized Difference Water Index (NDWI), Red-Edge Chlorophyll Vegetation Index (RECl), Optimized Soil Adjusted Vegetation Index (OSAVI) and Visible Atmospherically Resistant Index (VARI). The demonstrated dynamics in the changes of the VIs collected with 5-4 year interval may thus be considered as indicator to reveal climate–vegetation relationships. Using programming methods for computing and visualization of vegetation indices presents new challenges for image processing, such as the Landsat 8-9 OLI/TIRS scenes. Therefore, in this paper, we demonstrated the technical use of R scripts and packages 'raster' and 'terra'  for spatial data processing to automate image analysis and mapping. We demonstrated that the climatic drivers of desertification affecting plant growth and health varied for images taken on different years along with changed precipitation.}
+\abstract{Desertification is one of the most destructive climate-related issues in Sudan-Sahel region of Africa. Rising temperatures, declining rainfall, decreased relative humidity, and changes in patterns of cloudiness, atmospheric radiation and evaporation triggered environmental degradation and affected vegetation growth and health. The assessment of desertification is possible by remote sensing data analysis using Vegetation Indices (VIs). The VIs are employed to estimate the level of leaf chlorophyll in plants and thus can be used as robust indicators of plant health and greenness. The VIs present reflect the functional features of canopy and parameters of vegetation coverage that is essential for environmental and climate analytics. The Earth observing satellite sensors providing remote sensing data enable to highlight the links between the hydrological and climate processes leading to desertification and vegetation responses. In this study, we calculated several VIs to compare the status and dynamics of the vegetation in the region of confluence of the Blue Nile and White Nile in Khartoum, southern Sudan. The data were compared for the periods of 2013, 2018 and 2022. We tested five VIs for the Landsat 8-9 OLI/TIRS images: 1) Normalized Difference Vegetation Index (NDVI), 2) Normalized Difference Water Index (NDWI), 3) Red-Edge Chlorophyll Vegetation Index (RECl), 4) Optimized Soil Adjusted Vegetation Index (OSAVI) and 5) Green Normalized Difference Vegetation Index (GNDVI). The demonstrated difference in the VIs collected with nine year time gap reveals climate–vegetation relationships. Further, using programming methods for computing and visualization of VIs presents new challenges for image processing such as the Landsat 8-9 OLI/TIRS scenes. We demonstrated technical advantages of R scripts and packages 'raster' and 'terra'  for spatial data processing to automate image analysis and mapping. Climatic drivers of desertification affecting plant growth and health varied for images taken on different years for 2013, 2018 and 2022 in the confluence of the Blue Nile and White Nile, southern Sudan.}
 
 % Keywords
 \keyword{Remote sensing; Sudan; Khartoum; Nile River; image analysis; image processing; information retrieval; programming; Africa; computer vision} 
@@ -86,7 +86,7 @@ Desertification is one of the most destructive climate-related issues in Sudan, 
 
 \begin{figure}[H]
 \centering
-	\includegraphics[width=14.0 cm]{Topo_SD.jpg}
+	\includegraphics[width=14.0 cm]{Fig_01.jpg}
 	\caption{Topographic map of Sudan. Mapping software: Generic Mapping Tools (GMT) scripting toolset. Data source: GEBCO/SRTM. Cartography source: authors.
 	\label{fig01}}
 \end{figure}
@@ -105,12 +105,12 @@ Further, desertification leads to many negative environmental consequences such 
 \makebox[1.0\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-			\includegraphics[width=0.90\textwidth]{Google_Earth_1.jpg}
+			\includegraphics[width=0.90\textwidth]{Fig_02a.jpg}
 		\caption{}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-		\includegraphics[width=0.90\textwidth]{Google_Earth_2.jpg}
+		\includegraphics[width=0.90\textwidth]{Fig_02b.jpg}
 		\caption{}
 	\end{subfigure}%
 }
@@ -140,17 +140,17 @@ The importance of the use of the remote sensing data and advanced methods of ima
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.40\textwidth}
 		\centering
-			\includegraphics[width=0.90\textwidth]{Fig_02a.jpg}
+			\includegraphics[width=0.90\textwidth]{Fig_03a.jpg}
 		\caption{2013}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.40\textwidth}
 		\centering
-			\includegraphics[width=0.90\textwidth]{Fig_02b.jpg}
+			\includegraphics[width=0.90\textwidth]{Fig_03b.jpg}
 		\caption{2018}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.40\textwidth}
 		\centering
-			\includegraphics[width=0.90\textwidth]{Fig_02c.jpg}
+			\includegraphics[width=0.90\textwidth]{Fig_03c.jpg}
 		\caption{2022}
 	\end{subfigure}%
 }
@@ -197,16 +197,243 @@ The OSAVI is computed using Equation \ref{eq:4}:
 OSAVI=\dfrac{(NIR-Red)}{(NIR+Red+0.16)}
 \end{equation}
 
-\subsubsection{Visible Atmospherically Resistant Index (VARI)}
+\subsubsection{Green Normalized Difference Vegetation Index (GNDVI)}
 
-The VARI is computed using Equation \ref{eq:5}:
+The GNDVI is computed using Equation \ref{eq:5}:
 
 \begin{equation}\label{eq:5}
-VARI=\dfrac{(Green-Red)}{(Green+Red-Blue)}
+GNDVI=\dfrac{(NIR-Green)}{(NIR+Green)}
 \end{equation}
+
+For the Landsat bands, the Blue channel corresponds to the Band 2, Green -- Band 3 and Red -- Band 4. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
+
+\pagebreak
+\subsubsection{Normalized Difference Water Index (NDWI)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_04a}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.90\textwidth]{Fig_04b}
+		\caption{2013: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_04c}
+		\caption{2018}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_04d}
+		\caption{2018: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_04e}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_04f}
+		\caption{2022: histogram}
+	\end{subfigure}%
+}
+\caption{NDWI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig04}
+\end{figure}
+
+\pagebreak
+\subsubsection{Red-Edge Chlorophyll Vegetation Index (RECl)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_05a}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.90\textwidth]{Fig_05b}
+		\caption{2013: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_05c}
+		\caption{2018}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_05d}
+		\caption{2018: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_05e}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_05f}
+		\caption{2022: histogram}
+	\end{subfigure}%
+}
+\caption{RECI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig05}
+\end{figure}
+
+\pagebreak
+\subsubsection{Green Normalized Difference Vegetation Index (GNDVI)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_06a}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.90\textwidth]{Fig_06b}
+		\caption{2013: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_06c}
+		\caption{2018}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_06d}
+		\caption{2018: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_06e}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_06f}
+		\caption{2022: histogram}
+	\end{subfigure}%
+}
+\caption{GNDVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig06}
+\end{figure}
+
+\pagebreak
+\subsubsection{Optimized Soil Adjusted Vegetation Index (OSAVI)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_07a}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.90\textwidth]{Fig_07b}
+		\caption{2013: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_07c}
+		\caption{2018}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_07d}
+		\caption{2018: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_07e}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_07f}
+		\caption{2022: histogram}
+	\end{subfigure}%
+}
+\caption{OSAVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig07}
+\end{figure}
+
+\pagebreak
+\subsubsection{Normalized Difference Vegetation Index (NDVI)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08a}
+		\caption{}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_08b}
+		\caption{}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08c}
+		\caption{}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_08d}
+		\caption{}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08e}
+		\caption{}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_08f}
+		\caption{}
+	\end{subfigure}%
+}
+\caption{NDVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig08}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}

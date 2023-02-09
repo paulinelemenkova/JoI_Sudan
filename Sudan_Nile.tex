@@ -34,6 +34,39 @@
 \usepackage{gensymb} % for \textdegree
 \usepackage{tabularx}
 
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepmagenta}{RGB}{195,12,214}
+\definecolor{deepgreen}{RGB}{29,122,30}
+\definecolor{mintgreen}{RGB}{192,249,192}
+\definecolor{codepurple}{RGB}{204, 0, 153}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{GainsboroPurple}{RGB}{247,176,247}
+\definecolor{LightSlateGrey}{RGB}{124,118,118}
+%    
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{LightSlateGrey},
+    keywordstyle=\color{deepgreen}\bfseries,
+    emphstyle=\color{deepred},
+    numberstyle=\tiny\color{deepmagenta},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
 %================================================================= in Khartoum Region of Sudan, NE Africa
 % Full title of the paper (Capitalized)
 \Title{Satellite-Derived Vegetation Indices Computed by R to Estimate the Desertification in the Khartoum Region of Sudan, Northeast Africa}
@@ -191,11 +224,43 @@ ReCI=\dfrac{NIR}{Red}-1
 
 \subsubsection{Optimized Soil Adjusted Vegetation Index (OSAVI)}
 
+Originally developed by \cite{Rondeaux}, the Optimized Soil Adjusted Vegetation Index (OSAVI) uses a defined value of 0.16 as a factor to adjust the canopy background as this value gives higher soil variation compared to the original SAVI specifically in the regions with low vegetation coverage, such as Sahelian region of Sudan. At the same time, OSAVI has a higher sensitivity to vegetation coverage that covers more than a half of the area in percentage. Further, the applications of OSAVI is especially suitable in the regions with sparse vegetation, as in southern Sudan where soil is often visible through the canopy of vegetation.
 The OSAVI is computed using Equation \ref{eq:4}:
 
 \begin{equation}\label{eq:4}
 OSAVI=\dfrac{(NIR-Red)}{(NIR+Red+0.16)}
 \end{equation}
+
+In R language, we computed the OSAVI using the following script: 
+
+\begin{lstlisting}[language=R,caption=R code for computing the OSAVI (here: a case of 2022),style=mystyle,label={lst:01}]
+library(terra)
+library(RColorBrewer)
+library(Hmisc)
+library(pals)
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_OSAVI")
+# 1. Optimized Soil Adjusted Vegetation Index (OSAVI) = (NIR - R) / (NIR + R + 0.16), i.e., OSAVI = (Band 5 - Band 4) / (Band 5 + Band 4 + 0.16).
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk - bi) / (bk + bi + 0.16)
+  return(vi)
+}
+# For Landsat 8-9 OLI/TIRS, NIR = 5, red = 4.
+filenames <- paste0('LC09_L2SP_173049_20221221_20221224_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+osavi <- vi(landsat, 5, 4)
+options(scipen=10000)
+colors <- kovesi.diverging_rainbow_bgymr_45_85_c67(100)
+plot(osavi, col=colors, font.main = 1, main = "OSAVI for Landsat-8 OLI/TIRS C1 image LC09_L2SP_173049_20221221_20221224_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2022)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting the histogram of the OSAVI
+hist(osavi, font.main = 1, main = "OSAVI values for Landsat-8 OLI/TIRS C1 image \nLC09_L2SP_173049_20221221_20221224_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2022)", xlab = "OSAVI", ylab= "Frequency", col = "dodgerblue", xlim = c(-0.5, 1),  breaks = 30, xaxt = "n")
+axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
 
 \subsubsection{Green Normalized Difference Vegetation Index (GNDVI)}
 
@@ -206,6 +271,34 @@ GNDVI=\dfrac{(NIR-Green)}{(NIR+Green)}
 \end{equation}
 
 For the Landsat 8-9 OLI/TIRS bands, the Green channel corresponds to the Band 3 and Red channel -- to the Band 4. The adjustment so the GNDVI are based on the maximum sensitivity of reflectance of leaves since the reflectance near 670 nm of the Red Band is not sensitive to chlorophyll concentration due to the saturation of the relationship between absorptions and chlorophyll concentration \cite{GITELSON1996289}. Therefore, the replacement of the Red Band by the Green Band results in a more accurate to estimate the concentration of chlorophyll and the rate of photosynthesis. Further, the GNDVI estimates the chlorophyll content more precisely compared to the NDVI and enables to analyse photo synthetic activity in plants. The applications of the GNDVI are mostly intended at detecting wilted, ill or aging plants and monitoring plant stress. It is also suitable to estimate nitrogen content in plant leaves, as well as to monitor mature vegetation coverage in the final stages of the crop cycle, or vegetation with dense canopy. Similar to the NDVI, the range of values in the GNDVI also varies between -1 and 1, where negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation. 
+
+Using R syntax, we computed the GNDVI as follows: 
+
+\begin{lstlisting}[language=R,caption=R code for computing the GNDVI (here: a case of 2013),style=mystyle,label={lst:01}]
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_GNDVI")
+# Green Normalized Difference Vegetation Index (GNDVI) = (NIR - Green) / (NIR + Green)
+# Nir = Band 5, Green = Band 3.
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk - bi) / (bk + bi)
+  return(vi)
+}
+# For Landsat 8-9 OLI/TIRS, NIR = 5, Green = 3.
+filenames <- paste0('LC08_L2SP_173049_20131220_20200912_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+gndvi <- vi(landsat, 5, 3)
+options(scipen=10000)
+colors <- brewer.spectral(100)
+plot(gndvi, col=colors, font.main = 1, main = "GNDVI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20131220_20200912_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2013)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting histogram of the GNDVI
+hist(gndvi, font.main = 1, main = "GNDVI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20131220_20200912_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2013)", xlab = "RECI", ylab= "Frequency", col = "peachpuff", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
+axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
@@ -468,6 +561,7 @@ NDVI & Normalized Difference Vegetation Index \\
 NDWI & Normalized Difference Water Index \\
 OSAVI & Optimized Soil Adjusted Vegetation Index \\
 RECl & Red-Edge Chlorophyll Vegetation Index \\
+SAVI & Soil Adjusted Vegetation Index \\
 VIs & Vegetation Indices \\
 \end{tabular}
 }

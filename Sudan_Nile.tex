@@ -163,7 +163,7 @@ In this paper, we introduce the application of R libraries for remote sensing da
 
 \section{Materials and Methods}
 
-The importance of the use of the remote sensing data and advanced methods of image processing is raised in earlier studies \cite{ELBASTAWESY2017252,SOSNOWSKI201651,GORSEVSKI201364}. For examples, Landsat images are known for reliable source of data for relatively accurate technique for classifying time-series and detecting forest and land cover types \cite{WILSON2002385,Lemenkova202227,4293065,SALIH2017S21}, computing vegetation indices \cite{5416935,Lemenkova202229,1026428} and specifically desertification \cite{RIVERAMARIN2022104829} to show the advance or retreat of arid areas using analysis of the satellite images. Specifically, for the Sudan and Nile River Basin, data scarcity has been mentioned by \cite{Ali} such as regular measurements of rainfall, streams runoff, and the weather stations data. This highlights the importance of the remotely sensed data for climate-related studies and evaluation of the complex processes between the climatic variations and the vegetation responses.
+The importance of the use of the remote sensing data and advanced methods of image processing is raised in earlier studies \cite{su14137871,ELBASTAWESY2017252,SOSNOWSKI201651,GORSEVSKI201364}. For examples, Landsat images are known for reliable source of data for relatively accurate technique for classifying time-series and detecting forest and land cover types \cite{WILSON2002385,Lemenkova202227,4293065,SALIH2017S21}, computing vegetation indices \cite{5416935,Lemenkova202229,1026428} and specifically desertification \cite{RIVERAMARIN2022104829} to show the advance or retreat of arid areas using analysis of the satellite images. Specifically, for the Sudan and Nile River Basin, data scarcity has been mentioned by \cite{Ali} such as regular measurements of rainfall, streams runoff, and the weather stations data. This highlights the importance of the remotely sensed data for climate-related studies and evaluation of the complex processes between the climatic variations and the vegetation responses.
 
 %----------- subsection ----------->
 \subsection{Data}
@@ -220,8 +220,9 @@ The map in Figure \ref{fig01} has been plotted using Generic Mapping Tools (GMT)
 \subsection{Calculating Vegetation Indices}
 
 \subsubsection{Normalized Difference Vegetation Index (NDVI)}
+The Normalized Difference Vegetation Index (NDVI) \cite{Rouse} is calculated as a ration between the sum and the difference of the two Landsat bands - NIR and Red. The content of chlorophyll in healthy vegetation is reflected by the near-infrared (NIR) band much more compared to the other bands. At the same time, it absorbs Red light. Therefore, using these two bands in a well-established combination gives robust results indicating the presence and amount of chlorophyll in leaves. Such effectiveness of the NDVI resulted in its numerous applications for environmental analysis \cite{w13192707,rs12244119,GHEBREZGABHER2020249,RULINDA2012169}.
 
-The NDVI is computed using Equation \ref{eq:1}  \cite{Rouse}:
+The NDVI is computed using Equation \ref{eq:1}:
 
 \begin{equation}\label{eq:1}
 NDVI=\dfrac{(NIR-Red)}{(NIR+Red)}

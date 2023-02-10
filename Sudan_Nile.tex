@@ -123,7 +123,7 @@ Desertification is one of the most destructive climate-related issues in Sudan, 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=14.0 cm]{Fig_01.jpg}
-	\caption{Topographic map of Sudan. Mapping software: Generic Mapping Tools (GMT) scripting toolset. Data source: GEBCO/SRTM. Cartography source: authors.
+	\caption{Topographic map of Sudan. Mapping software: Generic Mapping Tools (GMT) scripting toolset version 6.1.1, \cite{Wessel}. Data source: GEBCO/SRTM. Cartography source: authors.
 	\label{fig01}}
 \end{figure}
 
@@ -212,9 +212,7 @@ All the scenes were selected with cloud coverage of 0\%.
 %----------- subsection ----------->
 \subsection{Methodology}
 
-We processed the satellite images using libraries of R programming language \cite{RCoreTeam} using adapted methods from the spatial packages. The extraction of VIs for analyses of vegetation health by traditional software, which is conceptually straightforward due to raster algebra, may lead nevertheless to a consequent computing time. Considering the quite advantages of programming languages regarding automation of data processing by scripts, the algorithms of R libraries used below present a faster and more effective approach to implement for image processing. In a first step, the necessary libraries 'terra', 'RColorBrewer', 'Hmisc' and 'pals' were activated and the working folder is defined. The 'terra' library is the key package which was used for raster algebra and calculation of the VIs, while the other libraries are used as auxiliary packages for graphical refinements and proper visualization of the plots. Then, we defined the function of the VI, different for each of the VIs using relevant formulae. Finally, we uploaded the necessary Landsat bands in the active folder and performed calculation of each of the VIs by R scripts, as presented below for each corresponding index. 
-
-The map in Figure \ref{fig01} has been plotted using Generic Mapping Tools (GMT) scripting toolset Version 6.1.1. \cite{Wessel} by applying the existing cartographic workflow \cite{Lemenkova202301,Lemenkova202230,Lemenkova202228}.
+We processed the satellite images using libraries of R programming language \cite{RCoreTeam} for spatial data analysis. The extraction of VIs for analyses of vegetation health by traditional software, which is conceptually straightforward due to raster algebra, may lead nevertheless to a consequent computing time. Considering the advantages of the programming languages in automation of geospatial data processing \cite{6049966,Lemenkova202301,6910592,Lemenkova202228,9323708,1027236}, the algorithms of R present a faster and more effective approach to implement by scripts for image processing. In a first step, the necessary libraries 'terra', 'RColorBrewer', 'Hmisc' and 'pals' were activated and the working folder is defined. The 'terra' library is the key package which was used for raster algebra and calculation of the VIs, while the other libraries are used as auxiliary packages for graphical refinements and proper visualization of the plots. Then, we defined the function of the VI, different for each of the VIs using relevant formulae. Finally, we uploaded the necessary Landsat bands in the active folder and performed calculation of each of the VIs by R scripts, as presented below for each corresponding index. 
 
 %----------- subsection ----------->
 \subsection{Calculating Vegetation Indices}

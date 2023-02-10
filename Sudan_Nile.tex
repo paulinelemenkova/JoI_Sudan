@@ -218,7 +218,7 @@ We processed the satellite images using libraries of R programming language \cit
 \subsection{Calculating Vegetation Indices}
 
 \subsubsection{Normalized Difference Vegetation Index (NDVI)}
-The Normalized Difference Vegetation Index (NDVI) \cite{Rouse} is calculated as a ration between the sum and the difference of the two Landsat bands - NIR and Red. The content of chlorophyll in healthy vegetation is reflected by the near-infrared (NIR) band much more compared to the other bands. At the same time, it absorbs Red light. Therefore, using these two bands in a well-established combination gives robust results indicating the presence and amount of chlorophyll in leaves. Such effectiveness of the NDVI resulted in its numerous applications for environmental analysis \cite{w13192707,rs12244119,GHEBREZGABHER2020249,RULINDA2012169}.
+The Normalized Difference Vegetation Index (NDVI) \cite{Rouse} is calculated as a ration between the sum and the difference of the two Landsat bands - NIR and Red. The content of chlorophyll in healthy vegetation is reflected by the near-infrared (NIR) band much more compared to the other bands. At the same time, it absorbs Red light. Therefore, using these two bands in a well-established combination gives robust results indicating the presence and amount of chlorophyll in leaves. Such effectiveness of the NDVI resulted in its numerous applications for the environmental analysis \cite{w13192707,rs12244119,GHEBREZGABHER2020249,RULINDA2012169}. The values of the NDVI vary from -1 to +1 with negative values indicating water, lower values above 0 show bare soil and land, mediocre values (around 1.30-0.50) signify sparsely vegetated areas, while higher values reaching up to +1 identify dense vegetation with healthy canopy and green foliage. The highest NDVI values (0.80 to 1.0) identify forest areas. For the desert areas with dominating sands such as Sudan, the NDVI values doe not exceed 0.50.  
 
 The NDVI is computed using Equation \ref{eq:1}:
 
@@ -260,7 +260,7 @@ minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 
 \subsubsection{Green Normalized Difference Vegetation Index (GNDVI)}
 
-The GNDVI index is an updated and modified NDVI to remotely sense the presence and vitality of vegetation. Compared to NDVI, it also uses NIR Band for computation but replaces the Green Band (Band 3 for the Landsat 8-9 OLI/TIRS with 530-590 nm wavelength) from the visible spectrum for the Red Band (i.e., Band 4 for the Landsat 8-9 OLI/TIRS with diapason of 640-670 nm of wavelength). The general formula for computing the GNDVI is given in Equation \ref{eq:5}:
+The GNDVI index is an updated and modified NDVI to remotely sense the presence and vitality of vegetation. Compared to NDVI, it also uses NIR Band for computation but replaces the Green Band (Band 3 for the Landsat 8-9 OLI/TIRS with 530-590 nm wavelength) from the visible spectrum for the Red Band (i.e., Band 4 for the Landsat 8-9 OLI/TIRS with diapason of 640-670 nm of wavelength). The formula for  the GNDVI is given in Equation \ref{eq:5}:
 
 \begin{equation}\label{eq:5}
 GNDVI=\dfrac{(NIR-Green)}{(NIR+Green)}
@@ -308,6 +308,8 @@ NDWI=\dfrac{(Green-NIR)}{(Green+NIR)}
 
 The advantages of the NDWI is that it lessens the effects from the reflectance of soil and vegetation foliage thus is suitable for sandy areas such as in Sahelian Sudan. A special value of the NDWI for environmental monitoring is that it can be used for indicating areas with water deficit \cite{TENG2021107260}. Thus, during drought periods, foliage is strongly affected by water deficit which results in plant illness. Specifically for agricultural areas of Khartoum region, it leads to the crop failure and decreases production thus affecting harvest. Detecting plant water stress is essential to evaluate current state of plants and make a prognosis for future development, for instance, by indicating areas that are in need for irrigating. 
 
+The interpretation of the values on the resulting images based on the NDWI are as follows: the negative values (from -1 up to 0) signify areas with no vegetation or water content, while those above 0 show surfaces with water content where the higher moisture level correlates with higher values of the NDWI, respectively. The NDWI values vary between -1 to +1, which depends on the total amount of water in leaves, type of vegetation and percentage of the foliage coverage. Thus, sparse vegetation in semi-arid regions of the Sudanian Sahel will naturally have a lower value of the NDWI compared to the regions of dominating forests with dense canopy.
+
 Using R library 'terra', we computed the NDWI as follows, Listing \ref{lst03}:
 
 \begin{lstlisting}[language=R,caption=R code for computing the NDWI (here: a case of 2018),style=mystyle,label={lst03}]
@@ -317,12 +319,12 @@ vi <- function(img, k, i) {
   vi <- (bi - bk) / (bi + bk)
   return(vi)
 }
-# For Landsat 8-9 OLI/TIRS, NIR = 5, Green = Band 3.
+# For Landsat 8-9 OLI/TIRS, NIR = 5, SWIR1 = Band 6.
 filenames <- paste0('LC08_L2SP_173049_20181218_20200830_02_T1_SR_B', 1:7, ".tif")
 filenames
 landsat <- rast(filenames)
 landsat
-ndwi <- vi(landsat, 5, 3)
+ndwi <- vi(landsat, 5, 6)
 options(scipen=10000)
 colors <- jet(100)
 plot(ndwi, col=colors, font.main = 1, main = "NDWI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20181218_20200830_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2018)", cex.main=0.9)
@@ -381,7 +383,6 @@ The computation of RECI using R library 'terra' was done by the code in Listing 
  
 \begin{lstlisting}[language=R,caption=R code for computing the RECI (here: a case of 2013),style=mystyle,label={lst05}]
 setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_RECI")
-# Red-Edge Chlorophyll Vegetation Index (RECl) = (NIR / R) - 1 where Nir = Band 5, Red = Band 4.
 vi <- function(img, k, i) {
   bk <- img[[k]]
   bi <- img[[i]]
@@ -589,6 +590,7 @@ The interpretation of the values of the NDWI follows the ranges: 0,2 to 1 – wa
 \caption{OSAVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig07}
 \end{figure}
 
+Being a modified index derived from the NDVI, the OSAVI also has a range of values varying between the -1 to +1, with negative values indicating water areas of the White and Blue Niles, lower areas slightly above 0 and lower than 0.5 indicating bare land, sandy areas, soil with no or very sparse vegetation, while higher values close to +0.50 showing healthy vegetation and higher chlorophyll content in leaves.
 %--------------------->
 \subsubsection{Red-Edge Chlorophyll Vegetation Index (RECl)}
 
@@ -633,6 +635,30 @@ The interpretation of the values of the NDWI follows the ranges: 0,2 to 1 – wa
 }
 \caption{RECI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig08}
 \end{figure}
+
+The summary of the computed indices for comparison by the year in 2013, 2018 and 2022 is presented in Table \ref{tab02}.
+
+\begin{table}[H] 
+\caption{Comparison of the VI values derived from the Landsat 8 OLI/TIRS images over the Khartoum region area for nine-year period  (2013, 2018 and 2022).\label{tab02}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCCC}
+\toprule
+\textbf{VI}	& \textbf{2013}	& \textbf{2018} & \textbf{2022}\\
+\midrule
+	$NDVI_{min}$ & -0.2742168 & -0.2817099 & -0.2791084 \\
+	$NDVI_{max}$ & 0.7246868 & 0.5796811 & 0.6044010 \\\hline
+	$GNDVI_{min}$ & -0.2387020 & -0.2830099 & -0.2253696 \\
+	$GNDVI_{max}$ & 0.6371941 & 0.5690726 & 0.7235179 \\\hline
+	$NDWI_{min}$ & -0.4046338 & -0.5656914 & -0.5743572 \\
+	$NDWI_{max}$ & 0.3880472 & 0.3764042 & 0.4152763\\\hline
+	$OSAVI_{min}$ & -0.2742153 & -0.2817084 & -0.2791067 \\
+	$OSAVI_{max}$ & 0.7246833 & 0.5796785 & 0.6043976 \\\hline
+	$RECI_{min}$ & -0.4304084  & -0.4395846 & -0.4364109\\
+	$RECI_{max}$ & 5.2644539 & 2.7582920 & 3.0556245\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}

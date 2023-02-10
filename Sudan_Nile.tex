@@ -226,114 +226,34 @@ The NDVI is computed using Equation \ref{eq:1}:
 NDVI=\dfrac{(NIR-Red)}{(NIR+Red)}
 \end{equation}
 
-\subsubsection{Normalized Difference Water Index (NDWI)}
+Using R syntax, we computed the NDVI using script presented in Listing \ref{lst01}: 
 
-Developed by \cite{GAO1996257}, the NDWI is strongly related to the plant water content as it is sensitive to liquid water content of leaves. Moreover, it can be used to detect open water areas and evaluate the level of turbidity as a complementary to NDVI. The NDWI is computed using the arithmetics of the NIR Band and visible Green Band combination \cite{ZHENG2021129488} in the Equation \ref{eq:2}:
-
-\begin{equation}\label{eq:2}
-NDWI=\dfrac{(Green-NIR)}{(Green+NIR)}
-\end{equation}
-
-The advantages of the NDWI is that it lessens the effects from the reflectance of soil and vegetation foliage thus is suitable for sandy areas such as in Sahelian Sudan. A special value of the NDWI for environmental monitoring is that it can be used for indicating areas with water deficit \cite{TENG2021107260}. Thus, during drought periods, foliage is strongly affected by water deficit which results in plant illness. Specifically for agricultural areas of Khartoum region, it leads to the crop failure and decreases production thus affecting harvest. Detecting plant water stress is essential to evaluate current state of plants and make a prognosis for future development, for instance, by indicating areas that are in need for irrigating. 
-
-Using R library 'terra', we computed the NDWI as follows:
-
-\begin{lstlisting}[language=R,caption=R code for computing the NDWI (here: a case of 2018),style=mystyle,label={lst:01}]
+\begin{lstlisting}[language=R,caption=R code for computing the NDVI (here: a case of 2022),style=mystyle,label={lst01}]
 library(terra)
 library(RColorBrewer)
 library(Hmisc)
 library(pals)
-# Normalized Difference Water Index (NDWI) = (Green-NIR) / (Green+NIR)
-# Nir = Band 5, SWIR1 = Band 3.
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_NDVI")
+# 1. Normalized Difference Vegetation Index (NDVI) = (NIR - R) / (NIR + R), i.e., NDVI = (Band 5 - Band 4) / (Band 5 + Band 4).
 vi <- function(img, k, i) {
   bk <- img[[k]]
   bi <- img[[i]]
-  vi <- (bi - bk) / (bi + bk)
+  vi <- (bk - bi) / (bk + bi)
   return(vi)
 }
-# For Landsat 8-9 OLI/TIRS, NIR = 5, Green = Band 3.
-filenames <- paste0('LC08_L2SP_173049_20181218_20200830_02_T1_SR_B', 1:7, ".tif")
-filenames
-landsat <- rast(filenames)
-landsat
-ndwi <- vi(landsat, 5, 3)
-options(scipen=10000)
-colors <- jet(100)
-plot(ndwi, col=colors, font.main = 1, main = "NDWI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20181218_20200830_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2018)", cex.main=0.9)
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-# Plotting histogram of the NDWI
-hist(ndwi, font.main = 1, main = "NDWI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20181218_20200830_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2018)", xlab = "RECI", ylab= "Frequency",
-    col = "mediumpurple1", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
-axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-\end{lstlisting}
-
-\subsubsection{Red-Edge Chlorophyll Vegetation Index (RECl)}
-The values of Red-Edge Chlorophyll Vegetation Index (RECl) depend the chlorophyll content in leaves. Developed by \cite{Gitelson2006}, ReCI indicates the photosynthetic activity of the canopy cover and total of chlorophylls. Further, it is especially suitable to indicate yellowish or shed leaves due to the adjusted spectral regions in the formula, since the chlorophyll content directly depends on nitrogen level in plants which contributes to greenness of foliage and is reflected in optical characteristics of the leaves. The RECI is suitable for the periods of active vegetation development due to the indication of leaf pigment content and variations. The RECl is computed using Equation \ref{eq:3}:
-
-\begin{equation}\label{eq:3}
-ReCI=\dfrac{NIR}{Red}-1
-\end{equation}
-
-The computation of RECI using R library 'terra' was done by the following code: 
-\begin{lstlisting}[language=R,caption=R code for computing the RECI (here: a case of 2013),style=mystyle,label={lst:01}]
-setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_RECI")
-# Red-Edge Chlorophyll Vegetation Index (RECl) = (NIR / R) - 1 where Nir = Band 5, Red = Band 4.
-vi <- function(img, k, i) {
-  bk <- img[[k]]
-  bi <- img[[i]]
-  vi <- (bk / bi) - 1
-  return(vi)
-}
-# For Landsat 8-9 OLI/TIRS, NIR = 5, Red = 4.
-filenames <- paste0('LC08_L2SP_173049_20131220_20200912_02_T1_SR_B', 1:7, ".tif")
-filenames
-landsat <- rast(filenames)
-landsat
-reci <- vi(landsat, 5, 4)
-options(scipen=10000)
-colors <- rainbow(100)
-plot(reci, col=colors, font.main = 1, main = "RECI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20131220_20200912_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2013)", cex.main=0.9)
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-# Plotting the histogram of RECI
-hist(reci, font.main = 1, main = "RECI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20131220_20200912_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2013)", xlab = "RECI", ylab= "Frequency",
-    col = "forestgreen", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
-axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-\end{lstlisting}
-
-\subsubsection{Optimized Soil Adjusted Vegetation Index (OSAVI)}
-
-Originally developed by \cite{Rondeaux}, the Optimized Soil Adjusted Vegetation Index (OSAVI) uses a defined value of 0.16 as a factor to adjust the canopy background as this value gives higher soil variation compared to the original SAVI specifically in the regions with low vegetation coverage, such as Sahelian region of Sudan. At the same time, OSAVI has a higher sensitivity to vegetation coverage that covers more than a half of the area in percentage. Further, the applications of OSAVI is especially suitable in the regions with sparse vegetation, as in southern Sudan where soil is often visible through the canopy of vegetation.
-The OSAVI is computed using Equation \ref{eq:4}:
-
-\begin{equation}\label{eq:4}
-OSAVI=\dfrac{(NIR-Red)}{(NIR+Red+0.16)}
-\end{equation}
-
-In R language, we computed the OSAVI using the following script: 
-
-\begin{lstlisting}[language=R,caption=R code for computing the OSAVI (here: a case of 2022),style=mystyle,label={lst:01}]
-setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_OSAVI")
-# 1. Optimized Soil Adjusted Vegetation Index (OSAVI) = (NIR - R) / (NIR + R + 0.16), i.e., OSAVI = (Band 5 - Band 4) / (Band 5 + Band 4 + 0.16).
-vi <- function(img, k, i) {
-  bk <- img[[k]]
-  bi <- img[[i]]
-  vi <- (bk - bi) / (bk + bi + 0.16)
-  return(vi)
-}
-# For Landsat 8-9 OLI/TIRS, NIR = 5, red = 4.
+# For Landsat NIR = 5, red = 4.
 filenames <- paste0('LC09_L2SP_173049_20221221_20221224_02_T1_SR_B', 1:7, ".tif")
 filenames
 landsat <- rast(filenames)
 landsat
-osavi <- vi(landsat, 5, 4)
+ndvi <- vi(landsat, 5, 4)
 options(scipen=10000)
-colors <- kovesi.diverging_rainbow_bgymr_45_85_c67(100)
-plot(osavi, col=colors, font.main = 1, main = "OSAVI for Landsat-8 OLI/TIRS C1 image LC09_L2SP_173049_20221221_20221224_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2022)", cex.main=0.9)
+colors <- brewer.rdylgn(100)
+plot(ndvi, col=colors, font.main = 1, main = "NDVI for Landsat-8 OLI/TIRS C1 image LC09_L2SP_173049_20221221_20221224_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2022)", cex.main=0.9)
 minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-# Plotting the histogram of the OSAVI
-hist(osavi, font.main = 1, main = "OSAVI values for Landsat-8 OLI/TIRS C1 image \nLC09_L2SP_173049_20221221_20221224_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2022)", xlab = "OSAVI", ylab= "Frequency", col = "dodgerblue", xlim = c(-0.5, 1),  breaks = 30, xaxt = "n")
+# Plotting the histogram of the NDVI
+hist(ndvi, font.main = 1, main = "NDVI values for Landsat-8 OLI/TIRS C1 image \nLC09_L2SP_173049_20221221_20221224_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2022)", xlab = "NDVI", ylab= "Frequency",
+    col = "darkgoldenrod1", xlim = c(-0.5, 1),  breaks = 30, xaxt = "n")
 axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
 minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 \end{lstlisting}
@@ -350,9 +270,9 @@ For the Landsat 8-9 OLI/TIRS bands, the Green channel corresponds to the Band 3 
 
 Further, the GNDVI estimates the chlorophyll content more precisely compared to the NDVI and enables to analyse photo synthetic activity in plants. The applications of the GNDVI are mostly intended at detecting wilted, ill or aging plants and monitoring plant stress. It is also suitable to estimate nitrogen content in plant leaves, as well as to monitor mature vegetation coverage in the final stages of the crop cycle, or vegetation with dense canopy. Similar to the NDVI, the range of values in the GNDVI also varies between -1 and 1, where negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation. 
 
-Using R syntax, we computed the GNDVI as follows: 
+Using R syntax, we computed the GNDVI as follows, Listing \ref{lst02}: 
 
-\begin{lstlisting}[language=R,caption=R code for computing the GNDVI (here: a case of 2013),style=mystyle,label={lst:01}]
+\begin{lstlisting}[language=R,caption=R code for computing the GNDVI (here: a case of 2013),style=mystyle,label={lst:02}]
 setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_GNDVI")
 # Green Normalized Difference Vegetation Index (GNDVI) = (NIR - Green) / (NIR + Green)
 # Nir = Band 5, Green = Band 3.
@@ -378,98 +298,158 @@ axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
 minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 \end{lstlisting}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagebreak
-\section{Results}
 \subsubsection{Normalized Difference Water Index (NDWI)}
 
-\begin{figure}[H]
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_04a}
-		\caption{2013}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-		\includegraphics[width=0.90\textwidth]{Fig_04b}
-		\caption{2013: histogram}
-	\end{subfigure}%
-}\\
-\vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_04c}
-		\caption{2018}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_04d}
-		\caption{2018: histogram}
-	\end{subfigure}%
-}\\
-\vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_04e}
-		\caption{2022}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_04f}
-		\caption{2022: histogram}
-	\end{subfigure}%
+Developed by \cite{GAO1996257} as a complementary to the NDVI, the NDWI is strongly related to the plant water content as it is sensitive to liquid water content of leaves. Moreover, it can be used to detect open water areas and evaluate the level of turbidity. The NDWI is computed using the arithmetics of the NIR Band and visible Green Band combination \cite{ZHENG2021129488} in the Equation \ref{eq:2}:
+
+\begin{equation}\label{eq:2}
+NDWI=\dfrac{(Green-NIR)}{(Green+NIR)}
+\end{equation}
+
+The advantages of the NDWI is that it lessens the effects from the reflectance of soil and vegetation foliage thus is suitable for sandy areas such as in Sahelian Sudan. A special value of the NDWI for environmental monitoring is that it can be used for indicating areas with water deficit \cite{TENG2021107260}. Thus, during drought periods, foliage is strongly affected by water deficit which results in plant illness. Specifically for agricultural areas of Khartoum region, it leads to the crop failure and decreases production thus affecting harvest. Detecting plant water stress is essential to evaluate current state of plants and make a prognosis for future development, for instance, by indicating areas that are in need for irrigating. 
+
+Using R library 'terra', we computed the NDWI as follows, Listing \ref{lst03}:
+
+\begin{lstlisting}[language=R,caption=R code for computing the NDWI (here: a case of 2018),style=mystyle,label={lst:03}]
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bi - bk) / (bi + bk)
+  return(vi)
 }
-\caption{NDWI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig04}
-\end{figure}
+# For Landsat 8-9 OLI/TIRS, NIR = 5, Green = Band 3.
+filenames <- paste0('LC08_L2SP_173049_20181218_20200830_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+ndwi <- vi(landsat, 5, 3)
+options(scipen=10000)
+colors <- jet(100)
+plot(ndwi, col=colors, font.main = 1, main = "NDWI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20181218_20200830_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2018)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting histogram of the NDWI
+hist(ndwi, font.main = 1, main = "NDWI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20181218_20200830_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2018)", xlab = "RECI", ylab= "Frequency",
+    col = "mediumpurple1", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
+axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
 
-The interpretation of the values of the NDWI follows the ranges: 0,2 to 1 – water area; 0.0 to 0,2 – flooded areas and high humidity, -0,3 to 0.0: moderate drought soil and non-water surfaces, -1 to -0.3: drylands, drought and non-water surfaces.
+\subsubsection{Optimized Soil Adjusted Vegetation Index (OSAVI)}
 
-\pagebreak
+Originally developed by \cite{Rondeaux}, the Optimized Soil Adjusted Vegetation Index (OSAVI) uses a defined value of 0.16 as a factor to adjust the canopy background as this value gives higher soil variation compared to the original SAVI specifically in the regions with low vegetation coverage, such as Sahelian region of Sudan. At the same time, OSAVI has a higher sensitivity to vegetation coverage that covers more than a half of the area in percentage. Further, the applications of OSAVI is especially suitable in the regions with sparse vegetation, as in southern Sudan where soil is often visible through the canopy of vegetation.
+The OSAVI is computed using Equation \ref{eq:4}:
+
+\begin{equation}\label{eq:4}
+OSAVI=\dfrac{(NIR-Red)}{(NIR+Red+0.16)}
+\end{equation}
+
+In R language, we computed the OSAVI using the following script in Listing \ref{lst04}: 
+
+\begin{lstlisting}[language=R,caption=R code for computing the OSAVI (here: a case of 2022),style=mystyle,label={lst:04}]
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_OSAVI")
+# 1. Optimized Soil Adjusted Vegetation Index (OSAVI) = (NIR - R) / (NIR + R + 0.16), i.e., OSAVI = (Band 5 - Band 4) / (Band 5 + Band 4 + 0.16).
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk - bi) / (bk + bi + 0.16)
+  return(vi)
+}
+# For Landsat 8-9 OLI/TIRS, NIR = 5, red = 4.
+filenames <- paste0('LC09_L2SP_173049_20221221_20221224_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+osavi <- vi(landsat, 5, 4)
+options(scipen=10000)
+colors <- kovesi.diverging_rainbow_bgymr_45_85_c67(100)
+plot(osavi, col=colors, font.main = 1, main = "OSAVI for Landsat-8 OLI/TIRS C1 image LC09_L2SP_173049_20221221_20221224_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2022)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting the histogram of the OSAVI
+hist(osavi, font.main = 1, main = "OSAVI values for Landsat-8 OLI/TIRS C1 image \nLC09_L2SP_173049_20221221_20221224_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2022)", xlab = "OSAVI", ylab= "Frequency", col = "dodgerblue", xlim = c(-0.5, 1),  breaks = 30, xaxt = "n")
+axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
+
 \subsubsection{Red-Edge Chlorophyll Vegetation Index (RECl)}
+The values of Red-Edge Chlorophyll Vegetation Index (RECl) depend the chlorophyll content in leaves. Developed by \cite{Gitelson2006}, ReCI indicates the photosynthetic activity of the canopy cover and total of chlorophylls. Further, it is especially suitable to indicate yellowish or shed leaves due to the adjusted spectral regions in the formula, since the chlorophyll content directly depends on nitrogen level in plants which contributes to greenness of foliage and is reflected in optical characteristics of the leaves. The RECI is suitable for the periods of active vegetation development due to the indication of leaf pigment content and variations. The RECl is computed using Equation \ref{eq:3}:
+
+\begin{equation}\label{eq:3}
+ReCI=\dfrac{NIR}{Red}-1
+\end{equation}
+
+The computation of RECI using R library 'terra' was done by the following code in Listing \ref{lst05}:
+ 
+\begin{lstlisting}[language=R,caption=R code for computing the RECI (here: a case of 2013),style=mystyle,label={lst:05}]
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_RECI")
+# Red-Edge Chlorophyll Vegetation Index (RECl) = (NIR / R) - 1 where Nir = Band 5, Red = Band 4.
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk / bi) - 1
+  return(vi)
+}
+# For Landsat 8-9 OLI/TIRS, NIR = 5, Red = 4.
+filenames <- paste0('LC08_L2SP_173049_20131220_20200912_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+reci <- vi(landsat, 5, 4)
+options(scipen=10000)
+colors <- rainbow(100)
+plot(reci, col=colors, font.main = 1, main = "RECI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20131220_20200912_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2013)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting the histogram of RECI
+hist(reci, font.main = 1, main = "RECI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20131220_20200912_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2013)", xlab = "RECI", ylab= "Frequency",
+    col = "forestgreen", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
+axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+
+\subsubsection{Normalized Difference Vegetation Index (NDVI)}
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_05a}
-		\caption{2013}
+			\includegraphics[width=0.95\textwidth]{Fig_08a}
+		\caption{}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-		\includegraphics[width=0.90\textwidth]{Fig_05b}
-		\caption{2013: histogram}
-	\end{subfigure}%
-}\\
-\vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_05c}
-		\caption{2018}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_05d}
-		\caption{2018: histogram}
+		\includegraphics[width=0.95\textwidth]{Fig_08b}
+		\caption{}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_05e}
-		\caption{2022}
+			\includegraphics[width=0.95\textwidth]{Fig_08c}
+		\caption{}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_05f}
-		\caption{2022: histogram}
+		\includegraphics[width=0.95\textwidth]{Fig_08d}
+		\caption{}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08e}
+		\caption{}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_08f}
+		\caption{}
 	\end{subfigure}%
 }
-\caption{RECI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig05}
+\caption{NDVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig08}
 \end{figure}
 
 \pagebreak
@@ -517,6 +497,52 @@ The interpretation of the values of the NDWI follows the ranges: 0,2 to 1 – wa
 \caption{GNDVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig06}
 \end{figure}
 
+\subsubsection{Normalized Difference Water Index (NDWI)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_04a}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.90\textwidth]{Fig_04b}
+		\caption{2013: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_04c}
+		\caption{2018}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_04d}
+		\caption{2018: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_04e}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_04f}
+		\caption{2022: histogram}
+	\end{subfigure}%
+}
+\caption{NDWI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig04}
+\end{figure}
+
+The interpretation of the values of the NDWI follows the ranges: 0,2 to 1 – water area; 0.0 to 0,2 – flooded areas and high humidity, -0,3 to 0.0: moderate drought soil and non-water surfaces, -1 to -0.3: drylands, drought and non-water surfaces.
+
 \pagebreak
 \subsubsection{Optimized Soil Adjusted Vegetation Index (OSAVI)}
 
@@ -563,48 +589,48 @@ The interpretation of the values of the NDWI follows the ranges: 0,2 to 1 – wa
 \end{figure}
 
 \pagebreak
-\subsubsection{Normalized Difference Vegetation Index (NDVI)}
+\subsubsection{Red-Edge Chlorophyll Vegetation Index (RECl)}
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_08a}
-		\caption{}
+			\includegraphics[width=0.95\textwidth]{Fig_05a}
+		\caption{2013}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_08b}
-		\caption{}
-	\end{subfigure}%
-}\\
-\vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_08c}
-		\caption{}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_08d}
-		\caption{}
+		\includegraphics[width=0.90\textwidth]{Fig_05b}
+		\caption{2013: histogram}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_08e}
-		\caption{}
+			\includegraphics[width=0.95\textwidth]{Fig_05c}
+		\caption{2018}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_08f}
-		\caption{}
+		\includegraphics[width=0.95\textwidth]{Fig_05d}
+		\caption{2018: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_05e}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_05f}
+		\caption{2022: histogram}
 	\end{subfigure}%
 }
-\caption{NDVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig08}
+\caption{RECI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig05}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

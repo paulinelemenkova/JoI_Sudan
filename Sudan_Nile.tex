@@ -272,7 +272,7 @@ Further, the GNDVI estimates the chlorophyll content more precisely compared to 
 
 Using R syntax, we computed the GNDVI as follows, Listing \ref{lst02}: 
 
-\begin{lstlisting}[language=R,caption=R code for computing the GNDVI (here: a case of 2013),style=mystyle,label={lst:02}]
+\begin{lstlisting}[language=R,caption=R code for computing the GNDVI (here: a case of 2013),style=mystyle,label={lst02}]
 setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_GNDVI")
 # Green Normalized Difference Vegetation Index (GNDVI) = (NIR - Green) / (NIR + Green)
 # Nir = Band 5, Green = Band 3.
@@ -300,7 +300,7 @@ minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 
 \subsubsection{Normalized Difference Water Index (NDWI)}
 
-Developed by \cite{GAO1996257} as a complementary to the NDVI, the NDWI is strongly related to the plant water content as it is sensitive to liquid water content of leaves. Moreover, it can be used to detect open water areas and evaluate the level of turbidity. The NDWI is computed using the arithmetics of the NIR Band and visible Green Band combination \cite{ZHENG2021129488} in the Equation \ref{eq:2}:
+Developed by \cite{GAO1996257} as a complementary to the NDVI, the NDWI is strongly related to the plant water content as it is sensitive to liquid water content of leaves. Moreover, it can be used to detect open water areas and evaluate the level of turbidity. The NDWI is computed using the ratio between the difference and sum of the NIR and visible Green Bands \cite{ZHENG2021129488} in the Equation \ref{eq:2}:
 
 \begin{equation}\label{eq:2}
 NDWI=\dfrac{(Green-NIR)}{(Green+NIR)}
@@ -310,7 +310,7 @@ The advantages of the NDWI is that it lessens the effects from the reflectance o
 
 Using R library 'terra', we computed the NDWI as follows, Listing \ref{lst03}:
 
-\begin{lstlisting}[language=R,caption=R code for computing the NDWI (here: a case of 2018),style=mystyle,label={lst:03}]
+\begin{lstlisting}[language=R,caption=R code for computing the NDWI (here: a case of 2018),style=mystyle,label={lst03}]
 vi <- function(img, k, i) {
   bk <- img[[k]]
   bi <- img[[i]]
@@ -345,7 +345,7 @@ OSAVI=\dfrac{(NIR-Red)}{(NIR+Red+0.16)}
 
 In R language, we computed the OSAVI using the following script in Listing \ref{lst04}: 
 
-\begin{lstlisting}[language=R,caption=R code for computing the OSAVI (here: a case of 2022),style=mystyle,label={lst:04}]
+\begin{lstlisting}[language=R,caption=R code for computing the OSAVI (here: a case of 2022),style=mystyle,label={lst04}]
 setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_OSAVI")
 # 1. Optimized Soil Adjusted Vegetation Index (OSAVI) = (NIR - R) / (NIR + R + 0.16), i.e., OSAVI = (Band 5 - Band 4) / (Band 5 + Band 4 + 0.16).
 vi <- function(img, k, i) {
@@ -377,9 +377,9 @@ The values of Red-Edge Chlorophyll Vegetation Index (RECl) depend the chlorophyl
 ReCI=\dfrac{NIR}{Red}-1
 \end{equation}
 
-The computation of RECI using R library 'terra' was done by the following code in Listing \ref{lst05}:
+The computation of RECI using R library 'terra' was done by the code in Listing \ref{lst05}:
  
-\begin{lstlisting}[language=R,caption=R code for computing the RECI (here: a case of 2013),style=mystyle,label={lst:05}]
+\begin{lstlisting}[language=R,caption=R code for computing the RECI (here: a case of 2013),style=mystyle,label={lst05}]
 setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_RECI")
 # Red-Edge Chlorophyll Vegetation Index (RECl) = (NIR / R) - 1 where Nir = Band 5, Red = Band 4.
 vi <- function(img, k, i) {
@@ -414,25 +414,12 @@ minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_08a}
+			\includegraphics[width=0.95\textwidth]{Fig_04a}
 		\caption{}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_08b}
-		\caption{}
-	\end{subfigure}%
-}\\
-\vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_08c}
-		\caption{}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_08d}
+		\includegraphics[width=0.95\textwidth]{Fig_04b}
 		\caption{}
 	\end{subfigure}%
 }\\
@@ -440,20 +427,78 @@ minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_08e}
+			\includegraphics[width=0.95\textwidth]{Fig_04c}
 		\caption{}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_08f}
+		\includegraphics[width=0.95\textwidth]{Fig_04d}
+		\caption{}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_04e}
+		\caption{}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_04f}
 		\caption{}
 	\end{subfigure}%
 }
-\caption{NDVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig08}
+\caption{NDVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig04}
 \end{figure}
 
-\pagebreak
+%--------------------->
 \subsubsection{Green Normalized Difference Vegetation Index (GNDVI)}
+
+\begin{figure}[H]
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_05a}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.90\textwidth]{Fig_05b}
+		\caption{2013: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_05c}
+		\caption{2018}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_05d}
+		\caption{2018: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_05e}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Fig_05f}
+		\caption{2022: histogram}
+	\end{subfigure}%
+}
+\caption{GNDVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig05}
+\end{figure}
+
+%--------------------->
+\subsubsection{Normalized Difference Water Index (NDWI)}
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
@@ -494,56 +539,12 @@ minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 		\caption{2022: histogram}
 	\end{subfigure}%
 }
-\caption{GNDVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig06}
-\end{figure}
-
-\subsubsection{Normalized Difference Water Index (NDWI)}
-
-\begin{figure}[H]
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_04a}
-		\caption{2013}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-		\includegraphics[width=0.90\textwidth]{Fig_04b}
-		\caption{2013: histogram}
-	\end{subfigure}%
-}\\
-\vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_04c}
-		\caption{2018}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_04d}
-		\caption{2018: histogram}
-	\end{subfigure}%
-}\\
-\vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_04e}
-		\caption{2022}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_04f}
-		\caption{2022: histogram}
-	\end{subfigure}%
-}
-\caption{NDWI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig04}
+\caption{NDWI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig06}
 \end{figure}
 
 The interpretation of the values of the NDWI follows the ranges: 0,2 to 1 – water area; 0.0 to 0,2 – flooded areas and high humidity, -0,3 to 0.0: moderate drought soil and non-water surfaces, -1 to -0.3: drylands, drought and non-water surfaces.
 
-\pagebreak
+%--------------------->
 \subsubsection{Optimized Soil Adjusted Vegetation Index (OSAVI)}
 
 \begin{figure}[H]
@@ -588,19 +589,19 @@ The interpretation of the values of the NDWI follows the ranges: 0,2 to 1 – wa
 \caption{OSAVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig07}
 \end{figure}
 
-\pagebreak
+%--------------------->
 \subsubsection{Red-Edge Chlorophyll Vegetation Index (RECl)}
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_05a}
+			\includegraphics[width=0.95\textwidth]{Fig_08a}
 		\caption{2013}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-		\includegraphics[width=0.90\textwidth]{Fig_05b}
+		\includegraphics[width=0.90\textwidth]{Fig_08b}
 		\caption{2013: histogram}
 	\end{subfigure}%
 }\\
@@ -608,12 +609,12 @@ The interpretation of the values of the NDWI follows the ranges: 0,2 to 1 – wa
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_05c}
+			\includegraphics[width=0.95\textwidth]{Fig_08c}
 		\caption{2018}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_05d}
+		\includegraphics[width=0.95\textwidth]{Fig_08d}
 		\caption{2018: histogram}
 	\end{subfigure}%
 }\\
@@ -621,16 +622,16 @@ The interpretation of the values of the NDWI follows the ranges: 0,2 to 1 – wa
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_05e}
+			\includegraphics[width=0.95\textwidth]{Fig_08e}
 		\caption{2022}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_05f}
+		\includegraphics[width=0.95\textwidth]{Fig_08f}
 		\caption{2022: histogram}
 	\end{subfigure}%
 }
-\caption{RECI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig05}
+\caption{RECI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig08}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

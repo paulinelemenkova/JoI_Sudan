@@ -218,7 +218,7 @@ We processed the satellite images using libraries of R programming language \cit
 \subsection{Calculating Vegetation Indices}
 
 \subsubsection{Normalized Difference Vegetation Index (NDVI)}
-The Normalized Difference Vegetation Index (NDVI) \cite{Rouse} is calculated as a ration between the sum and the difference of the two Landsat bands - NIR and Red. The content of chlorophyll in healthy vegetation is reflected by the near-infrared (NIR) band much more compared to the other bands. At the same time, it absorbs Red light. Therefore, using these two bands in a well-established combination gives robust results indicating the presence and amount of chlorophyll in leaves. Such effectiveness of the NDVI resulted in its numerous applications for the environmental analysis \cite{w13192707,rs12244119,GHEBREZGABHER2020249,RULINDA2012169}. The values of the NDVI vary from -1 to +1 with negative values indicating water, lower values above 0 show bare soil and land, mediocre values (around 1.30-0.50) signify sparsely vegetated areas, while higher values reaching up to +1 identify dense vegetation with healthy canopy and green foliage. The highest NDVI values (0.80 to 1.0) identify forest areas. For the desert areas with dominating sands such as Sudan, the NDVI values doe not exceed 0.50.  
+The Normalized Difference Vegetation Index (NDVI) \cite{Rouse} is calculated as a ration between the sum and the difference of the two Landsat bands - NIR and Red. The values of the NDVI typically vary from -1 to +1 with negative values indicating water, lower values above 0 show bare soil and land, mediocre values (around 1.30-0.50) signify sparsely vegetated areas, while higher values reaching up to +1 identify dense vegetation with healthy canopy and green foliage. The content of chlorophyll in healthy vegetation is reflected by the near-infrared (NIR) band much more compared to the other bands. At the same time, it absorbs Red light. Therefore, using these two bands in a well-established combination gives robust results indicating the presence and amount of chlorophyll in leaves. Such effectiveness of the NDVI resulted in its numerous applications for the environmental analysis \cite{w13192707,rs12244119,GHEBREZGABHER2020249,RULINDA2012169}. 
 
 The NDVI is computed using Equation \ref{eq:1}:
 
@@ -268,8 +268,6 @@ GNDVI=\dfrac{(NIR-Green)}{(NIR+Green)}
 
 For the Landsat 8-9 OLI/TIRS bands, the Green channel corresponds to the Band 3 and Red channel -- to the Band 4. The adjustment so the GNDVI are based on the maximum sensitivity of reflectance of leaves since the reflectance near 670 nm of the Red Band is not sensitive to chlorophyll concentration due to the saturation of the relationship between absorptions and chlorophyll concentration \cite{GITELSON1996289}. Therefore, the replacement of the Red Band by the Green Band results in a more accurate to estimate the concentration of chlorophyll and the rate of photosynthesis. 
 
-Further, the GNDVI estimates the chlorophyll content more precisely compared to the NDVI and enables to analyse photo synthetic activity in plants. The applications of the GNDVI are mostly intended at detecting wilted, ill or aging plants and monitoring plant stress. It is also suitable to estimate nitrogen content in plant leaves, as well as to monitor mature vegetation coverage in the final stages of the crop cycle, or vegetation with dense canopy. Similar to the NDVI, the range of values in the GNDVI also varies between -1 and 1, where negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation. 
-
 Using R syntax, we computed the GNDVI as follows, Listing \ref{lst02}: 
 
 \begin{lstlisting}[language=R,caption=R code for computing the GNDVI (here: a case of 2013),style=mystyle,label={lst02}]
@@ -300,15 +298,13 @@ minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 
 \subsubsection{Normalized Difference Water Index (NDWI)}
 
-Developed by \cite{GAO1996257} as a complementary to the NDVI, the NDWI is strongly related to the plant water content as it is sensitive to liquid water content of leaves. Moreover, the modified version of the NDWI with a Green band replacing SWIR can be used to detect open water areas and evaluate the level of turbidity. The NDWI is computed using the ratio between the difference and sum of the NIR and visible Green Bands \cite{ZHENG2021129488} in the Equation \ref{eq:2}:
+Developed by \cite{GAO1996257} as a complementary to the NDVI, the NDWI is strongly related to the plant water content as it is sensitive to liquid water content of leaves base don the ratio between the difference and sum of NIR and SWIR. The second version of the NDWI developed by \cite{rs5073544} uses a Green band instead of SWIR which can be used to detect surface open water areas as well as evaluate the level of turbidity. In this case, the NDWI is computed using the ratio between the difference and sum of the NIR and visible Green Bands \cite{ZHENG2021129488} in the Equation \ref{eq:2}:
 
 \begin{equation}\label{eq:2}
 NDWI=\dfrac{(NIR-SWIR)}{(NIR+SWIR)}
 \end{equation}
 
 The advantages of the NDWI is that it lessens the effects from the reflectance of soil and vegetation foliage thus is suitable for sandy areas such as in Sahelian Sudan. A special value of the NDWI for environmental monitoring is that it can be used for indicating areas with water deficit \cite{TENG2021107260}. Thus, during drought periods, foliage is strongly affected by water deficit which results in plant illness. Specifically for agricultural areas of Khartoum region, it leads to the crop failure and decreases production thus affecting harvest. Detecting plant water stress is essential to evaluate current state of plants and make a prognosis for future development, for instance, by indicating areas that are in need for irrigating. 
-
-The interpretation of the values on the resulting images based on the NDWI are as follows: the negative values (from -1 up to 0) signify areas with no vegetation or water content, while those above 0 show surfaces with water content where the higher moisture level correlates with higher values of the NDWI, respectively. The NDWI values vary between -1 to +1, which depends on the total amount of water in leaves, type of vegetation and percentage of the foliage coverage. Thus, sparse vegetation in semi-arid regions of the Sudanian Sahel will naturally have a lower value of the NDWI compared to the regions of dominating forests with dense canopy.
 
 Using R library 'terra', we computed the NDWI as follows, Listing \ref{lst03}:
 
@@ -409,6 +405,36 @@ minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 
+The images of the NDVI (Figure \ref{fig04}) allow the differentiation of vegetation areas and crop from soil in the region southwards from the Khartoum and along the flow of theGreater Nile. Negative NDVI values were classified as non-vegetation (i.e. soil and bare land), and positive NDVI values -- as vegetation. The highest NDVI values (0.80 to 1.0) identify forest areas. For the desert areas with dominating sands such as Sudan, the NDVI values do not exceed 0.50. The minimal values determined according to the histograms obtained from the NDVI images for years 2013, 2018 and 2022 were 0.27, 0.28 and 0.28 (Table \ref{tab02}), whereas, the highest determined values  were 0.72, 0.58 and 0.60 for the same years. The pixels that were not classified to either the soil, water or vegetation classes, were identified as sand desert areas (mostly beige-coloured in the images in Figure \ref{fig04}) pixels due to their low NDVI values around 0.1 or less. They could also be classified as rocky surface and bare land with very low NDVI values. Lighter yellow coloured correspond to the dry creek or stream beds of wadi with typical patterns.
+
+Further, the GNDVI estimates the chlorophyll content more precisely compared to the NDVI and enables to analyse photo synthetic activity in plants. The applications of the GNDVI are mostly intended at detecting wilted, ill or aging plants and monitoring plant stress. It is also suitable to estimate nitrogen content in plant leaves, as well as to monitor mature vegetation coverage in the final stages of the crop cycle, or vegetation with dense canopy. Similar to the NDVI, the range of values in the GNDVI also varies between -1 and 1, where negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation. 
+
+The interpretation of the values on the resulting images based on the NDWI are as follows: the negative values (from -1 up to 0) signify areas with no vegetation or water content, while those above 0 show surfaces with water content where the higher moisture level correlates with higher values of the NDWI, respectively. The NDWI values vary between -1 to +1, which depends on the total amount of water in leaves, type of vegetation and percentage of the foliage coverage. Thus, sparse vegetation in semi-arid regions of the Sudanian Sahel will naturally have a lower value of the NDWI compared to the regions of dominating forests with dense canopy.
+
+The results obtained over the Landsat 8 OLI/TIRS data using the estimated parameters of the VIs as computed indices for 2013, 2018 and 2022 are shown in Table \ref{tab02}.
+
+\begin{table}[H] 
+\caption{Evaluation results of the VI values derived from the Landsat 8 OLI/TIRS images over the Khartoum region area for nine-year period  (2013, 2018 and 2022).\label{tab02}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCCC}
+\toprule
+\textbf{VI}	& \textbf{2013}	& \textbf{2018} & \textbf{2022}\\
+\midrule
+	$NDVI_{min}$ & -0.2742168 & -0.2817099 & -0.2791084 \\
+	$NDVI_{max}$ & 0.7246868 & 0.5796811 & 0.6044010 \\\hline
+	$GNDVI_{min}$ & -0.2387020 & -0.2830099 & -0.2253696 \\
+	$GNDVI_{max}$ & 0.6371941 & 0.5690726 & 0.7235179 \\\hline
+	$NDWI_{min}$ & -0.4046338 & -0.5656914 & -0.5743572 \\
+	$NDWI_{max}$ & 0.3880472 & 0.3764042 & 0.4152763\\\hline
+	$OSAVI_{min}$ & -0.2742153 & -0.2817084 & -0.2791067 \\
+	$OSAVI_{max}$ & 0.7246833 & 0.5796785 & 0.6043976 \\\hline
+	$RECI_{min}$ & -0.4304084  & -0.4395846 & -0.4364109\\
+	$RECI_{max}$ & 5.2644539 & 2.7582920 & 3.0556245\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\pagebreak
 \subsubsection{Normalized Difference Vegetation Index (NDVI)}
 
 \begin{figure}[H]
@@ -637,30 +663,6 @@ Being a modified index derived from the NDVI, the OSAVI also has a range of valu
 }
 \caption{RECI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig08}
 \end{figure}
-
-The results obtained over the Landsat 8 OLI/TIRS data using the estimated parameters of the VIs as computed indices for 2013, 2018 and 2022 are shown in Table \ref{tab02}.
-
-\begin{table}[H] 
-\caption{Evaluation results of the VI values derived from the Landsat 8 OLI/TIRS images over the Khartoum region area for nine-year period  (2013, 2018 and 2022).\label{tab02}}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\begin{tabularx}{\textwidth}{CCCC}
-\toprule
-\textbf{VI}	& \textbf{2013}	& \textbf{2018} & \textbf{2022}\\
-\midrule
-	$NDVI_{min}$ & -0.2742168 & -0.2817099 & -0.2791084 \\
-	$NDVI_{max}$ & 0.7246868 & 0.5796811 & 0.6044010 \\\hline
-	$GNDVI_{min}$ & -0.2387020 & -0.2830099 & -0.2253696 \\
-	$GNDVI_{max}$ & 0.6371941 & 0.5690726 & 0.7235179 \\\hline
-	$NDWI_{min}$ & -0.4046338 & -0.5656914 & -0.5743572 \\
-	$NDWI_{max}$ & 0.3880472 & 0.3764042 & 0.4152763\\\hline
-	$OSAVI_{min}$ & -0.2742153 & -0.2817084 & -0.2791067 \\
-	$OSAVI_{max}$ & 0.7246833 & 0.5796785 & 0.6043976 \\\hline
-	$RECI_{min}$ & -0.4304084  & -0.4395846 & -0.4364109\\
-	$RECI_{max}$ & 5.2644539 & 2.7582920 & 3.0556245\\
-\bottomrule
-\end{tabularx}
-\end{table}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}

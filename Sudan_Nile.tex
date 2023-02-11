@@ -104,7 +104,7 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 % Current address and/or shared authorship
 %\firstnote{Current address: Affiliation 3.} 
 
-\abstract{Desertification is one of the most destructive climate-related issues in Sudan-Sahel region of Africa. Rising temperatures, declining rainfall, decreased relative humidity, as well as changes in patterns of cloudiness, atmospheric radiation and evaporation triggered environmental degradation and affected vegetation growth and health. The assessment of desertification is possible by remote sensing data analysis using Vegetation Indices (VIs). The VIs are employed to estimate the level of leaf chlorophyll in plants and thus can be used as robust indicators of plant health and greenness. The VIs reflect the functional features of canopy and parameters of vegetation coverage that is essential for environmental and climate analytics. The Earth observing satellite sensors providing remote sensing data enable to highlight the links between the hydrological and climate processes leading to desertification and vegetation responses. In this study, we calculated several VIs to compare the status and dynamics of the vegetation in the region of confluence of the Blue Nile and White Nile in Khartoum, southern Sudan. The data were compared for the periods of 2013, 2018 and 2022. We tested five VIs for the Landsat 8-9 OLI/TIRS images: 1) Normalized Difference Vegetation Index (NDVI), 2) Normalized Difference Water Index (NDWI), 3) Red-Edge Chlorophyll Vegetation Index (RECl), 4) Optimized Soil Adjusted Vegetation Index (OSAVI) and 5) Green Normalized Difference Vegetation Index (GNDVI). The demonstrated difference in the VIs collected with nine year time gap reveals climate–vegetation relationships. Further, using programming methods for computing and visualization of VIs presents new perspectives for image processing such as the Landsat 8-9 OLI/TIRS scenes. We demonstrated technical advantages of R scripts and packages 'raster' and 'terra' for spatial data processing to automate image analysis and mapping. Climatic drivers of desertification affecting plant growth and health varied for images taken on different years for 2013, 2018 and 2022 in the region of confluence of the Blue Nile and White Nile, southern Sudan, Northeast Africa.}
+\abstract{Desertification is one of the most destructive climate-related issues in Sudan-Sahel region of Africa. Rising temperatures, declining rainfall, decreased relative humidity, as well as changes in patterns of cloudiness, atmospheric radiation and evaporation triggered environmental degradation and affected vegetation growth and health. The assessment of desertification is possible by remote sensing data analysis using Vegetation Indices (VIs). The VIs are employed to estimate the level of leaf chlorophyll in plants and thus can be used as robust indicators of plant health and greenness. The VIs reflect the functional features of canopy and parameters of vegetation coverage that is essential for environmental and climate analytics. The Earth observing satellite sensors providing remote sensing data enable to highlight the links between the hydrological and climate processes leading to desertification and vegetation responses. In this study, we calculated several VIs to compare the status and dynamics of the vegetation in the region of confluence of the Blue Nile and White Nile in Khartoum, southern Sudan. The data were compared for the periods of 2013, 2018 and 2022. We tested five VIs for the Landsat 8-9 OLI/TIRS images: 1) Normalized Difference Vegetation Index (NDVI), 2) Normalized Difference Water Index (NDWI), 3) Infrared Percentage Vegetation Index (IPVI), 4) Optimized Soil Adjusted Vegetation Index (OSAVI) and 5) Green Normalized Difference Vegetation Index (GNDVI). The demonstrated difference in the VIs collected with nine year time gap reveals climate–vegetation relationships. Further, using programming methods for computing and visualization of VIs presents new perspectives for image processing such as the Landsat 8-9 OLI/TIRS scenes. We demonstrated technical advantages of R scripts and packages 'raster' and 'terra' for spatial data processing to automate image analysis and mapping. Climatic drivers of desertification affecting plant growth and health varied for images taken on different years for 2013, 2018 and 2022 in the region of confluence of the Blue Nile and White Nile, southern Sudan, Northeast Africa.}
 
 % Keywords
 \keyword{Remote sensing; Sudan; Khartoum; Nile River; image analysis; image processing; information retrieval; programming; Africa; computer vision} 
@@ -291,7 +291,7 @@ colors <- brewer.spectral(100)
 plot(gndvi, col=colors, font.main = 1, main = "GNDVI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20131220_20200912_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2013)", cex.main=0.9)
 minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 # Plotting histogram of the GNDVI
-hist(gndvi, font.main = 1, main = "GNDVI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20131220_20200912_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2013)", xlab = "RECI", ylab= "Frequency", col = "peachpuff", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
+hist(gndvi, font.main = 1, main = "GNDVI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20131220_20200912_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2013)", xlab = "GNDVI", ylab= "Frequency", col = "peachpuff", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
 axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
 minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 \end{lstlisting}
@@ -326,7 +326,7 @@ colors <- jet(100)
 plot(ndwi, col=colors, font.main = 1, main = "NDWI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20181218_20200830_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2018)", cex.main=0.9)
 minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 # Plotting histogram of the NDWI
-hist(ndwi, font.main = 1, main = "NDWI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20181218_20200830_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2018)", xlab = "RECI", ylab= "Frequency",
+hist(ndwi, font.main = 1, main = "NDWI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20181218_20200830_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2018)", xlab = "NDWI", ylab= "Frequency",
     col = "mediumpurple1", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
 axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
 minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
@@ -368,37 +368,44 @@ axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
 minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 \end{lstlisting}
 
-\subsubsection{Red-Edge Chlorophyll Vegetation Index (RECl)}
-The values of Red-Edge Chlorophyll Vegetation Index (RECl) depend the chlorophyll content in leaves. Developed by \cite{Gitelson2006}, ReCI indicates the photosynthetic activity of the canopy cover and total of chlorophylls. Further, it is especially suitable to indicate yellowish or shed leaves due to the adjusted spectral regions in the formula, since the chlorophyll content directly depends on nitrogen level in plants which contributes to greenness of foliage and is reflected in optical characteristics of the leaves. The RECI is suitable for the periods of active vegetation development due to the indication of leaf pigment content and variations. The RECl is computed using Equation \ref{eq:3}:
+\subsubsection{Infrared Percentage Vegetation Index (IPVI)}
+The values of Infrared Percentage Vegetation Index (IPVI) depend the chlorophyll content in leaves. Developed by \cite{CRIPPEN199071}, it has always positive values ranging from 0 to +1 and indicates the photosynthetic activity of the canopy cover and total of chlorophylls. Further, as a modified variation it is especially suitable to indicate yellowish or shed leaves due to the adjusted spectral regions in the formula, since the chlorophyll content directly depends on nitrogen level in plants which contributes to greenness of foliage and is reflected in optical characteristics of the leaves. The IPVI is suitable for the periods of active vegetation development due to the indication of leaf pigment content and variations showing always positive values above zero, in contrast with the NDVI. The IPVI is computed using Equation \ref{eq:3}:
 
 \begin{equation}\label{eq:3}
-ReCI=\dfrac{NIR}{Red}-1
+ReCI=\dfrac{NIR}{NIR + Red}
 \end{equation}
 
-The computation of RECI using R library 'terra' was done by the code in Listing \ref{lst05}:
+The computation of IPVI using R library 'terra' was done by the code in Listing \ref{lst05}:
  
-\begin{lstlisting}[language=R,caption=R code for computing the RECI (here: a case of 2013),style=mystyle,label={lst05}]
-setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_RECI")
-vi <- function(img, k, i) {
+\begin{lstlisting}[language=R,caption=R code for computing the IPVI (here: a case of 2013),style=mystyle,label={lst05}]
+library(terra)
+library(RColorBrewer)
+library(Hmisc)
+library(pals)
+#
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_IPVI")
+# Infrared Percentage Vegetation Index (IPVI) = NIR / (NIR + Red)
+# NIR = Band 5, Red = Band 4
+vi <- function(img, i, k) {
   bk <- img[[k]]
   bi <- img[[i]]
-  vi <- (bk / bi) - 1
+  vi <- (bk) / (bi + bk)
   return(vi)
 }
-# For Landsat 8-9 OLI/TIRS, NIR = 5, Red = 4.
 filenames <- paste0('LC08_L2SP_173049_20131220_20200912_02_T1_SR_B', 1:7, ".tif")
 filenames
 landsat <- rast(filenames)
 landsat
-reci <- vi(landsat, 5, 4)
+ipvi <- vi(landsat, 5, 4)
+ipvi
 options(scipen=10000)
-colors <- rainbow(100)
-plot(reci, col=colors, font.main = 1, main = "RECI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20131220_20200912_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2013)", cex.main=0.9)
+colors <- brewer.rdylgn(100)
+plot(ipvi, col=colors, font.main = 1, main = "IPVI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20131220_20200912_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2013)", cex.main=0.9)
 minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-# Plotting the histogram of RECI
-hist(reci, font.main = 1, main = "RECI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20131220_20200912_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2013)", xlab = "RECI", ylab= "Frequency",
-    col = "forestgreen", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
-axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+# Plotting the histogram
+hist(ipvi, font.main = 1, main = "IPVI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20131220_20200912_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2013)", xlab = "IPVI", ylab= "Frequency",
+    col = "yellowgreen", xlim = c(0, 1),  breaks = 50, xaxt = "n")
+axis(side=1, at = seq(0.0, 1, 0.1), labels = seq(0.0, 1, 0.1))
 minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 \end{lstlisting}
 
@@ -412,25 +419,12 @@ The images of the NDVI (Figure \ref{fig04}) allow the differentiation of vegetat
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_04a}
+			\includegraphics[width=0.90\textwidth]{Fig_04a}
 		\caption{}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_04b}
-		\caption{}
-	\end{subfigure}%
-}\\
-\vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_04c}
-		\caption{}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
-		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_04d}
+		\includegraphics[width=0.90\textwidth]{Fig_04b}
 		\caption{}
 	\end{subfigure}%
 }\\
@@ -438,12 +432,25 @@ The images of the NDVI (Figure \ref{fig04}) allow the differentiation of vegetat
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_04e}
+			\includegraphics[width=0.90\textwidth]{Fig_04c}
 		\caption{}
 	\end{subfigure}%
 	\begin{subfigure}[b]{.6\textwidth}
 		\centering
-		\includegraphics[width=0.95\textwidth]{Fig_04f}
+		\includegraphics[width=0.85\textwidth]{Fig_04d}
+		\caption{}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.90\linewidth][r]{%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+			\includegraphics[width=0.90\textwidth]{Fig_04e}
+		\caption{}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.6\textwidth}
+		\centering
+		\includegraphics[width=0.85\textwidth]{Fig_04f}
 		\caption{}
 	\end{subfigure}%
 }
@@ -469,8 +476,8 @@ The highest values of the GNDVI did not exceed 0.72 for the area of Sudan due to
 	$NDWI_{max}$ & 0.3880472 & 0.3764042 & 0.4152763\\\hline
 	$OSAVI_{min}$ & -0.2742153 & -0.2817084 & -0.2791067 \\
 	$OSAVI_{max}$ & 0.7246833 & 0.5796785 & 0.6043976 \\\hline
-	$RECI_{min}$ & -0.4304084  & -0.4395846 & -0.4364109\\
-	$RECI_{max}$ & 5.2644539 & 2.7582920 & 3.0556245\\
+	$IPVI_{min}$ & 0.1376566 & 0.2101595 & 0.1977995 \\
+	$IPVI_{max}$ & 0.6371084 & 0.6408550 & 0.6395542 \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -574,6 +581,8 @@ The interpretation of the values of the NDWI follows the ranges: 0,2 to 1 – wa
 %--------------------->
 \subsubsection{Optimized Soil Adjusted Vegetation Index (OSAVI)}
 
+The OSAVI was the highest for 2013 with the maximal reached value of 0.72 (Figure \ref{fig07}), after which it dropped to 0.58 in 2018 indicating the decease in the leaf chlorophyll content reflected in the OSAVI values; since 2018 to 2022 the values stabilised and slightly increased to 0.60 due to the effects from the White Nile hydrology and climatic variations.
+
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
 	\begin{subfigure}[b]{.6\textwidth}
@@ -616,9 +625,9 @@ The interpretation of the values of the NDWI follows the ranges: 0,2 to 1 – wa
 \caption{OSAVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig07}
 \end{figure}
 
-Being a modified index derived from the NDVI, the OSAVI also has a range of values varying between the -1 to +1, with negative values indicating water areas of the White and Blue Niles, lower areas slightly above 0 and lower than 0.5 indicating bare land, sandy areas, soil with no or very sparse vegetation, while higher values close to +0.50 showing healthy vegetation and higher chlorophyll content in leaves.
+Being a modified index derived from the NDVI, the OSAVI also has a range of values varying between the -0.28 to +0.72, with negative values indicating water areas of the White and Blue Niles, lower areas slightly above 0 and lower than 0.2 indicating bare land, sandy areas, soil with no or very sparse vegetation, while higher values close to +0.50 showing healthy vegetation and higher chlorophyll content in leaves. 
 %--------------------->
-\subsubsection{Red-Edge Chlorophyll Vegetation Index (RECl)}
+\subsubsection{Infrared Percentage Vegetation Index (IPVI)}
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
@@ -659,15 +668,17 @@ Being a modified index derived from the NDVI, the OSAVI also has a range of valu
 		\caption{2022: histogram}
 	\end{subfigure}%
 }
-\caption{RECI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig08}
+\caption{IPVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig08}
 \end{figure}
+
+The majority of values of the Infrared Percentage Vegetation Index (IPVI) for the area of Sudan, Figure \ref{fig08} lies within very narrow interval of 0.05 to 0.4 which well corresponds with the dominance of sandy dune areas and bare soils in the surrounding deserts. Note that all the values of IPVI are never negative and always positive due to the formula used in computation, which distincts this index from the previous ones.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
 
-In this paper, we have proposed the application of R language for computation of several vegetation indices using library 'terra'. Compared to the traditional GIS approaches, the proposed method has demonstrated high efficiency and effectiveness for geospatial data processing aimed at environmental analysis. In the performed experiments on calculation of VIs over the Landsat 8 OLI/TIRS data, our study has shown that, in most cases of the indices, a general trend in decrease of VI values is notable for data on 2013, 2018 and 2022, as shown in Table \ref{tab02} and visualised in Figures \ref{fig04}, \ref{fig05}, \ref{fig06}, \ref{fig07} and \ref{fig08}. This is clearly visible from the results obtained using the estimated parameters on indices NDVI, OSAVI, RECI. The proposed research technically implemented in R shows promising results on detecting anomalies in vegetation conditions in southern Sudan, as the VIs provide essential information on plant greenness reflected as chlorophyll content. The chlorophyll content related to the water content in leaves is in turn controlled by regional climatic setting and hydrological processes of the Nile River and its tributaries - the White and Blue Niles. 
+In this paper, we have proposed the application of R language for computation of several vegetation indices using library 'terra'. Compared to the traditional GIS approaches, the proposed method has demonstrated high efficiency and effectiveness for geospatial data processing aimed at environmental analysis. In the performed experiments on calculation of VIs over the Landsat 8 OLI/TIRS data, our study has shown that, in most cases of the indices, a general trend in decrease of VI values is notable for data on 2013, 2018 and 2022, as shown in Table \ref{tab02} and visualised in Figures \ref{fig04}, \ref{fig05}, \ref{fig06}, \ref{fig07} and \ref{fig08}. This is clearly visible from the results obtained using the estimated parameters on indices NDVI, OSAVI, IPVI. The proposed research technically implemented in R shows promising results on detecting anomalies in vegetation conditions in southern Sudan, as the VIs provide essential information on plant greenness reflected as chlorophyll content. The chlorophyll content related to the water content in leaves is in turn controlled by regional climatic setting and hydrological processes of the Nile River and its tributaries - the White and Blue Niles. 
 
-We have addressed the problem of satellite image processing for computing a series of vegetation indices for the regions prone to desertification in the Sahelian area of Sudan. Our approach represents each Landsat 8-9 OLI/TIRS image with a derived five diverse vegetation indices tuned for various environmental purposes and compared for years 2013, 2018 and 2022: detecting dense vegetation with healthy canopy and green foliage (NDVI), estimation of the canopy background in the regions with sparse vegetation and low percentage of foliage coverage as typical for Sudan (OSAVI), evaluating the maturity of the canopy based on the leaf pigment content and nitrogen level in plants (RECl), evaluation of concentration of chlorophyll in leaves and the rate of photosynthesis (GNDVI), indicating areas with water deficit (NDWI). In this way, the comparative analysis of indices visualised for various periods can be used to identify vegetation conditions aimed at environmental monitoring of Sahel region of Northeast Africa.
+We have addressed the problem of satellite image processing for computing a series of vegetation indices for the regions prone to desertification in the Sahelian area of Sudan. Our approach represents each Landsat 8-9 OLI/TIRS image with a derived five diverse vegetation indices tuned for various environmental purposes and compared for years 2013, 2018 and 2022: detecting dense vegetation with healthy canopy and green foliage (NDVI), estimation of the canopy background in the regions with sparse vegetation and low percentage of foliage coverage as typical for Sudan (OSAVI), evaluating the maturity of the canopy based on the leaf pigment content and nitrogen level in plants (IPVI), evaluation of concentration of chlorophyll in leaves and the rate of photosynthesis (GNDVI), indicating areas with water deficit (NDWI). In this way, the comparative analysis of indices visualised for various periods can be used to identify vegetation conditions aimed at environmental monitoring of Sahel region of Northeast Africa.
 
 We presented further insights into raster image processing by R scripting and optimization methods for a time series analysis of several scenes. The computational workflow has demonstrated that the proposed algorithms of R perform is far better in terms of the processing and analysis of spatial datasets. The experiments have demonstrated that scientific scripting by R plays an important role in geospatial image processing, visualization and analysis since it enables integrating various components of libraries including graphical packages used for mapping and plotting and packages for spatial data processing which can be integrated into a scripting workflow. A machine-based extracting information from satellite images by R programming is used to demonstrate the used of remote sensing data derived from Earth observation satellites in regional studies focused on climatic-vegetation interactions in Northeastern Africa. 
 
@@ -698,11 +709,11 @@ The following abbreviations are used in this manuscript:\\
 \begin{tabular}{@{}ll}
 GMT & Generic Mapping Tools \\
 GNDVI & Green Normalized Difference Vegetation Index \\
+IPVI & Infrared Percentage Vegetation Index \\
 Landsat 8-9 OLI/TIRS & Landsat 8-9 Operational Land Imager (OLI) and Thermal Infrared (TIRS) \\
 NDVI & Normalized Difference Vegetation Index \\
 NDWI & Normalized Difference Water Index \\
 OSAVI & Optimized Soil Adjusted Vegetation Index \\
-RECl & Red-Edge Chlorophyll Vegetation Index \\
 SAVI & Soil Adjusted Vegetation Index \\
 USGS & United States Geological Survey \\
 VIs & Vegetation Indices \\

@@ -405,37 +405,8 @@ minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
 
-The images of the NDVI (Figure \ref{fig04}) allow the differentiation of vegetation areas and crop from soil in the region southwards from the Khartoum and along the flow of theGreater Nile. Negative NDVI values were classified as non-vegetation (i.e. soil and bare land), and positive NDVI values -- as vegetation. The highest NDVI values (0.80 to 1.0) identify forest areas. For the desert areas with dominating sands such as Sudan, the NDVI values do not exceed 0.50. The minimal values determined according to the histograms obtained from the NDVI images for years 2013, 2018 and 2022 were 0.27, 0.28 and 0.28 (Table \ref{tab02}), whereas, the highest determined values  were 0.72, 0.58 and 0.60 for the same years. The pixels that were not classified to either the soil, water or vegetation classes, were identified as sand desert areas (mostly beige-coloured in the images in Figure \ref{fig04}) pixels due to their low NDVI values around 0.1 or less. They could also be classified as rocky surface and bare land with very low NDVI values. Lighter yellow coloured correspond to the dry creek or stream beds of wadi with typical patterns.
-
-The highest values of the GNDVI did not exceed 0.72 for the area of Sudan due to the scarce vegetation coverage and dominating desert areas. The negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation and selected agricultural croplands along the banks of the White, Blue and Greater Niles. As can be seen in Figure \ref{fig05}, the GNDVI captured plant greenness better than the NDVI: thus, changes in plant colour from bright green to yellow on sequence of images for 2013, 2018 and 2022 are depicted in a more refined and accurate way in the GNDVI image compared to the NDVI rasters. Further, comparing the values in the Table \ref{tab02}, the diapason of values for the GNDVI is narrower than that of the NDVI: with minimal -0.24, -0.28 and -0.23 for years 2013, 2018 and 2022, while the highest values are 0.64, 0.57 and 0.72 for the same years. Accordingly, greener plants visualised in the GNDVI, Figure \ref{fig05} have lower values yet are better distinguished in Figure \ref{fig05}. Moreover, the histograms present more diversified range of values for various land classes: water, bare soil and sand, rocky areas of deserts and vegetation with agricultural areas and natural aquatic plants in the Nile rivers.
-
-The interpretation of the values on the resulting images based on the NDWI are as follows: the negative values (from -1 up to 0) signify areas with no vegetation or water content, while those above 0 show surfaces with water content where the higher moisture level correlates with higher values of the NDWI, respectively. The NDWI values vary between -1 to +1, which depends on the total amount of water in leaves, type of vegetation and percentage of the foliage coverage. Thus, sparse vegetation in semi-arid regions of the Sudanian Sahel will naturally have a lower value of the NDWI compared to the regions of dominating forests with dense canopy.
-
-The results obtained over the Landsat 8 OLI/TIRS data using the estimated parameters of the VIs as computed indices for 2013, 2018 and 2022 are shown in Table \ref{tab02}.
-
-\begin{table}[H] 
-\caption{Evaluation results of the VI values derived from the Landsat 8 OLI/TIRS images over the Khartoum region area for nine-year period  (2013, 2018 and 2022).\label{tab02}}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\begin{tabularx}{\textwidth}{CCCC}
-\toprule
-\textbf{VI}	& \textbf{2013}	& \textbf{2018} & \textbf{2022}\\
-\midrule
-	$NDVI_{min}$ & -0.2742168 & -0.2817099 & -0.2791084 \\
-	$NDVI_{max}$ & 0.7246868 & 0.5796811 & 0.6044010 \\\hline
-	$GNDVI_{min}$ & -0.2387020 & -0.2830099 & -0.2253696 \\
-	$GNDVI_{max}$ & 0.6371941 & 0.5690726 & 0.7235179 \\\hline
-	$NDWI_{min}$ & -0.4046338 & -0.5656914 & -0.5743572 \\
-	$NDWI_{max}$ & 0.3880472 & 0.3764042 & 0.4152763\\\hline
-	$OSAVI_{min}$ & -0.2742153 & -0.2817084 & -0.2791067 \\
-	$OSAVI_{max}$ & 0.7246833 & 0.5796785 & 0.6043976 \\\hline
-	$RECI_{min}$ & -0.4304084  & -0.4395846 & -0.4364109\\
-	$RECI_{max}$ & 5.2644539 & 2.7582920 & 3.0556245\\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\pagebreak
 \subsubsection{Normalized Difference Vegetation Index (NDVI)}
+The images of the NDVI (Figure \ref{fig04}) allow the differentiation of vegetation areas and crop from soil in the region southwards from the Khartoum and along the flow of theGreater Nile. Negative NDVI values were classified as non-vegetation (i.e. soil and bare land), and positive NDVI values -- as vegetation. The highest NDVI values (0.80 to 1.0) identify forest areas. For the desert areas with dominating sands such as Sudan, the NDVI values do not exceed 0.50. The minimal values determined according to the histograms obtained from the NDVI images for years 2013, 2018 and 2022 were 0.27, 0.28 and 0.28 (Table \ref{tab02}), whereas, the highest determined values  were 0.72, 0.58 and 0.60 for the same years. The pixels that were not classified to either the soil, water or vegetation classes, were identified as sand desert areas (mostly beige-coloured in the images in Figure \ref{fig04}) pixels due to low NDVI values around 0.1 or less. They are classified as rocky surface and bare land with very low NDVI values. Light ivory colour corresponds to the patterns of dry creeks or stream beds of wadi.
 
 \begin{figure}[H]
 \makebox[0.90\linewidth][r]{%
@@ -480,6 +451,33 @@ The results obtained over the Landsat 8 OLI/TIRS data using the estimated parame
 \end{figure}
 
 The minimal and maximal values of the NDVI varied for years 2013, 2018 and 2022 as follows: from -0.2742168 to 0.7246868 in 2013; from -0.2817099 to 0.5796811 in 2018, and from -0.2791084 to 0.6044010 in 2022. As one can note, the maximal values decreased from 2013, which indicated the general trend in desertification, however, fro, 2018  to 2022, there is a slight increase again in the highest values which can be explained by better climate setting and fluctuations in Nile hydrology in 2022 compared to 2018.
+
+The highest values of the GNDVI did not exceed 0.72 for the area of Sudan due to the scarce vegetation coverage and dominating desert areas. The negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation and selected agricultural croplands along the banks of the White, Blue and Greater Niles. As can be seen in Figure \ref{fig05}, the GNDVI captured plant greenness better than the NDVI: thus, changes in plant colour from bright green to yellow on sequence of images for 2013, 2018 and 2022 are depicted in a more refined and accurate way in the GNDVI image compared to the NDVI rasters. Further, comparing the values in the Table \ref{tab02}, the diapason of values for the GNDVI is narrower than that of the NDVI: with minimal -0.24, -0.28 and -0.23 for years 2013, 2018 and 2022, while the highest values are 0.64, 0.57 and 0.72 for the same years. Accordingly, greener plants visualised in the GNDVI, Figure \ref{fig05} have lower values yet are better distinguished in Figure \ref{fig05}. Moreover, the histograms present more diversified range of values for various land classes: water, bare soil and sand, rocky areas of deserts and vegetation with agricultural areas and natural aquatic plants in the Nile rivers.
+
+\begin{table}[H] 
+\caption{Evaluation results of the VI values derived from the Landsat 8 OLI/TIRS images over the Khartoum region area for nine-year period  (2013, 2018 and 2022).\label{tab02}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCCC}
+\toprule
+\textbf{VI}	& \textbf{2013}	& \textbf{2018} & \textbf{2022}\\
+\midrule
+	$NDVI_{min}$ & -0.2742168 & -0.2817099 & -0.2791084 \\
+	$NDVI_{max}$ & 0.7246868 & 0.5796811 & 0.6044010 \\\hline
+	$GNDVI_{min}$ & -0.2387020 & -0.2830099 & -0.2253696 \\
+	$GNDVI_{max}$ & 0.6371941 & 0.5690726 & 0.7235179 \\\hline
+	$NDWI_{min}$ & -0.4046338 & -0.5656914 & -0.5743572 \\
+	$NDWI_{max}$ & 0.3880472 & 0.3764042 & 0.4152763\\\hline
+	$OSAVI_{min}$ & -0.2742153 & -0.2817084 & -0.2791067 \\
+	$OSAVI_{max}$ & 0.7246833 & 0.5796785 & 0.6043976 \\\hline
+	$RECI_{min}$ & -0.4304084  & -0.4395846 & -0.4364109\\
+	$RECI_{max}$ & 5.2644539 & 2.7582920 & 3.0556245\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The interpretation of the values on the resulting images based on the NDWI are as follows: the negative values (from -1 up to 0) signify areas with no vegetation or water content, while those above 0 show surfaces with water content where the higher moisture level correlates with higher values of the NDWI, respectively. The NDWI values vary between -1 to +1, which depends on the total amount of water in leaves, type of vegetation and percentage of the foliage coverage. Thus, sparse vegetation in semi-arid regions of the Sudanian Sahel will naturally have a lower value of the NDWI compared to the regions of dominating forests with dense canopy.
+
+The results obtained over the Landsat 8 OLI/TIRS data using the estimated parameters of the VIs as computed indices for 2013, 2018 and 2022 are shown in Table \ref{tab02}.
 
 %--------------------->
 \subsubsection{Green Normalized Difference Vegetation Index (GNDVI)}

@@ -226,37 +226,7 @@ The NDVI is computed using Equation \ref{eq:1}:
 NDVI=\dfrac{(NIR-Red)}{(NIR+Red)}
 \end{equation}
 
-Using R syntax, we computed the NDVI using script presented in Listing \ref{lst01}: 
-
-\begin{lstlisting}[language=R,caption=R code for computing the NDVI (here: a case of 2022),style=mystyle,label={lst01}]
-library(terra)
-library(RColorBrewer)
-library(Hmisc)
-library(pals)
-setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_NDVI")
-# 1. Normalized Difference Vegetation Index (NDVI) = (NIR - R) / (NIR + R), i.e., NDVI = (Band 5 - Band 4) / (Band 5 + Band 4).
-vi <- function(img, k, i) {
-  bk <- img[[k]]
-  bi <- img[[i]]
-  vi <- (bk - bi) / (bk + bi)
-  return(vi)
-}
-# For Landsat NIR = 5, red = 4.
-filenames <- paste0('LC09_L2SP_173049_20221221_20221224_02_T1_SR_B', 1:7, ".tif")
-filenames
-landsat <- rast(filenames)
-landsat
-ndvi <- vi(landsat, 5, 4)
-options(scipen=10000)
-colors <- brewer.rdylgn(100)
-plot(ndvi, col=colors, font.main = 1, main = "NDVI for Landsat-8 OLI/TIRS C1 image LC09_L2SP_173049_20221221_20221224_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2022)", cex.main=0.9)
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-# Plotting the histogram of the NDVI
-hist(ndvi, font.main = 1, main = "NDVI values for Landsat-8 OLI/TIRS C1 image \nLC09_L2SP_173049_20221221_20221224_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2022)", xlab = "NDVI", ylab= "Frequency",
-    col = "darkgoldenrod1", xlim = c(-0.5, 1),  breaks = 30, xaxt = "n")
-axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-\end{lstlisting}
+Using R syntax, we computed the NDVI using script presented in \hl{the Appendix, }Listing \ref{lst01}. 
 
 \subsubsection{Green Normalized Difference Vegetation Index (GNDVI)}
 
@@ -268,33 +238,7 @@ GNDVI=\dfrac{(NIR-Green)}{(NIR+Green)}
 
 For the Landsat 8-9 OLI/TIRS bands, the Green channel corresponds to the Band 3 and Red channel -- to the Band 4. The adjustment so the GNDVI are based on the maximum sensitivity of reflectance of leaves since the reflectance near 670 nm of the Red Band is not sensitive to chlorophyll concentration due to the saturation of the relationship between absorptions and chlorophyll concentration \cite{GITELSON1996289}. Therefore, the replacement of the Red Band by the Green Band results in a more accurate to estimate the concentration of chlorophyll and the rate of photosynthesis. 
 
-Using R syntax, we computed the GNDVI as follows, Listing \ref{lst02}: 
-
-\begin{lstlisting}[language=R,caption=R code for computing the GNDVI (here: a case of 2013),style=mystyle,label={lst02}]
-setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_GNDVI")
-# Green Normalized Difference Vegetation Index (GNDVI) = (NIR - Green) / (NIR + Green)
-# Nir = Band 5, Green = Band 3.
-vi <- function(img, k, i) {
-  bk <- img[[k]]
-  bi <- img[[i]]
-  vi <- (bk - bi) / (bk + bi)
-  return(vi)
-}
-# For Landsat 8-9 OLI/TIRS, NIR = 5, Green = 3.
-filenames <- paste0('LC08_L2SP_173049_20131220_20200912_02_T1_SR_B', 1:7, ".tif")
-filenames
-landsat <- rast(filenames)
-landsat
-gndvi <- vi(landsat, 5, 3)
-options(scipen=10000)
-colors <- brewer.spectral(100)
-plot(gndvi, col=colors, font.main = 1, main = "GNDVI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20131220_20200912_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2013)", cex.main=0.9)
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-# Plotting histogram of the GNDVI
-hist(gndvi, font.main = 1, main = "GNDVI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20131220_20200912_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2013)", xlab = "GNDVI", ylab= "Frequency", col = "peachpuff", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
-axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-\end{lstlisting}
+Using R syntax, we computed the GNDVI \hl{using script presented in the Appendix, } Listing \ref{lst02}: 
 
 \subsubsection{Normalized Difference Water Index (NDWI)}
 
@@ -306,31 +250,7 @@ NDWI=\dfrac{(NIR-SWIR)}{(NIR+SWIR)}
 
 The advantages of the NDWI is that it lessens the effects from the reflectance of soil and vegetation foliage thus is suitable for sandy areas such as in Sahelian Sudan. A special value of the NDWI for environmental monitoring is that it can be used for indicating areas with water deficit \cite{TENG2021107260}. Thus, during drought periods, foliage is strongly affected by water deficit which results in plant illness. Specifically for agricultural areas of Khartoum region, it leads to the crop failure and decreases production thus affecting harvest. Detecting plant water stress is essential to evaluate current state of plants and make a prognosis for future development, for instance, by indicating areas that are in need for irrigating. 
 
-Using R library 'terra', we computed the NDWI as follows, Listing \ref{lst03}:
-
-\begin{lstlisting}[language=R,caption=R code for computing the NDWI (here: a case of 2018),style=mystyle,label={lst03}]
-vi <- function(img, k, i) {
-  bk <- img[[k]]
-  bi <- img[[i]]
-  vi <- (bi - bk) / (bi + bk)
-  return(vi)
-}
-# For Landsat 8-9 OLI/TIRS, NIR = 5, SWIR1 = Band 6.
-filenames <- paste0('LC08_L2SP_173049_20181218_20200830_02_T1_SR_B', 1:7, ".tif")
-filenames
-landsat <- rast(filenames)
-landsat
-ndwi <- vi(landsat, 5, 6)
-options(scipen=10000)
-colors <- jet(100)
-plot(ndwi, col=colors, font.main = 1, main = "NDWI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20181218_20200830_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2018)", cex.main=0.9)
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-# Plotting histogram of the NDWI
-hist(ndwi, font.main = 1, main = "NDWI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20181218_20200830_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2018)", xlab = "NDWI", ylab= "Frequency",
-    col = "mediumpurple1", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
-axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-\end{lstlisting}
+Using R library 'terra', we computed the NDWI \hl{using script presented in the Appendix in Listing} \ref{lst03}.
 
 \subsubsection{Optimized Soil Adjusted Vegetation Index (OSAVI)}
 
@@ -341,32 +261,7 @@ The OSAVI is computed using Equation \ref{eq:4}:
 OSAVI=\dfrac{(NIR-Red)}{(NIR+Red+0.16)}
 \end{equation}
 
-In R language, we computed the OSAVI using the following script in Listing \ref{lst04}: 
-
-\begin{lstlisting}[language=R,caption=R code for computing the OSAVI (here: a case of 2022),style=mystyle,label={lst04}]
-setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_OSAVI")
-# 1. Optimized Soil Adjusted Vegetation Index (OSAVI) = (NIR - R) / (NIR + R + 0.16), i.e., OSAVI = (Band 5 - Band 4) / (Band 5 + Band 4 + 0.16).
-vi <- function(img, k, i) {
-  bk <- img[[k]]
-  bi <- img[[i]]
-  vi <- (bk - bi) / (bk + bi + 0.16)
-  return(vi)
-}
-# For Landsat 8-9 OLI/TIRS, NIR = 5, red = 4.
-filenames <- paste0('LC09_L2SP_173049_20221221_20221224_02_T1_SR_B', 1:7, ".tif")
-filenames
-landsat <- rast(filenames)
-landsat
-osavi <- vi(landsat, 5, 4)
-options(scipen=10000)
-colors <- kovesi.diverging_rainbow_bgymr_45_85_c67(100)
-plot(osavi, col=colors, font.main = 1, main = "OSAVI for Landsat-8 OLI/TIRS C1 image LC09_L2SP_173049_20221221_20221224_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2022)", cex.main=0.9)
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-# Plotting the histogram of the OSAVI
-hist(osavi, font.main = 1, main = "OSAVI values for Landsat-8 OLI/TIRS C1 image \nLC09_L2SP_173049_20221221_20221224_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2022)", xlab = "OSAVI", ylab= "Frequency", col = "dodgerblue", xlim = c(-0.5, 1),  breaks = 30, xaxt = "n")
-axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-\end{lstlisting}
+In R language, we computed the OSAVI \hl{using script presented in the Appendix, Listing }\ref{lst04}.
 
 \subsubsection{Infrared Percentage Vegetation Index (IPVI)}
 The values of the Infrared Percentage Vegetation Index (IPVI) depend on the chlorophyll content in leaves. Developed originally by \cite{CRIPPEN199071}, it has always positive values ranging from 0 to +1 and indicates the photosynthetic activity of the canopy cover and total of chlorophylls. Further, as a modified variation it is especially suitable to indicate yellowish or shed leaves due to the adjusted spectral regions in the formula, since the chlorophyll content directly depends on nitrogen level in plants which contributes to greenness of foliage and is reflected in optical characteristics of the leaves. The IPVI is suitable for the periods of active vegetation development due to the indication of leaf pigment content and variations showing always positive values above zero, in contrast with the NDVI. The IPVI is computed using the Equation \ref{eq:3}:
@@ -375,48 +270,9 @@ The values of the Infrared Percentage Vegetation Index (IPVI) depend on the chlo
 IPVI=\dfrac{NIR}{NIR + Red}
 \end{equation}
 
-The computation of IPVI using R library 'terra' was done by the code in Listing \ref{lst05}:
+The computation of IPVI using R library 'terra' was done by the code \hl{presented in the Appendix, Listing }\ref{lst05}.
  
-\begin{lstlisting}[language=R,caption=R code for computing the IPVI (here: a case of 2013),style=mystyle,label={lst05}]
-library(terra)
-library(RColorBrewer)
-library(Hmisc)
-library(pals)
-#
-setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_IPVI")
-# Infrared Percentage Vegetation Index (IPVI) = NIR / (NIR + Red)
-# NIR = Band 5, Red = Band 4
-vi <- function(img, i, k) {
-  bk <- img[[k]]
-  bi <- img[[i]]
-  vi <- (bk) / (bi + bk)
-  return(vi)
-}
-filenames <- paste0('LC08_L2SP_173049_20131220_20200912_02_T1_SR_B', 1:7, ".tif")
-filenames
-landsat <- rast(filenames)
-landsat
-ipvi <- vi(landsat, 5, 4)
-ipvi
-options(scipen=10000)
-colors <- brewer.rdylgn(100)
-plot(ipvi, col=colors, font.main = 1, main = "IPVI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20131220_20200912_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2013)", cex.main=0.9)
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-# Plotting the histogram
-hist(ipvi, font.main = 1, main = "IPVI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20131220_20200912_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2013)", xlab = "IPVI", ylab= "Frequency",
-    col = "yellowgreen", xlim = c(0, 1),  breaks = 50, xaxt = "n")
-axis(side=1, at = seq(0.0, 1, 0.1), labels = seq(0.0, 1, 0.1))
-minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
-\end{lstlisting}
-
-Figure \ref{fig04n} shows some real examples of the application of RStudio for image processing with a case of plotting IPVI index using Landsat 8 OLI/TIRS image. We find that our method works well for repetitive workflow process when several images need to be processed sequentially for several years by applying scripts modified for each scene. The minimal and maximal values were obtained from the R console as visible in the left part of the Figure \ref{fig04n}, and used as input data for Table \ref{tab02}.
-
-\begin{figure}[H]
-\centering
-	\includegraphics[width=14.0 cm]{Fig_04n.jpg}
-	\caption{Working process of computing the vegetation index in RStudio, R version 4.2.2. 
-	\label{fig04n}}
-\end{figure}
+\hl{The} application of RStudio for image processing \hl{included image processing, computing and} plotting \hl{the vegetation indices} index using Landsat 8 OLI/TIRS image. We find that our method works well for repetitive workflow process when several images need to be processed sequentially for several years by applying scripts modified for each scene. The minimal and maximal values were obtained from the R console\hl{ }and used as input data for Table \ref{tab02}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
@@ -742,6 +598,154 @@ USGS & United States Geological Survey \\
 VIs & Vegetation Indices \\
 \end{tabular}
 }
+
+%% Optional
+\appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
+\appendixstart
+\appendix
+\section[\appendixname~\thesection]{R scripts used for computing and plotting the vegetation indices}
+\subsection[\appendixname~\thesubsection]{R code for computing the NDVI}
+
+\begin{lstlisting}[language=R,caption=R code for computing the NDVI (here: a case of 2022),style=mystyle,label={lst01}]
+library(terra)
+library(RColorBrewer)
+library(Hmisc)
+library(pals)
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_NDVI")
+# 1. Normalized Difference Vegetation Index (NDVI) = (NIR - R) / (NIR + R), i.e., NDVI = (Band 5 - Band 4) / (Band 5 + Band 4).
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk - bi) / (bk + bi)
+  return(vi)
+}
+# For Landsat NIR = 5, red = 4.
+filenames <- paste0('LC09_L2SP_173049_20221221_20221224_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+ndvi <- vi(landsat, 5, 4)
+options(scipen=10000)
+colors <- brewer.rdylgn(100)
+plot(ndvi, col=colors, font.main = 1, main = "NDVI for Landsat-8 OLI/TIRS C1 image LC09_L2SP_173049_20221221_20221224_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2022)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting the histogram of the NDVI
+hist(ndvi, font.main = 1, main = "NDVI values for Landsat-8 OLI/TIRS C1 image \nLC09_L2SP_173049_20221221_20221224_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2022)", xlab = "NDVI", ylab= "Frequency",
+    col = "darkgoldenrod1", xlim = c(-0.5, 1),  breaks = 30, xaxt = "n")
+axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{R code for computing the GNDVI}
+\begin{lstlisting}[language=R,caption=R code for computing the GNDVI (here: a case of 2013),style=mystyle,label={lst02}]
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_GNDVI")
+# Green Normalized Difference Vegetation Index (GNDVI) = (NIR - Green) / (NIR + Green)
+# Nir = Band 5, Green = Band 3.
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk - bi) / (bk + bi)
+  return(vi)
+}
+# For Landsat 8-9 OLI/TIRS, NIR = 5, Green = 3.
+filenames <- paste0('LC08_L2SP_173049_20131220_20200912_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+gndvi <- vi(landsat, 5, 3)
+options(scipen=10000)
+colors <- brewer.spectral(100)
+plot(gndvi, col=colors, font.main = 1, main = "GNDVI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20131220_20200912_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2013)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting histogram of the GNDVI
+hist(gndvi, font.main = 1, main = "GNDVI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20131220_20200912_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2013)", xlab = "GNDVI", ylab= "Frequency", col = "peachpuff", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
+axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{R code for computing the NDWI}
+\begin{lstlisting}[language=R,caption=R code for computing the NDWI (here: a case of 2018),style=mystyle,label={lst03}]
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bi - bk) / (bi + bk)
+  return(vi)
+}
+# For Landsat 8-9 OLI/TIRS, NIR = 5, SWIR1 = Band 6.
+filenames <- paste0('LC08_L2SP_173049_20181218_20200830_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+ndwi <- vi(landsat, 5, 6)
+options(scipen=10000)
+colors <- jet(100)
+plot(ndwi, col=colors, font.main = 1, main = "NDWI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20181218_20200830_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2018)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting histogram of the NDWI
+hist(ndwi, font.main = 1, main = "NDWI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20181218_20200830_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2018)", xlab = "NDWI", ylab= "Frequency",
+    col = "mediumpurple1", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
+axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{R code for computing the OSAVI}
+\begin{lstlisting}[language=R,caption=R code for computing the OSAVI (here: a case of 2022),style=mystyle,label={lst04}]
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_OSAVI")
+# 1. Optimized Soil Adjusted Vegetation Index (OSAVI) = (NIR - R) / (NIR + R + 0.16), i.e., OSAVI = (Band 5 - Band 4) / (Band 5 + Band 4 + 0.16).
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk - bi) / (bk + bi + 0.16)
+  return(vi)
+}
+# For Landsat 8-9 OLI/TIRS, NIR = 5, red = 4.
+filenames <- paste0('LC09_L2SP_173049_20221221_20221224_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+osavi <- vi(landsat, 5, 4)
+options(scipen=10000)
+colors <- kovesi.diverging_rainbow_bgymr_45_85_c67(100)
+plot(osavi, col=colors, font.main = 1, main = "OSAVI for Landsat-8 OLI/TIRS C1 image LC09_L2SP_173049_20221221_20221224_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2022)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting the histogram of the OSAVI
+hist(osavi, font.main = 1, main = "OSAVI values for Landsat-8 OLI/TIRS C1 image \nLC09_L2SP_173049_20221221_20221224_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2022)", xlab = "OSAVI", ylab= "Frequency", col = "dodgerblue", xlim = c(-0.5, 1),  breaks = 30, xaxt = "n")
+axis(side=1, at = seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{R code for computing the IPVI}
+\begin{lstlisting}[language=R,caption=R code for computing the IPVI (here: a case of 2013),style=mystyle,label={lst05}]
+library(terra)
+library(RColorBrewer)
+library(Hmisc)
+library(pals)
+#
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_IPVI")
+# Infrared Percentage Vegetation Index (IPVI) = NIR / (NIR + Red)
+# NIR = Band 5, Red = Band 4
+vi <- function(img, i, k) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk) / (bi + bk)
+  return(vi)
+}
+filenames <- paste0('LC08_L2SP_173049_20131220_20200912_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+ipvi <- vi(landsat, 5, 4)
+ipvi
+options(scipen=10000)
+colors <- brewer.rdylgn(100)
+plot(ipvi, col=colors, font.main = 1, main = "IPVI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20131220_20200912_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2013)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting the histogram
+hist(ipvi, font.main = 1, main = "IPVI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20131220_20200912_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2013)", xlab = "IPVI", ylab= "Frequency",
+    col = "yellowgreen", xlim = c(0, 1),  breaks = 50, xaxt = "n")
+axis(side=1, at = seq(0.0, 1, 0.1), labels = seq(0.0, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{adjustwidth}{-\extralength}{0cm}

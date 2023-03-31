@@ -122,6 +122,8 @@ $^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École polytechn
 
 In this paper, we introduce the application of R libraries for remote sensing data processing \hl{in the context of computing vegetation indices (VIs) that indicate desertification processes. Further, we} focus on \hl{calculating of }several satellite-derived VIs by discussing their technical details and differences \hl{. The test dataset include the} Landsat 8-9 OLI/TIRS images collected on Khartoum city around the confluence of the White Nile and the Blue Nile.\hl{ }The \hl{images were used to }analyse\hl{ }the changes in \hl{the }vegetation patterns and greenness \hl{through the }comparison of the time series and \hl{visualisation of} the dynamics in vegetation coverage. The standard\hl{ methods }for \hl{such tasks} are based on using the traditional \hl{GIS }software\hl{ }\cite{AHMED201829} and involve many manual \hl{routine }operations \cite{Hawash,YOUSSEF2020103777,6621869,Aldoma}. Instead of using such conventional approaches, we \hl{apply} several libraries of R such as 'raster' and 'terra' \hl{and} auxiliary packages in a principled way to obtain a better workflow for image \hl{analysis.} 
 
+\hl{The Earth observing satellite sensors provide the remote sensing data useful in environmental studies. }The \hl{benefits} of the use of the remote sensing data and image processing are discussed earlier \cite{su14137871,ELBASTAWESY2017252,SOSNOWSKI201651,GORSEVSKI201364}. \hl{Satellite images can be used to analyse the links between the complex hydrological and climate processes and vegetation responses that lead to desertification}. For example\hl{, }Landsat images \hl{enable to }detect\hl{ }land cover types \hl{through the time-series analysis}\cite{WILSON2002385,Lemenkova202227,4293065,SALIH2017S21}, \hl{compute} vegetation indices \cite{5416935,Lemenkova202229,1026428} and \hl{show the advance or retreat of arid areas for analysis of the} desertification \cite{RIVERAMARIN2022104829}. Specifically, for the Sudan and Nile River Basin, \hl{the Landsat data are the precious source of information, due to fieldwork }data scarcity \cite{Ali} such as regular measurements of rainfall, streams runoff, and  weather stations data. This highlights the importance of the \hl{remote sensing} data for climate-related studies \hl{of Sudan.}
+
 \hl{The GIS was one of the earliest computer-based application for satellite image processing developed for the empirical investigations of the environmental parameters derived from the remote sensing data. Since 1990s researchers were able to accurately compute the vegetation indices derived from the images using GIS. Kumar et al. have studied performance of the ERDAS Imagine in computing vegetation indices to assess desertification in the semi-arid regions, emphasising that the NDVI classification is suitable for assessing land degradation using the NDVI pixel range} \cite{KUMAR2022100578}. \hl{Rashid et al. have examined the links between the NDVI and the salinity characteristics in the surface water, groundwater, and soils using the ArcGIS} \cite{RASHID2023100314}. \hl{Further, Ezaidi et al. applied ENVI GIS for computing the NDVI for a time series of the Landsat images to assess the degradation in vegetation} \cite{EZAIDI2022100800} \hl{These studies illustrate the traditional approaches for computing vegetation indices by GIS.}
 
 \hl{In general outline, GIS enables to calculate vegetation indices through the manipulation with Landsat images using map algebra. However, the efficacy of the computational approaches as more advanced tools of spatial data analysis enabled to apply modelling methods for computation of the VIs. For instance, this demonstrated by Generalised Additive Models used to study the relationships between vegetation types and NDVI} \cite{MARTINEZ2023115155}, \hl{or Holt-Winters modelling to detect trend and seasonal vegetation pattern using Python's Scikit-Learn library} \cite{OMAR2021e01020}\hl{, or partial least squared regression (PLSR) model used by SIMCA-P software to track the non-linear relationships between the NDVI and climatic variables} \cite{WANG2022102704}. \hl{Recent development of the machine learning tools and Python programming enabled to use the Convolutional Neural Network (CNN) and Deep Neural Networks (DNN) for environmental analysis and estimation of the VIs} \cite{BARRIGUINHA2022103069,ROY2021100582,LI2022102818,DAVIDSON2022107396}. 
@@ -171,10 +173,10 @@ Social factors of desertification include \hl{processes} related to land managem
 
 \section{Materials and Methods}
 
-\hl{The Earth observing satellite sensors providing remote sensing data enable to highlight the links between the hydrological and climate processes leading to desertification and vegetation responses. }The importance of the use of the remote sensing data and advanced methods of image processing is raised in earlier studies \cite{su14137871,ELBASTAWESY2017252,SOSNOWSKI201651,GORSEVSKI201364}. For examples, Landsat images (Figure \ref{fig03}) are known for reliable source of data for relatively accurate technique for classifying time-series and detecting forest and land cover types \cite{WILSON2002385,Lemenkova202227,4293065,SALIH2017S21}, computing vegetation indices \cite{5416935,Lemenkova202229,1026428} and specifically desertification \cite{RIVERAMARIN2022104829} to show the advance or retreat of arid areas using analysis of the satellite images. Specifically, for the Sudan and Nile River Basin, data scarcity has been mentioned by \cite{Ali} such as regular measurements of rainfall, streams runoff, and the weather stations data. This highlights the importance of the remotely sensed data for climate-related studies and evaluation of the complex processes between the climatic variations and the vegetation responses.
-
 %----------- subsection ----------->
 \subsection{Data}
+
+\hl{The satellite images were selected from the United States Geological Survey (USGS) EarthExplorer repository} (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}). \hl{The choice of the data is explained by the availability of the Landsat OLI/TIRS scenes, high resolution across the multispectral bands (channels 1 to 7) with 30 m, open availability of the cloud-free images (0\% of cloudiness) and regular survey of the Landsat which provides the comparable gap between the target years (2013 and 2022) where the images were collected for analysis of changes in vegetation} (Figure \ref{fig03}). \hl{The images were taken within the 5 year gap between December 2013 and December 2018, and 4 year gap between December 2018 and December 2022 which gives the comparable intervals of the periods between the scenes for analysis of vegetation changes. Since the Landsat 8 OLI/TIRS was launched on February 11, 2013, there is no earlier images for Landsat 8 OLI/TIRS and the earliest possible date for December month was December 2013.}
 
 \begin{figure}[H]
 \makebox[1.0\linewidth][r]{%
@@ -197,7 +199,7 @@ Social factors of desertification include \hl{processes} related to land managem
 \caption{Landsat 8 OLI/TIRS image of White and Blue Nile in Khartoum, Sudan, in natural RGB colours in December: (\textbf{a}) 20.12.2013, (\textbf{b}) 18.12.2018, (\textbf{c}) 21.12.2022}\label{fig03}
 \end{figure}
 
-\hl{The images were selected for the availability of the Landsat OLI/TIRS scenes with strict requirements on cloudiness  (0\%) and comparable distance between the years for analysis of changes in vegetation. Thus, images are taken with 5 years gap is between December 2013 and December 2018, and 4 years between December 2018 and December 2022 which gives the comparable intervals of periods between the scenes for analysis of vegetation changes. Since the Landsat 8 OLI/TIRS was launched on February 11, 2013, there is no earlier images for Landsat 8 OLI/TIRS.} The summary of the data is presented in Table \ref{tab1}. All \hl{the }images have 0\% cloudiness \hl{and Path/Row ID 173/49}. 
+The summary of the data is presented in Table \ref{tab1}. All \hl{the }images have 0\% cloudiness \hl{and Path/Row ID 173/49}. \hl{The Sensor ID is common for all the scenes: Landsat 8-9 OLI/TIRS (Operational Land Imager and Thermal Infrared Sensor), Collection 2 Level-2. Image source: the USGS} \cite{EROS}. \hl{The major technical and geodetic metadata common for all the images are the following: Datum and Ellipsoid WGS84; Product Map Projection L1 -- Universal Transverse Mercator (UTM); UTM Zone 36; Sensor ID OLI TIRS; Landsat Processing Software Version LPGS\_16.2.0. The full list of metadata is provided in Table} \ref{tabApp}.
 
 \begin{table}[H]
 \scriptsize
@@ -214,13 +216,13 @@ Social factors of desertification include \hl{processes} related to land managem
 			\bottomrule
 		\end{tabularx}
 %	\end{adjustwidth}
-	\noindent{\footnotesize{\textsuperscript{1} The Sensor ID is common for all the scenes: Landsat 8-9 OLI/TIRS (Operational Land Imager and Thermal Infrared Sensor), Collection 2 Level-2. Image source: the USGS \cite{EROS}}}
+%	\noindent{\footnotesize{\textsuperscript{1} }}
 \end{table}
 
 %----------- subsection ----------->
 \subsection{Methodology}
 
-We processed the satellite images using libraries of R programming language \hl{version 4.2.2} \cite{RCoreTeam} for spatial data analysis. The extraction of VIs for analyses of vegetation health by traditional software, which is conceptually straightforward due to raster algebra, may lead nevertheless to a consequent computing time. \hl{The VIs are used as robust indicators of plant health and greenness because they indicate at the level of leaf chlorophyll in plants. In such a way, the VIs reflect the functional features of canopy and parameters of vegetation coverage essential for environmental and climate analytics. }Considering the advantages of the programming languages in automation of geospatial data processing \cite{6049966,Lemenkova202301,6910592,Lemenkova202228,9323708,1027236}, the algorithms of R present a faster and more effective approach to implement by scripts for image processing. In a first step, the necessary libraries 'terra' \hl{version 1.7-18}, 'RColorBrewer' \hl{version 1.1-3} \cite{Neuwirth}, 'Hmisc' \hl{version 5.0-1} \cite{Hmisc} and 'pals' \hl{version 1.7 }\cite{Wright} were activated and the working folder is defined. The 'terra' library is the key package which was used for raster algebra and calculation of the VIs, while the other libraries are used as auxiliary packages for graphical refinements and proper visualization of the plots. Then, we defined the function of the VI, different for each of the VIs using relevant formulae. Finally, we uploaded the necessary Landsat bands in the active folder and performed calculation of each of the VIs by R scripts, as presented below for each corresponding index. 
+We processed the satellite images using libraries of R programming language \hl{version 4.2.2} \cite{RCoreTeam} for spatial data analysis. The extraction of \hl{the }VIs for analyses of vegetation health by traditional software, which is conceptually straightforward due to raster algebra, may lead nevertheless to a consequent computing time. \hl{The VIs are used as robust indicators of plant health and greenness because they indicate at the level of leaf chlorophyll in plants. In such a way, the VIs reflect the functional features of canopy and parameters of vegetation coverage essential for environmental and climate analytics. }Considering the advantages of the programming languages in automation of geospatial data processing \cite{6049966,Lemenkova202301,6910592,Lemenkova202228,9323708,1027236}, the algorithms of R present a faster and more effective approach to implement by scripts for image processing. In a first step, the necessary libraries 'terra' \hl{version 1.7-18}, 'RColorBrewer' \hl{version 1.1-3} \cite{Neuwirth}, 'Hmisc' \hl{version 5.0-1} \cite{Hmisc} and 'pals' \hl{version 1.7 }\cite{Wright} were activated and the working folder is defined. The 'terra' library is the key package which was used for raster algebra and calculation of the VIs, while the other libraries are used as auxiliary packages for graphical refinements and proper visualization of the plots. Then, we defined the function of the VI, different for each of the VIs using relevant formulae. Finally, we uploaded the necessary Landsat bands in the active folder and performed calculation of each of the VIs by R scripts, as presented below for each corresponding index. 
 
 %----------- subsection ----------->
 \subsection{Calculating Vegetation Indices}
@@ -603,7 +605,9 @@ NDWI & Normalized Difference Water Index \\
 OSAVI & Optimized Soil Adjusted Vegetation Index \\
 SAVI & Soil Adjusted Vegetation Index \\
 USGS & United States Geological Survey \\
+\hl{UTM} & \hl{Universal Transverse Mercator} \\
 VIs & Vegetation Indices \\
+\hl{WGS84} & \hl{World Geodetic System 1984}
 \end{tabular}
 }
 
@@ -611,6 +615,75 @@ VIs & Vegetation Indices \\
 \appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
 \appendixstart
 \appendix
+\section[\appendixname~\thesection]{Metadata on the Landsat 8-9 OLI/TIRS images}
+
+\begin{table}[H]
+\scriptsize
+%    \begin{tabular}{|l|l|l|l|}
+\caption{Metadata on the Landsat OLI/TIRS satellite images used in this study \textsuperscript{1}.\label{tabApp}}
+\begin{adjustwidth}{-\extralength}{0cm}
+\begin{tabularx}{\fulllength}{l|l|l|l}
+    \hline
+        \textbf{Data Set Attribute} & \textbf{Attributes for image 2022/12/21} & \textbf{Attributes for 2018/12/18} & \textbf{Attributes for 2013/12/20} \\ \hline
+        Landsat Scene Identifier & LC91730492022355LGN01 & LC81730492018352LGN00 & LC81730492013354LGN01 \\ \hline
+        Date Acquired & 2022/12/21 & 2018/12/18 & 2013/12/20 \\ \hline
+        Collection Category & T1 & T1 & T1 \\ \hline
+        Collection Number & 2 & 2 & 2 \\ \hline
+        WRS Path & 173 & 173 & 173 \\ \hline
+        WRS Row & 49 & 49 & 49 \\ \hline
+        Target WRS Path & 173 & 173 & 173 \\ \hline
+        Target WRS Row & 49 & 49 & 49 \\ \hline
+        Nadir/Off Nadir & NADIR & NADIR & NADIR \\ \hline
+        Roll Angle & -0.001 & 0.000 & 0.000 \\ \hline
+        Date Product Generated L2 & 2023/03/17 & 2020/08/30 & 2020/09/12 \\ \hline
+        Date Product Generated L1 & 2023/03/17 & 2020/08/30 & 2020/09/12 \\ \hline
+        Start Time & 2022-12-21 08:09:26 & 2018-12-18 08:08:54.736348 & 2013-12-20 08:10:29.988456 \\ \hline
+        Stop Time & 2022-12-21 08:09:58 & 2018-12-18 08:09:26.506347 & 2013-12-20 08:11:01.758452 \\ \hline
+        Station Identifier & LGN & LGN & LGN \\ \hline
+        Day/Night Indicator & DAY & DAY & DAY \\ \hline
+        Land Cloud Cover & 0.00 & 0.00 & 0.00 \\ \hline
+        Scene Cloud Cover L1 & 0.00 & 0.00 & 0.00 \\ \hline
+        Ground Control Points Model & 511 & 521 & 639 \\ \hline
+        Ground Control Points Version & 5 & 5 & 5 \\ \hline
+        Geometric RMSE Model & 7.263 & 6.387 & 4.378 \\ \hline
+        Geometric RMSE Model X & 5.055 & 4.612 & 2.951 \\ \hline
+        Geometric RMSE Model Y & 5.216 & 4.418 & 3.234 \\ \hline
+        Processing Software Version & LPGS\_16.2.0 & LPGS\_15.3.1c & LPGS\_15.3.1c \\ \hline
+        Sun Elevation L0RA & 44.22152569 & 44.38827439 & 44.40055924 \\ \hline
+        Sun Azimuth L0RA & 148.68774152 & 148.91482828 & 149.05309430 \\ \hline
+        TIRS SSM Model & N/A & FINAL & ACTUAL \\ \hline
+        Data Type L2 & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \hline
+        Sensor Identifier & OLI\_TIRS & OLI\_TIRS & OLI\_TIRS \\ \hline
+        Satellite & 9 & 8 & 8 \\ \hline
+        Product Map Projection L1 & UTM & UTM & UTM \\ \hline
+        UTM Zone & 36 & 36 & 36 \\ \hline
+        Datum & WGS84 & WGS84 & WGS84 \\ \hline
+        Ellipsoid & WGS84 & WGS84 & WGS84 \\ \hline
+        Scene Center Lat DMS & "15°54'03.06""N" & "15°54'03.56""N" & "15°54'03.42""N" \\ \hline
+        Scene Center Long DMS & "33°06'32.69""E" & "33°07'35.51""E" & "33°05'59.28""E" \\ \hline
+        Corner Upper Left Lat DMS & "16°56'34.84""N" & "16°56'44.88""N" & "16°56'44.41""N" \\ \hline
+        Corner Upper Left Long DMS & "32°02'24.68""E" & "32°03'25.49""E" & "32°01'44.08""E" \\ \hline
+        Corner Upper Right Lat DMS & "16°56'30.70""N" & "16°56'40.13""N" & "16°56'40.63""N" \\ \hline
+        Corner Upper Right Long DMS & "34°10'42.96""E" & "34°11'43.87""E" & "34°10'12.61""E" \\ \hline
+        Corner Lower Left Lat DMS & "14°50'38.76""N" & "14°50'39.01""N" & "14°50'38.58""N" \\ \hline
+        Corner Lower Left Long DMS & "32°03'00.32""E" & "32°04'00.55""E" & "32°02'20.18""E" \\ \hline
+        Corner Lower Right Lat DMS & "14°50'35.16""N" & "14°50'34.87""N" & "14°50'35.34""N" \\ \hline
+        Corner Lower Right Long DMS & "34°09'59.18""E" & "34°10'59.41""E" & "34°09'29.09""E" \\ \hline
+        Scene Center Latitude & 15.90085 & 15.90099 & 15.90095 \\ \hline
+        Scene Center Longitude & 33.10908 & 33.12653 & 33.09980 \\ \hline
+        Corner Upper Left Latitude & 16.94301 & 16.94580 & 16.94567 \\ \hline
+        Corner Upper Left Longitude & 32.04019 & 32.05708 & 32.02891 \\ \hline
+        Corner Upper Right Latitude & 16.94186 & 16.94448 & 16.94462 \\ \hline
+        Corner Upper Right Longitude & 34.17860 & 34.19552 & 34.17017 \\ \hline
+        Corner Lower Left Latitude & 14.84410 & 14.84417 & 14.84405 \\ \hline
+        Corner Lower Left Longitude & 32.05009 & 32.06682 & 32.03894 \\ \hline
+        Corner Lower Right Latitude & 14.84310 & 14.84302 & 14.84315 \\ \hline
+        Corner Lower Right Longitude & 34.16644 & 34.18317 & 34.15808 \\ \hline
+%    \end{tabular}
+ \end{tabularx}
+ \end{adjustwidth}
+\end{table}
+
 \section[\appendixname~\thesection]{R scripts used for computing and plotting the vegetation indices}
 \subsection[\appendixname~\thesubsection]{R code for computing the NDVI}
 

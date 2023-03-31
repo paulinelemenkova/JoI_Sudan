@@ -153,7 +153,7 @@ These processes trigger environmental degradation\hl{, }especially in vulnerable
 	\end{subfigure}%
 	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=7cm]{Fig_02b.jpg}
+			\includegraphics[width=7cm]{Fig_02b.jpg}
 		\caption{}
 	\end{subfigure}%
 }
@@ -177,7 +177,7 @@ Social factors of desertification include \hl{processes} related to land managem
 \subsection{Data}
 
 \begin{figure}[H]
-\makebox[0.90\linewidth][r]{%
+\makebox[1.0\linewidth][r]{%
 	\begin{subfigure}[b]{.40\textwidth}
 		\centering
 			\includegraphics[width=0.90\textwidth]{Fig_03a.jpg}
@@ -197,23 +197,23 @@ Social factors of desertification include \hl{processes} related to land managem
 \caption{Landsat 8 OLI/TIRS image of White and Blue Nile in Khartoum, Sudan, in natural RGB colours in December: (\textbf{a}) 20.12.2013, (\textbf{b}) 18.12.2018, (\textbf{c}) 21.12.2022}\label{fig03}
 \end{figure}
 
-\hl{The images were selected for the availability of the Landsat OLI/TIRS scenes with strict requirements on cloudiness  (0\%) and comparable distance between the years for analysis of changes in vegetation. Thus, images are taken with 5 years gap is between December 2013 and December 2018, and 4 years between December 2018 and December 2022 which gives the comparable intervals of periods between the scenes for analysis of vegetation changes. Since the Landsat 8 OLI/TIRS was launched on February 11, 2013, there is no earlier images for Landsat 8 OLI/TIRS.} The summary of the data is presented in Table \ref{tab1}; all images have 0\% cloudiness. 
+\hl{The images were selected for the availability of the Landsat OLI/TIRS scenes with strict requirements on cloudiness  (0\%) and comparable distance between the years for analysis of changes in vegetation. Thus, images are taken with 5 years gap is between December 2013 and December 2018, and 4 years between December 2018 and December 2022 which gives the comparable intervals of periods between the scenes for analysis of vegetation changes. Since the Landsat 8 OLI/TIRS was launched on February 11, 2013, there is no earlier images for Landsat 8 OLI/TIRS.} The summary of the data is presented in Table \ref{tab1}. All \hl{the }images have 0\% cloudiness \hl{and Path/Row ID 173/49}. 
 
 \begin{table}[H]
-\small
+\scriptsize
 \caption{Satellite images used for computing the VIs: Landsat-8 OLI/TIRS collected from the USGS \textsuperscript{1}.\label{tab1}}
-	\begin{adjustwidth}{-\extralength}{0cm}
-		\newcolumntype{C}{>{\centering\arraybackslash}X}
-		\begin{tabularx}{\fulllength}{| p{1.6cm} | p{1.5cm} | p{1.0cm} | p{7.0cm} | p{4.0cm} | p{1.5cm} |}
+%	\begin{adjustwidth}{-\extralength}{0.5cm}
+%		\newcolumntype{C}{>{\centering\arraybackslash}X}
+		\begin{tabularx}{\linewidth}{ p{1.6cm} | p{1.3cm} | p{6.6cm} | p{2.2cm} }
 			\toprule
-			\textbf{Date} & \textbf{Spacecraft ID} & \textbf{\makecell{Path/\\Row}} & \textbf{Landsat Product ID} & \textbf{Scene ID} & \textbf{Cloud Coverage} \\
+			\textbf{Date} & \textbf{Spacecraft} & \textbf{Landsat Product ID} & \textbf{Scene ID} \\
 			\midrule
-			2013/12/20 & Landsat 8 & 173/49 & \makecell{LC08\_L2SP\_173049\_20131220\_20200912\_02\_T1} & LC81730492013354LGN01 & 0.00 \\
-			2018/12/18 & Landsat 8 & 173/49 & \makecell{LC08\_L2SP\_173049\_20181218\_20200830\_02\_T1} & LC81730492018352LGN00 & 0.00 \\
-			2022/12/21 & Landsat 9 & 173/49 & \makecell{LC09\_L2SP\_173049\_20221221\_20221224\_02\_T1} & LC91730492022355LGN00 & 0.00 \\		
+			2013/12/20 & Lands. 8 & \makecell{LC08\_L2SP\_173049\_20131220\_20200912\_02\_T1} & LC81730492013354LGN01 \\
+			2018/12/18 & Lands. 8 & \makecell{LC08\_L2SP\_173049\_20181218\_20200830\_02\_T1} & LC81730492018352LGN00 \\
+			2022/12/21 & Lands. 9 & \makecell{LC09\_L2SP\_173049\_20221221\_20221224\_02\_T1} & LC91730492022355LGN00 \\		
 			\bottomrule
 		\end{tabularx}
-	\end{adjustwidth}
+%	\end{adjustwidth}
 	\noindent{\footnotesize{\textsuperscript{1} The Sensor ID is common for all the scenes: Landsat 8-9 OLI/TIRS (Operational Land Imager and Thermal Infrared Sensor), Collection 2 Level-2. Image source: the USGS \cite{EROS}}}
 \end{table}
 
@@ -312,41 +312,41 @@ We provide in Table \ref{tab02} for each image triple their VI values for years 
 The images of the NDVI (Figure \ref{fig04}) allow the differentiation of vegetation areas and crop from soil in the region southwards from the Khartoum and along the flow of theGreater Nile. Negative NDVI values were classified as non-vegetation (i.e. soil and bare land), and positive NDVI values -- as vegetation. The highest NDVI values (0.80 to 1.0) identify forest areas. For the desert areas with dominating sands such as Sudan, the NDVI values do not exceed 0.50. The minimal values determined according to the histograms obtained from the NDVI images for years 2013, 2018 and 2022 were 0.27, 0.28 and 0.28 (Table \ref{tab02}), whereas, the highest determined values  were 0.72, 0.58 and 0.60 for the same years. 
 
 \begin{figure}[H]
-\makebox[0.95\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_04a}
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04a.jpg}
 		\caption{}
 	\end{subfigure}\hspace*{\fill}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=0.85\textwidth]{Fig_04b}
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04b}
 		\caption{}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
-\makebox[0.95\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_04c}
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04c.jpg}
 		\caption{}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=0.85\textwidth]{Fig_04d}
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04d}
 		\caption{}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
-\makebox[0.95\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_04e}
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04e.jpg}
 		\caption{}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=0.85\textwidth]{Fig_04f}
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04f}
 		\caption{}
 	\end{subfigure}%
 }
@@ -360,41 +360,41 @@ The pixels that were not classified to either the soil, water or vegetation clas
 The highest values of the GNDVI did not exceed 0.72 for the area of Sudan due to the scarce vegetation coverage and dominating desert areas, Figure \ref{fig05}. 
 
 \begin{figure}[H]
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=0.90\textwidth]{Fig_05a}
+			\includegraphics[width=0.95\textwidth]{Fig_05a}
 		\caption{2013}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=0.85\textwidth]{Fig_05b}
+			\includegraphics[width=0.95\textwidth]{Fig_05b}
 		\caption{2013: histogram}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=0.90\textwidth]{Fig_05c}
+			\includegraphics[width=0.95\textwidth]{Fig_05c}
 		\caption{2018}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=0.90\textwidth]{Fig_05d}
+			\includegraphics[width=0.95\textwidth]{Fig_05d}
 		\caption{2018: histogram}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=0.90\textwidth]{Fig_05e}
+			\includegraphics[width=0.95\textwidth]{Fig_05e}
 		\caption{2022}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=0.90\textwidth]{Fig_05f}
+			\includegraphics[width=0.95\textwidth]{Fig_05f}
 		\caption{2022: histogram}
 	\end{subfigure}%
 }
@@ -416,41 +416,41 @@ Such patterns are indicative of moist wadi sediments and associated vegetation s
 Our results show that the NDWI performs better on identification of vegetation in the sandy areas  compared to the NDVI and GNDVI, which can also be noted by examination and comparison of on the histograms which have a more gentle curve with detailed range of data values for the case of NDWI for the Sahelian Sudan.
 
 \begin{figure}[H]
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_06a}
+			\includegraphics[width=0.95\textwidth]{Fig_06a}
 		\caption{2013}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=0.80\textwidth]{Fig_06b}
+			\includegraphics[width=0.95\textwidth]{Fig_06b}
 		\caption{2013: histogram}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_06c}
+			\includegraphics[width=0.95\textwidth]{Fig_06c}
 		\caption{2018}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=0.80\textwidth]{Fig_06d}
+			\includegraphics[width=0.95\textwidth]{Fig_06d}
 		\caption{2018: histogram}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_06e}
+			\includegraphics[width=0.95\textwidth]{Fig_06e}
 		\caption{2022}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=0.80\textwidth]{Fig_06f}
+			\includegraphics[width=0.95\textwidth]{Fig_06f}
 		\caption{2022: histogram}
 	\end{subfigure}%
 }
@@ -463,41 +463,41 @@ Our results show that the NDWI performs better on identification of vegetation i
 The OSAVI was the highest for 2013 with the maximal reached value of 0.72 (Figure \ref{fig07}), after which it dropped to 0.58 in 2018 indicating the decease in the leaf chlorophyll content reflected in the OSAVI values; since 2018 to 2022 the values stabilised and slightly increased to 0.60 due to the effects from the White Nile hydrology and climatic variations. Being a modified index derived from the NDVI, the OSAVI also has a range of values varying between the -0.28 to +0.72, with negative values indicating water areas of the White and Blue Niles, lower areas slightly above 0 and lower than 0.2 indicating bare land, sandy areas, soil with no or very sparse vegetation, while higher values close to +0.50 showing healthy vegetation and higher chlorophyll content in leaves. 
 
 \begin{figure}[H]
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_07a}
+			\includegraphics[width=0.95\textwidth]{Fig_07a}
 		\caption{2013}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=0.80\textwidth]{Fig_07b}
+			\includegraphics[width=0.95\textwidth]{Fig_07b}
 		\caption{2013: histogram}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_07c}
+			\includegraphics[width=0.95\textwidth]{Fig_07c}
 		\caption{2018}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=0.83\textwidth]{Fig_07d}
+			\includegraphics[width=0.95\textwidth]{Fig_07d}
 		\caption{2018: histogram}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_07e}
+			\includegraphics[width=0.95\textwidth]{Fig_07e}
 		\caption{2022}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-		\includegraphics[width=0.85\textwidth]{Fig_07f}
+			\includegraphics[width=0.95\textwidth]{Fig_07f}
 		\caption{2022: histogram}
 	\end{subfigure}%
 }
@@ -511,41 +511,41 @@ The OSAVI image shows that the land classes with values between 0.30 and 0.40 re
 The majority of values of the Infrared Percentage Vegetation Index (IPVI) for the area of Sudan, Figure \ref{fig08}, lies within a very narrow interval of 0.25 to 0.48 which well corresponds with the dominance of sandy dune areas and bare soils in the surrounding deserts. Note that all the values of IPVI are never negative and always positive due to the formula used in computation, which distinct this index from the previous ones.
 
 \begin{figure}[H]
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_08a}
+			\includegraphics[width=0.95\textwidth]{Fig_08a}
 		\caption{2013}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=0.80\textwidth]{Fig_08b}
+			\includegraphics[width=0.95\textwidth]{Fig_08b}
 		\caption{2013: histogram}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_08c}
+			\includegraphics[width=0.95\textwidth]{Fig_08c}
 		\caption{2018}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=0.85\textwidth]{Fig_08d}
+			\includegraphics[width=0.95\textwidth]{Fig_08d}
 		\caption{2018: histogram}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
-\makebox[0.90\linewidth][r]{%
-	\begin{subfigure}[b]{.6\textwidth}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_08e}
+			\includegraphics[width=0.95\textwidth]{Fig_08e}
 		\caption{2022}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.6\textwidth}
+	\begin{subfigure}[b]{.55\textwidth}
 		\centering
-		\includegraphics[width=0.85\textwidth]{Fig_08f}
+			\includegraphics[width=0.95\textwidth]{Fig_08f}
 		\caption{2022: histogram}
 	\end{subfigure}%
 }

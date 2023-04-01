@@ -267,14 +267,13 @@ The advantages of the NDWI is that it lessens the effects from the reflectance o
 
 \subsubsection{Optimized Soil Adjusted Vegetation Index (OSAVI)}
 
-Originally developed by \cite{Rondeaux}, the Optimized Soil Adjusted Vegetation Index (OSAVI) uses a defined value of 0.16 as a factor to adjust the canopy background as this value gives higher soil variation compared to the original SAVI specifically in the regions with low vegetation coverage, such as Sahelian region of Sudan. At the same time, OSAVI has a higher sensitivity to vegetation coverage that covers more than a half of the area in percentage. Further, the applications of OSAVI is especially suitable in the regions with sparse vegetation, as in southern Sudan where soil is often visible through the canopy of vegetation.
-The OSAVI is computed using Equation \ref{eq:4}:
+Originally developed by \cite{Rondeaux}, the Optimized Soil Adjusted Vegetation Index (OSAVI) \hl{is well adjusted to monitor vegetation health }specifically in the regions with low vegetation coverage, such as Sahelian region of Sudan \hl{due to corrections of bare soil and desert areas}. \hl{Specifically, the OSAVI }uses a defined value of 0.16 as a factor to adjust the canopy background as this value gives higher soil variation compared to the original SAVI\hl{. }At the same time, \hl{the }OSAVI has a higher sensitivity to vegetation coverage that covers more than a half of the area in percentage. \hl{Due to such characteristics, the OSAVI is suitable to monitor the existing productivity changes in agricultural areas near the Khartoum and along the banks of the Nile River. Moreover, the corrections fro the reflectance from bare soil and lands enables the detect areas prone to droughts using comparison of the multi-temporal satellite images. Therefore, }the application\hl{ }of \hl{the }OSAVI is especially suitable in the regions with sparse vegetation, as in \hl{the }southern Sudan where soil is often visible through the canopy of vegetation. The OSAVI is computed using Equation \ref{eq:4}:
 
 \begin{equation}\label{eq:4}
 	OSAVI=\dfrac{(NIR-Red)}{(NIR+Red+0.16)}
 \end{equation}
 
-In R language, we computed the OSAVI \hl{using script presented in the Appendix, Listing }\ref{lst04}.
+In R language, we computed the OSAVI \hl{by script showed in the Appendix, Listing }\ref{lst04}.
 
 \subsubsection{Infrared Percentage Vegetation Index (IPVI)}
 The values of the Infrared Percentage Vegetation Index (IPVI) depend on the chlorophyll content in leaves. Developed originally by \cite{CRIPPEN199071}, it has always positive values ranging from 0 to +1 and indicates the photosynthetic activity of the canopy cover and total of chlorophylls. Further, as a modified variation it is especially suitable to indicate yellowish or shed leaves due to the adjusted spectral regions in the formula, since the chlorophyll content directly depends on nitrogen level in plants which contributes to greenness of foliage and is reflected in optical characteristics of the leaves. The IPVI is suitable for the periods of active vegetation development due to the indication of leaf pigment content and variations showing always positive values above zero, in contrast with the NDVI. The IPVI is computed using the Equation \ref{eq:3}:

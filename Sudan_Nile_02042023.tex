@@ -245,27 +245,25 @@ Using R\hl{, }we computed the NDVI using script \hl{shown} in \hl{the Appendix, 
 
 \subsubsection{Green Normalized Difference Vegetation Index (GNDVI)}
 
-The GNDVI index is an updated and modified NDVI to remotely sense the presence and vitality of vegetation. Compared to NDVI, it also uses NIR Band for computation but replaces the Green Band (Band 3 for the Landsat 8-9 OLI/TIRS with 530-590 nm wavelength) from the visible spectrum for the Red Band (i.e., Band 4 for the Landsat 8-9 OLI/TIRS with diapason of 640-670 nm of wavelength). Therefore, the GNDVI estimates the chlorophyll content more precisely compared to the NDVI and enables to analyse photo synthetic activity in plants. The applications of the GNDVI are mostly intended at detecting wilted, ill or aging plants and monitoring plant stress. It is also suitable to estimate nitrogen content in plant leaves, as well as to monitor mature vegetation coverage in the final stages of the crop cycle, or vegetation with dense canopy. Similar to the NDVI, the range of values in the GNDVI also varies between -1 and 1, where negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation. The formula for the GNDVI is given in Equation \ref{eq:5}:
+The GNDVI index is an updated and modified NDVI to remotely sense the presence and vitality of vegetation. Compared to \hl{the }NDVI, it also uses \hl{the }NIR Band for computation but replaces the \hl{Red} Band (i.e., Band 4 for the Landsat 8-9 OLI/TIRS with diapason of 640-670 nm of wavelength) \hl{by the }Green Band (Band 3 for the Landsat 8-9 OLI/TIRS with 530-590 nm wavelength) from the visible spectrum\hl{.} Therefore, the GNDVI estimates the chlorophyll content more precisely compared to the NDVI and enables to analyse photo synthetic activity in plants. The applications of the GNDVI are mostly intended at detecting wilted, ill or aging plants and monitoring plant stress. 
+
+\hl{Moreover, the GNDVI} is suitable to estimate \hl{the }nitrogen content in \hl{the }plant leaves, as well as\hl{ }monitor mature vegetation coverage in the final stages of the crop cycle, or vegetation with dense canopy. Similar to the NDVI, the range of values in the GNDVI also varies between -1 and 1, where negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation. \hl{In this study, the GNDVI was computed due to its technical and practical advantages. Thus, its advantages include the low number of required spectral bands (only NIR and Green, as indicated in the formula of Equation} \ref{eq:5}) \hl{which results in easy computation in R, and reliability in the analysis of vegetation health due to the more precise estimation of the chlorophyll content compared to the NDVI. }The formula for the GNDVI \hl{used for computation }is given in Equation \ref{eq:5}:
 
 \begin{equation}\label{eq:5}
-GNDVI=\dfrac{(NIR-Green)}{(NIR+Green)}
+	GNDVI=\dfrac{(NIR-Green)}{(NIR+Green)}
 \end{equation}
 
-For the Landsat 8-9 OLI/TIRS bands, the Green channel corresponds to the Band 3 and Red channel -- to the Band 4. The adjustment so the GNDVI are based on the maximum sensitivity of reflectance of leaves since the reflectance near 670 nm of the Red Band is not sensitive to chlorophyll concentration due to the saturation of the relationship between absorptions and chlorophyll concentration \cite{GITELSON1996289}. Therefore, the replacement of the Red Band by the Green Band results in a more accurate to estimate the concentration of chlorophyll and the rate of photosynthesis. 
-
-Using R syntax, we computed the GNDVI \hl{using script presented in the Appendix, } Listing \ref{lst02}: 
+For the Landsat 8-9 OLI/TIRS bands, the Green channel corresponds to the Band 3 and Red channel -- to the Band 4. The adjustment so the GNDVI are based on the maximum sensitivity of reflectance of leaves since the reflectance near 670 nm of the Red Band is not sensitive to chlorophyll concentration due to the saturation of the relationship between absorptions and chlorophyll concentration \cite{GITELSON1996289}. Therefore, the replacement of the Red Band by the Green Band results in a more accurate to estimate the concentration of chlorophyll and the rate of photosynthesis. Using R syntax, we computed the GNDVI \hl{using script presented in the Appendix, } Listing \ref{lst02}. 
 
 \subsubsection{Normalized Difference Water Index (NDWI)}
 
-Developed by \cite{GAO1996257} as a complementary to the NDVI, the NDWI is strongly related to the plant water content as it is sensitive to liquid water content of leaves base don the ratio between the difference and sum of NIR and SWIR. The second version of the NDWI developed by \cite{rs5073544} uses a Green band instead of SWIR which can be used to detect surface open water areas as well as evaluate the level of turbidity. In this case, the NDWI is computed using the ratio between the difference and sum of the NIR and visible Green Bands \cite{ZHENG2021129488} in the Equation \ref{eq:2}:
+Developed by \hl{Gao in 1996 }\cite{GAO1996257} as a complementary to the NDVI, the NDWI is strongly related to the plant water content as it is sensitive to liquid water content of leaves \hl{based on} the ratio between the difference and sum of NIR and SWIR. The second version of the NDWI developed by \cite{rs5073544} uses a Green band instead of SWIR which can be used to detect surface open water areas as well as evaluate the level of turbidity. In this case, the NDWI is computed using the ratio between the difference and sum of the NIR and visible Green Bands \cite{ZHENG2021129488}. \hl{In our study we used the first version developed by Gao following }the Equation \ref{eq:2}:
 
 \begin{equation}\label{eq:2}
-NDWI=\dfrac{(NIR-SWIR)}{(NIR+SWIR)}
+	NDWI=\dfrac{(NIR-SWIR)}{(NIR+SWIR)}
 \end{equation}
 
-The advantages of the NDWI is that it lessens the effects from the reflectance of soil and vegetation foliage thus is suitable for sandy areas such as in Sahelian Sudan. A special value of the NDWI for environmental monitoring is that it can be used for indicating areas with water deficit \cite{TENG2021107260}. Thus, during drought periods, foliage is strongly affected by water deficit which results in plant illness. Specifically for agricultural areas of Khartoum region, it leads to the crop failure and decreases production thus affecting harvest. Detecting plant water stress is essential to evaluate current state of plants and make a prognosis for future development, for instance, by indicating areas that are in need for irrigating. 
-
-Using R library 'terra', we computed the NDWI \hl{using script presented in the Appendix in Listing} \ref{lst03}.
+The advantages of the NDWI is that it lessens the effects from the reflectance of soil and vegetation foliage thus is suitable for sandy areas such as in Sahelian Sudan. A special value of the NDWI for environmental monitoring is that it can be used for indicating areas with water deficit \cite{TENG2021107260}. \hl{Therefore, the NDWI presents a useful and precise tool in the assessment of the health of vegetation in arid areas prone to droughts, such as Sudanian Sahel, through computing the moisture level in plants as detected water content in leaves. }Thus, during \hl{the }drought periods, foliage is strongly affected by \hl{the }water deficit which results in plant illness. Specifically for \hl{the }agricultural areas of Khartoum\hl{, }it leads to the crop failure and decreases \hl{the }production \hl{which affects the} harvest. Detecting \hl{the }plant water stress is essential to evaluate \hl{the }current state of plants and make a prognosis for future development, \hl{e.g.,} by indicating \hl{the }areas that \hl{require extra} irrigating. Using R library 'terra', we computed the NDWI \hl{using script presented in the Appendix in Listing} \ref{lst03}.
 
 \subsubsection{Optimized Soil Adjusted Vegetation Index (OSAVI)}
 
@@ -273,7 +271,7 @@ Originally developed by \cite{Rondeaux}, the Optimized Soil Adjusted Vegetation 
 The OSAVI is computed using Equation \ref{eq:4}:
 
 \begin{equation}\label{eq:4}
-OSAVI=\dfrac{(NIR-Red)}{(NIR+Red+0.16)}
+	OSAVI=\dfrac{(NIR-Red)}{(NIR+Red+0.16)}
 \end{equation}
 
 In R language, we computed the OSAVI \hl{using script presented in the Appendix, Listing }\ref{lst04}.
@@ -282,7 +280,7 @@ In R language, we computed the OSAVI \hl{using script presented in the Appendix,
 The values of the Infrared Percentage Vegetation Index (IPVI) depend on the chlorophyll content in leaves. Developed originally by \cite{CRIPPEN199071}, it has always positive values ranging from 0 to +1 and indicates the photosynthetic activity of the canopy cover and total of chlorophylls. Further, as a modified variation it is especially suitable to indicate yellowish or shed leaves due to the adjusted spectral regions in the formula, since the chlorophyll content directly depends on nitrogen level in plants which contributes to greenness of foliage and is reflected in optical characteristics of the leaves. The IPVI is suitable for the periods of active vegetation development due to the indication of leaf pigment content and variations showing always positive values above zero, in contrast with the NDVI. The IPVI is computed using the Equation \ref{eq:3}:
 
 \begin{equation}\label{eq:3}
-IPVI=\dfrac{NIR}{NIR + Red}
+	IPVI=\dfrac{NIR}{NIR + Red}
 \end{equation}
 
 The computation of IPVI using R library 'terra' was done by the code \hl{presented in the Appendix, Listing }\ref{lst05}.
@@ -290,7 +288,7 @@ The computation of IPVI using R library 'terra' was done by the code \hl{present
 \hl{The} application of RStudio \hl{version 2023.03.0+386 } \cite{RStudio} for image processing \hl{included image processing, computing and} plotting \hl{the vegetation indices} index using Landsat 8 OLI/TIRS image. We find that our method works well for repetitive workflow process when several images need to be processed sequentially for several years by applying scripts modified for each scene. The minimal and maximal values were obtained from the R console\hl{ }and used as input data for Table \ref{tab02}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
+%\newpage
 \section{Results}
 
 We provide in Table \ref{tab02} for each image triple their VI values for years 2013, 2018 and 2022, derived from the R report on data analysis, as it appears in the output console. These values were collected and summarised in Table \ref{tab02} for comparison of variations in the VI's values. \hl{In }the second to fourth columns we indicate the years of observations and output results obtained by R 'terra' library algorithm. For each image, we collected the data on minimal and maximal values to assess the general range of data. Thus, the  results of the VI values derived from the Landsat 8 OLI/TIRS images over the Khartoum region area for nine-year period  (2013, 2018 and 2022) are presented in Table \ref{tab02}. 
@@ -627,7 +625,6 @@ VIs & Vegetation Indices \\
 
 \begin{table}[H]
 \scriptsize
-%    \begin{tabular}{|l|l|l|l|}
 \caption{Metadata on the Landsat OLI/TIRS satellite images used in this study \textsuperscript{1}.\label{tabApp}}
 \begin{adjustwidth}{-\extralength}{0cm}
 \begin{tabularx}{\fulllength}{l|l|l|l}

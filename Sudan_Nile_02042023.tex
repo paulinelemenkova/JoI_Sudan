@@ -235,15 +235,13 @@ The summary of the data is presented in Table \ref{tab1}. All \hl{the }images ha
 \subsection{Calculating Vegetation Indices}
 
 \subsubsection{Normalized Difference Vegetation Index (NDVI)}
-The Normalized Difference Vegetation Index (NDVI) \cite{Rouse} is calculated as a ration between the sum and the difference of the two Landsat bands - NIR and Red. The values of the NDVI typically vary from -1 to +1 with negative values indicating water, lower values above 0 show bare soil and land, mediocre values (around 1.30-0.50) signify sparsely vegetated areas, while higher values reaching up to +1 identify dense vegetation with healthy canopy and green foliage. The content of chlorophyll in healthy vegetation is reflected by the near-infrared (NIR) band much more compared to the other bands. At the same time, it absorbs Red light. Therefore, using these two bands in a well-established combination gives robust results indicating the presence and amount of chlorophyll in leaves. Such effectiveness of the NDVI resulted in its numerous applications for the environmental analysis \cite{w13192707,rs12244119,GHEBREZGABHER2020249,RULINDA2012169}. 
-
-The NDVI is computed using Equation \ref{eq:1}:
+The Normalized Difference Vegetation Index (NDVI) \cite{Rouse} is calculated as a \hl{ratio} between the sum and the difference of the two Landsat bands - \hl{Near-Infrared} (NIR) and Red. \hl{The NDVI is the most well know and widely used ecological indicator for assessing vegetation conditions due to the optimally created formula that includes the spectral properties of Red and NIR bands. }\hl{Thus, compared to the other bands, the} content of chlorophyll in healthy vegetation is reflected by the \hl{NIR} band much more\hl{. }At the same time, it absorbs Red light. Therefore, using these two bands in a well-established combination \hl{that }gives robust results indicating the presence and amount of chlorophyll in leaves. Such effectiveness of the NDVI resulted in its numerous applications for the environmental analysis \cite{w13192707,rs12244119,GHEBREZGABHER2020249,RULINDA2012169}. \hl{The} values of the NDVI \hl{vary within the range} from -1 to +1 \hl{where} negative values \hl{indicate} water, lower values above 0 show bare soil and land, \hl{and }mediocre values (around 1.30-0.50) signify sparsely vegetated areas\hl{. Higher }values \hl{around} +1 identify dense vegetation with healthy canopy and green foliage. The NDVI is computed using Equation \ref{eq:1}:
 
 \begin{equation}\label{eq:1}
 NDVI=\dfrac{(NIR-Red)}{(NIR+Red)}
 \end{equation}
 
-Using R syntax, we computed the NDVI using script presented in \hl{the Appendix, }Listing \ref{lst01}. 
+Using R\hl{, }we computed the NDVI using script \hl{shown} in \hl{the Appendix, }Listing \ref{lst01}. 
 
 \subsubsection{Green Normalized Difference Vegetation Index (GNDVI)}
 

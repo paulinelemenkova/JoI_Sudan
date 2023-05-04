@@ -18,7 +18,7 @@
 \copyrightyear{2023}
 %\externaleditor{Academic Editor: Firstname Lastname}
 \datereceived{23 February 2023} 
-\daterevised{14 April 2023} 
+\daterevised{4 May 2023} 
 \dateaccepted{} 
 \datepublished{} 
 \hreflink{https://doi.org/} % If needed use \linebreak
@@ -343,111 +343,107 @@ The distribution of the vegetation patterns in the Khartoum region varies in dif
 \subsection{Normalized Difference Vegetation Index (NDVI)}
 The images of the NDVI (Figure \ref{fig04}) allow the differentiation of vegetation areas or cultivated areas from soil in the region southwards from the Khartoum and along the flow of the Greater Nile. The differentiation of the crops against other land cover types is possible due to the different values in the NDVI data range. Thus, the values of the NDVI vary within the range from -1 to +1 where negative values indicate water, lower values above 0 show bare soil and land, and mediocre values (around 1.30-0.50) signify sparsely vegetated areas. Higher values around +1 identify dense vegetation with healthy canopy and green foliage. More specifically, Thus, crops have higher values compared to the bare land and cultivated areas. For instance, sparse vegetation range from 0.1 to 0.5, shrubs and meadows -- from 0.2 to 0.3, dense green vegetation -- over 0.6, cultivated areas have small values (less than 0.2) and empty areas of rocks or sand are between 0.1 to 0.2. Negative values indicate water. The low NDVI values were classified as non-vegetation (i.e. soil and bare land), and positive NDVI values -- as vegetation. 
 
-The highest NDVI values (0.80 to 1.0) identify forest areas. For the desert areas with dominating sands such as Sudan, the NDVI values do not exceed 0.50. The minimal values determined according to the histograms obtained from the NDVI images for years 2013, 2018 and 2022 were 0.27, 0.28 and 0.28 (Table \ref{tab02}), whereas the highest determined values were 0.72, 0.58 and 0.60 for the same years. The minimum and maximum values were derived from the computed vegetation indices to evaluate the data distribution extremes. They indicate the range in vegetation greenness where higher values show healthy vegetation with dense canopy and green foliage while lower values -- bare land. 
-
-The pixels that were not classified to either the soil, water or vegetation classes, were identified as sand desert areas (mostly beige-coloured in the images in Figure \ref{fig04}) pixels due to low NDVI values around 0.2 or less. The lowest NDVI values less then 0.1 are classified as rocky surface and bare land. 
-
 \begin{figure}[H]
 \makebox[0.99\linewidth][r]{%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\hspace{30pt}\includegraphics[width=0.85\textwidth]{Fig_04a.jpg}
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04a.jpg}
 		\caption{}
 	\end{subfigure}\hspace*{\fill}%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\hspace{30pt}\includegraphics[width=0.85\textwidth]{Fig_04b}
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04b}
 		\caption{}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
 \makebox[0.99\linewidth][r]{%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\hspace{30pt}\includegraphics[width=0.85\textwidth]{Fig_04c.jpg}
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04c.jpg}
 		\caption{}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\hspace{30pt}\includegraphics[width=0.85\textwidth]{Fig_04d}
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04d}
 		\caption{}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
 \makebox[0.99\linewidth][r]{%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\hspace{30pt}\includegraphics[width=0.85\textwidth]{Fig_04e.jpg}
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04e.jpg}
 		\caption{}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\hspace{30pt}\includegraphics[width=0.85\textwidth]{Fig_04f}
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04f}
 		\caption{}
 	\end{subfigure}%
 }
 \caption{NDVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig04}
 \end{figure}
 
+The highest NDVI values (0.80 to 1.0) identify forest areas. For the desert areas with dominating sands such as Sudan, the NDVI values do not exceed 0.50. The minimal values determined according to the histograms obtained from the NDVI images for years 2013, 2018 and 2022 were 0.27, 0.28 and 0.28 (Table \ref{tab02}), whereas the highest determined values were 0.72, 0.58 and 0.60 for the same years. The minimum and maximum values were derived from the computed vegetation indices to evaluate the data distribution extremes. They indicate the range in vegetation greenness where higher values show healthy vegetation with dense canopy and green foliage while lower values -- bare land. 
+
+The pixels that were not classified to either the soil, water or vegetation classes, were identified as sand desert areas (mostly beige-coloured in the images in Figure \ref{fig04}) pixels due to low NDVI values around 0.2 or less. The lowest NDVI values less then 0.1 are classified as rocky surface and bare land. 
+
 The identification method of soil/water and vegetation is based on the characteristics of the NDVI which ranges from -1.0 to 1.0 with negative values indicating clouds and water, positive values near zero ($<0.1$) -- bare soil, barren rock or sand in deserts. Shrubs, grasslands and other types of sparse vegetation have moderate NDVI values between 0.2 to 0.5. Higher positive values of NDVI correspond to dense green vegetation ($>0.6 and <0.9$) which correspond to crops at their highest growth stage. Broadleaf/boreal and tropical forests can exhibit these values as well, but it is known that the area of Sudan does not have such vegetation types. The vegetation in Sudan includes sandy arid lands in deserts, semi-deserts, savannah (grassland), croplands and inland floodplains along the Nile River, which made it easier for us to distinguish between different land surface types. Light ivory colour corresponds to the patterns of the dry creeks or beds of wadi ephemeral streams. The minimal and maximal values of the NDVI varied for years 2013, 2018 and 2022 are as follows: from -0.2742168 to 0.7246868 in 2013, from -0.2817099 to 0.5796811 in 2018, and from -0.2791084 to 0.6044010 in 2022. As one can note, the maximal values decreased from 2013, which indicates the general trend in desertification, however, from 2018 to 2022, there is a slight increase again in the highest values which can be explained by increased precipitation and fluctuations in Nile hydrology. 
 
 \subsection{Green Normalized Difference Vegetation Index (GNDVI)}
 
-The highest values of the GNDVI did not exceed 0.72 for the area of Sudan due to the scarce vegetation coverage and dominating desert areas, Figure \ref{fig05}. 
+The highest values of the GNDVI did not exceed 0.72 for the area of Sudan due to the scarce vegetation coverage and dominating desert areas, Figure \ref{fig05}. Negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation and selected agricultural croplands along the banks of the White, Blue and Greater Niles. As seen from Figure \ref{fig05}, the GNDVI captured plant greenness with changes in vegetation health and greenness corresponding to the colour on the images varying from bright green to yellow on sequence of images for 2013, 2018 and 2022. In this case, the variations in shadows of colours indicate the differences in plant vigour which is a measure of the increase in plant growth or foliage volume through time after planting \cite{Dictionary}. Moreover, it indicate at the plant health which correlates to the irrigated lands with higher level of moisture in soil that can be distinguished against drylands and desert areas. 
+
+Further comparing the values in Table \ref{tab02}, the range of values for the GNDVI is narrower than that of the NDVI: with minimal -0.24, -0.28 and -0.23 for years 2013, 2018 and 2022, while the highest values are 0.64, 0.57 and 0.72 for the same years. Accordingly, with greener plants visualised in the GNDVI, Figure \ref{fig05} shows lower and better distinguished values. Moreover, the histograms present more diversified range of values for various land classes: water, bare soil and sand, rocky areas of deserts and vegetation with agricultural areas and natural aquatic plants in the Nile rivers. Finally, the slight increase in the GNDVI values indicating photo synthetic activity in leaves is affected by changes in water and N absorption in plant that includes aquatic vegetation in the bank areas of the White Nile. 
 
 \begin{figure}[H]
 \makebox[0.99\linewidth][r]{%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_05a}
+			\includegraphics[width=0.95\textwidth]{Fig_05a}
 		\caption{2013}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_05b}
+			\includegraphics[width=0.95\textwidth]{Fig_05b}
 		\caption{2013: histogram}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
 \makebox[0.99\linewidth][r]{%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_05c}
+			\includegraphics[width=0.95\textwidth]{Fig_05c}
 		\caption{2018}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_05d}
+			\includegraphics[width=0.95\textwidth]{Fig_05d}
 		\caption{2018: histogram}
 	\end{subfigure}%
 }\\
 \vfill \vspace{1mm}
 \makebox[0.99\linewidth][r]{%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_05e}
+			\includegraphics[width=0.95\textwidth]{Fig_05e}
 		\caption{2022}
 	\end{subfigure}%
-	\begin{subfigure}[b]{.55\textwidth}
+	\begin{subfigure}[b]{.5\textwidth}
 		\centering
-			\includegraphics[width=0.85\textwidth]{Fig_05f}
+			\includegraphics[width=0.95\textwidth]{Fig_05f}
 		\caption{2022: histogram}
 	\end{subfigure}%
 }
 \caption{GNDVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig05}
 \end{figure}
 
-Negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation and selected agricultural croplands along the banks of the White, Blue and Greater Niles. As seen from Figure \ref{fig05}, the GNDVI captured plant greenness with changes in vegetation health and greenness corresponding to the colour on the images varying from bright green to yellow on sequence of images for 2013, 2018 and 2022. In this case, the variations in shadows of colours indicate the differences in plant vigour which is a measure of the increase in plant growth or foliage volume through time after planting \cite{Dictionary}. Moreover, it indicate at the plant health which correlates to the irrigated lands with higher level of moisture in soil that can be distinguished against drylands and desert areas. 
-
-Further comparing the values in Table \ref{tab02}, the range of values for the GNDVI is narrower than that of the NDVI: with minimal -0.24, -0.28 and -0.23 for years 2013, 2018 and 2022, while the highest values are 0.64, 0.57 and 0.72 for the same years. Accordingly, with greener plants visualised in the GNDVI, Figure \ref{fig05} shows lower and better distinguished values. Moreover, the histograms present more diversified range of values for various land classes: water, bare soil and sand, rocky areas of deserts and vegetation with agricultural areas and natural aquatic plants in the Nile rivers. Finally, the slight increase in the GNDVI values indicating photo synthetic activity in leaves is affected by changes in water and N absorption in plant that includes aquatic vegetation in the bank areas of the White Nile. 
-
 \subsection{Normalized Difference Water Index (NDWI)}
 
 The interpretation of the values on the resulting images based on the NDWI (Figure \ref{fig06}). The values are as follows: the negative values (from -1 up to 0) signify areas with no vegetation or water content, while those above 0 show surfaces with water content where the higher moisture level correlates with higher values of the NDWI, respectively. The NDWI values vary between -1 to +1, which depends on the total amount of water in leaves, type of vegetation and percentage of the foliage coverage. Thus, sparse vegetation in semi-arid regions of the Sudanian Sahel will naturally have a lower value of the NDWI compared to the regions of dominating forests with dense canopy. The analysis of the NDWI images reveals contours of the dry creeks in the desert areas with stream patterns and beds of drainage courses that contribute to the differences in moisture content in soil (Figure \ref{fig06}). 
 
-Such patterns are indicative of moist wadi sediments and associated vegetation strips. The range of values in the NDWI shows slow dynamics in the lowest values that is gradually increasing from -0.40 in 2013, to -0.56 in 2018 and 0.57 in 2022, along with the raising highest values: 0.38 in 2013, 0.38 in 2018 and 0.42 in 2022. The values of the NDWI rise along with the increased leaf water content as well as vegetation fraction cover. Therefore, higher correspond to high water content in leaves and to increase in canopy. We suggest that the drivers are climate and hydrological factors such as higher precipitation level or increased water discharge from the Nile but cannot support our surmise with numerical arguments and this pattern should be elucidated in future studies. Since the NDWI is specifically designed to monitor vegetation in drought affected areas such as Sudan, such variations indicate at the increase in both the content of vegetation water because of the strong chlorophyll absorption in SWIR and the structure in plant canopy. 
-
-On the one hand, partial vegetation coverage in the desert areas of central Sudan results in soil effects on the NDWI values, especially for the landscapes with interspersed soils and vegetation patterns. Thus, when the leaf layer in the canopy decreases, the absolute values of reflectances in the spectral region of the NDWI are decreased which results in lower values. The range of the NDWI values in Khartoum is narrow which is seen on the histograms with most of the values varying from -0.20 to +0.20. More specifically, the interpretation of the values of the NDWI follows the ranges: positive values from +0,2 to +1.0 -- water area; 0.0 to +0,2 -- flooded areas and high humidity, -0,3 to 0.0: moderate drought soil and non-water surfaces, -1.0 to -0.3: drylands, drought and non-water surfaces. The NDWI indicates the moisture level of vegetation which is suitable for the sandy areas in the Sahelian Sudan.
+Such patterns are indicative of moist wadi sediments and associated vegetation strips. The range of values in the NDWI shows slow dynamics in the lowest values that is gradually increasing from -0.40 in 2013, to -0.56 in 2018 and 0.57 in 2022, along with the raising highest values: 0.38 in 2013, 0.38 in 2018 and 0.42 in 2022. The values of the NDWI rise along with the increased leaf water content as well as vegetation fraction cover. Therefore, higher correspond to high water content in leaves and to increase in canopy. 
 
 \begin{figure}[H]
 \makebox[0.99\linewidth][r]{%
@@ -491,14 +487,14 @@ On the one hand, partial vegetation coverage in the desert areas of central Suda
 \caption{NDWI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig06}
 \end{figure}
 
+We suggest that the drivers are climate and hydrological factors such as higher precipitation level or increased water discharge from the Nile but cannot support our surmise with numerical arguments and this pattern should be elucidated in future studies. Since the NDWI is specifically designed to monitor vegetation in drought affected areas such as Sudan, such variations indicate at the increase in both the content of vegetation water because of the strong chlorophyll absorption in SWIR and the structure in plant canopy. 
+
+On the one hand, partial vegetation coverage in the desert areas of central Sudan results in soil effects on the NDWI values, especially for the landscapes with interspersed soils and vegetation patterns. Thus, when the leaf layer in the canopy decreases, the absolute values of reflectances in the spectral region of the NDWI are decreased which results in lower values. The range of the NDWI values in Khartoum is narrow which is seen on the histograms with most of the values varying from -0.20 to +0.20. More specifically, the interpretation of the values of the NDWI follows the ranges: positive values from +0,2 to +1.0 -- water area; 0.0 to +0,2 -- flooded areas and high humidity, -0,3 to 0.0: moderate drought soil and non-water surfaces, -1.0 to -0.3: drylands, drought and non-water surfaces. The NDWI indicates the moisture level of vegetation which is suitable for the sandy areas in the Sahelian Sudan.
+
 %--------------------->
 \subsection{Optimized Soil Adjusted Vegetation Index (OSAVI)}
 
-The computed Optimized Soil Adjusted Vegetation Index (OSAVI) is illustrated in Figure \ref{fig07}). The OSAVI was the highest for 2013 with the maximal reached value of 0.72 (Figure \ref{fig07}), after which it dropped to 0.58 in 2018 indicating the decease in the leaf chlorophyll content reflected in the OSAVI values; since 2018 to 2022 the values stabilised and slightly increased to 0.60 due to the effects from the White Nile hydrology and climatic variations. 
-
-Being a modified index derived from the NDVI, the OSAVI also has a range of values varying between the -0.28 to +0.72, with negative values indicating water areas of the White and Blue Niles, lower areas slightly above 0 and lower than 0.2 indicating bare land, sandy areas, soil with no or very sparse vegetation, while higher values close to +0.50 showing healthy vegetation and higher chlorophyll content in leaves. The OSAVI values typically range from -1 to +1 where high values indicate denser, healthier vegetation, lower values indicate less vigour and medium values corresponding to the agricultural lands. The highest and minimum values in this region show the range in data which indicate the changes in the greenness of vegetation and health of plant leaves.
-
-The OSAVI image shows that the land classes with values between 0.30 and 0.40 representing sparse vegetation, 0.40 to 0.50 representing medium vegetated area typically for agriculture lands and those above 0.50 representing occasional regions with high vegetated area around the Blue Nile. The analysis of the OSAVI and comparison with other indices reveals that the OSAVI classifies pixels on the image was more detailed compared to the NDVI and GNDVI as related to resolution. Thus, it identifies vegetation better using spectral reflectance within each cluster of data range which results in the detection of the biomass and leaf foliage areas in the regions covered by sandy soils and semi-arid lands such as Sudan. 
+The computed OSAVI is illustrated in Figure \ref{fig07}). 
 
 \begin{figure}[H]
 \makebox[0.99\linewidth][r]{%
@@ -542,52 +538,16 @@ The OSAVI image shows that the land classes with values between 0.30 and 0.40 re
 \caption{OSAVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig07}
 \end{figure}
 
+The OSAVI was the highest for 2013 with the maximal reached value of 0.72 (Figure \ref{fig07}), after which it dropped to 0.58 in 2018 indicating the decease in the leaf chlorophyll content reflected in the OSAVI values; since 2018 to 2022 the values stabilised and slightly increased to 0.60 due to the effects from the White Nile hydrology and climatic variations. 
+
+Being a modified index derived from the NDVI, the OSAVI also has a range of values varying between the -0.28 to +0.72, with negative values indicating water areas of the White and Blue Niles, lower areas slightly above 0 and lower than 0.2 indicating bare land, sandy areas, soil with no or very sparse vegetation, while higher values close to +0.50 showing healthy vegetation and higher chlorophyll content in leaves. The OSAVI values typically range from -1 to +1 where high values indicate denser, healthier vegetation, lower values indicate less vigour and medium values corresponding to the agricultural lands. The highest and minimum values in this region show the range in data which indicate the changes in the greenness of vegetation and health of plant leaves.
+
+The OSAVI image shows that the land classes with values between 0.30 and 0.40 representing sparse vegetation, 0.40 to 0.50 representing medium vegetated area typically for agriculture lands and those above 0.50 representing occasional regions with high vegetated area around the Blue Nile. The analysis of the OSAVI and comparison with other indices reveals that the OSAVI classifies pixels on the image was more detailed compared to the NDVI and GNDVI as related to resolution. Thus, it identifies vegetation better using spectral reflectance within each cluster of data range which results in the detection of the biomass and leaf foliage areas in the regions covered by sandy soils and semi-arid lands such as Sudan. 
+
 %--------------------->
 \subsection{Infrared Percentage Vegetation Index (IPVI)}
 
 The majority of values of the Infrared Percentage Vegetation Index (IPVI) for the area of Sudan, Figure \ref{fig08}, lies within a very narrow interval of 0.25 to 0.48 which matches the dominance of sandy dune areas and bare soils in the surrounding deserts. Note that all the values of IPVI are never negative and always positive due to the formula used in computation, which distinguishes this index from the previous ones. 
-
-\begin{figure}[H]
-\makebox[0.99\linewidth][r]{%
-	\begin{subfigure}[b]{.55\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_08a}
-		\caption{2013}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.55\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_08b}
-		\caption{2013: histogram}
-	\end{subfigure}%
-}\\
-\vfill \vspace{1mm}
-\makebox[0.99\linewidth][r]{%
-	\begin{subfigure}[b]{.55\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_08c}
-		\caption{2018}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.55\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_08d}
-		\caption{2018: histogram}
-	\end{subfigure}%
-}\\
-\vfill \vspace{1mm}
-\makebox[0.99\linewidth][r]{%
-	\begin{subfigure}[b]{.55\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_08e}
-		\caption{2022}
-	\end{subfigure}%
-	\begin{subfigure}[b]{.55\textwidth}
-		\centering
-			\includegraphics[width=0.95\textwidth]{Fig_08f}
-		\caption{2022: histogram}
-	\end{subfigure}%
-}
-\caption{IPVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig08}
-\end{figure}
 
 Figure \ref{fig08} indicates the results of the computed IPVI for the Khartoum region with the subplots (a), (c) and (e) indicating changes in vegetative patterns related to desertification for the study area between 2013 and 2022, and the histograms in the subplots (b), (d) and (f) indicating the related statistics obtained from R. The comparison of the vegetative cover and the expansion of sand coverage on the images, produced by applying IPVI algorithms in R reveals that the extent of degraded land in the surroundings of Khartoum in southern Sudan has expanded from the 2013 towards 2022, as well as the overall effects of land degradation.
 
@@ -597,6 +557,49 @@ Figure \ref{fig08} indicates the results of the computed IPVI for the Khartoum r
 The method of R 'raster' and 'terra' libraries is advantageous for satellite image processing aimed at computing vegetation indices. The computations were conduced on a MacBook Air PC (i.e., chip Apple M1 2020, MacOS Ventura v. 13.2.1, 8GB of main memory). The evaluated processing speed reported in the Results section of this manuscript demonstrated technical advantages and benefits of R and its libraries 'terra' and 'raster'. The performance of R libraries was evaluated in terms of processing time with quantified computational aspects. High speed of computations demonstrated by R is beneficial for repetitive workflow of image processing when several scenes need to be processed sequentially for several years. Specifically, high speed of reading the data and total time of image processing (12 seconds for each image) confirmed that R is advantageous for remote sensing data processing, computational and mapping tasks.
 
 Moreover, using scripts enables to save time through automation of the repetitive tasks. This is more advantageous compared to the GIS with traditional GUI interface used for satellite image processing, such as ENVI GIS, SAGA GIS or Erdas IMAGINE. This is especially useful for a computation of several images to calculate several VIs using embedded formulae. Further, R scripts result in accurate machine-based graphics when processing the satellite images due to high level of automation. Applying scripts customized for each scene increases the speed of data processing which is advantageous when working with several images. For instance, scripts call embedded functions to perform parts of computations and data processing. Moreover, scripts provide quick plotting of maps and graphics that visualise the results. This help to highlight the changes in vegetation patterns when maps visualise the VIs on several years for comparison. 
+
+
+\begin{figure}[H]
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08a}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08b}
+		\caption{2013: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08c}
+		\caption{2018}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08d}
+		\caption{2018: histogram}
+	\end{subfigure}%
+}\\
+\vfill \vspace{1mm}
+\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08e}
+		\caption{2022}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08f}
+		\caption{2022: histogram}
+	\end{subfigure}%
+}
+\caption{IPVI computed from the Landsat 8 OLI/TIRS images on confluence of the White Nile and Blue Nile, Sudan for three years (always December): (\textbf{a}) 2013, (\textbf{b}) 2018, (\textbf{c}) 2022, (\textbf{d}) histogram for 2013, (\textbf{e}) histogram for 2018, (\textbf{f}) histogram for 2022.}\label{fig08}
+\end{figure}
 
 A package-based approach of R that is used in this paper as a target tool to remote sensing data processing which enables to perform computation of VI for analysis of satellite images. The presented use of R libraries shows the usefulness of this approach as an analytical tool with which we computed several VI and thus revealed changes in vegetation patterns of southern Sudan since 2013. The use of R presents opportunities for sustainable environmental monitoring of Sudan through integration of the remotely sensed data and advanced programming technologies. In this paper, we have proposed the application of R language for computation of several vegetation indices using the 'terra' library and satellite images Landsat 8-9 OLI/ITIRS. Compared to traditional GIS approaches, the proposed method demonstrates high efficiency and effectiveness for geospatial data processing aimed at environmental analysis. In the performed experiments in calculating VIs over the Landsat 8 OLI/TIRS data, our study has shown that, in most cases of the indices, a general trend in decrease of VI values is notable for data on 2013, 2018 and 2022, as shown in Table \ref{tab02} and visualised in Figures \ref{fig04}, \ref{fig05}, \ref{fig06}, \ref{fig07} and \ref{fig08}. This is clearly visible from the results obtained using the estimated parameters on indices NDVI, OSAVI, IPVI. 
 
@@ -622,7 +625,7 @@ In monitoring the Earth's landscapes, it is important to not only use topographi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \authorcontributions{Supervision, conceptualization, methodology, software, resources, funding acquisition, and project administration, O.D.; writing---original draft preparation, methodology, software, data curation, visualization, formal analysis, validation, writing---review and editing, and investigation, P.L. All authors have read and agreed to the published version of the manuscript.}
 
-\funding{The publication was funded by the Editorial Office of Journal of Imaging, Multidisciplinary Digital Publishing Institute (MDPI), by providing 100\% discount for the APC of this manuscript. This project was supported by the Federal Public Planning Service Science Policy or Belgian Science Policy Office, Federal Science Policy - BELSPO (B2/202/P2/SEISMOSTORM).}
+\funding{The publication was funded by the Editorial Office of Journal of Imaging, Multidisciplinary Digital Publishing Institute (MDPI), by providing 100\% discount for the APC of this manuscript.}
 
 \institutionalreview{Not applicable.}
 

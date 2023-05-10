@@ -85,7 +85,7 @@
 \newcommand{\orcidauthorB}{0000-0002-6461-1551} % Olivier Add \orcidB{} behind the author's name
 
 % Authors, for the paper (add full first names)
-\Author{\hl{Polina Lemenkova} %MDPI: Please carefully check the accuracy of names and affiliations.
+\Author{Polina Lemenkova %MDPI: Please carefully check the accuracy of names and affiliations. % Authors' reply: yes, correct.
  *\orcidA{} and Olivier Debeir \orcidB{}}
 
 %\longauthorlist{yes}
@@ -94,14 +94,14 @@
 \AuthorNames{Polina Lemenkova and Olivier Debeir}
 
 % MDPI internal command: Authors, for citation in the left column
-\AuthorCitation{\hl{Lemenkova, P.;} %MDPI: Please check all author names carefully. 
+\AuthorCitation{Lemenkova, P.; %MDPI: Please check all author names carefully. % Authors' reply: yes, correct.
  Debeir, O.}
 % If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
 \address[1]{%
-\hl{Laboratory} %MDPI: If the information provided presents more than one address, please separate the addresses into different affiliations.
- of Image Synthesis and Analysis (LISA), École polytechnique de Bruxelles (Brussels Faculty of Engineering), Université Libre de Bruxelles (ULB), Building L, Campus du Solbosch, ULB---LISA CP165/57, Avenue Franklin D. Roosevelt 50, Brussels 1050, Belgium; \hl{olivier.debeir@ulb.be} %MDPI: Newly added information. Please confirm.
+Laboratory %MDPI: If the information provided presents more than one address, please separate the addresses into different affiliations. % Authors' reply: there is only one affiliation and its only one address.
+ of Image Synthesis and Analysis (LISA), École polytechnique de Bruxelles (Brussels Faculty of Engineering), Université Libre de Bruxelles (ULB), Building L, Campus du Solbosch, ULB---LISA CP165/57, Avenue Franklin D. Roosevelt 50, Brussels 1050, Belgium; olivier.debeir@ulb.be %MDPI: Newly added information. Please confirm. % Authors' reply: yes, we confirm.
 
 }
 
@@ -129,7 +129,7 @@
 
 \subsection{Background}
 
-In this paper, we introduce the application of R libraries for satellite image processing in the context of computing vegetation indices (VIs) from the multispectral bands. Furthermore, we focus on calculating several satellite-derived VIs by discussing their technical details and differences. The~test dataset includes the Landsat 8-9 OLI/TIRS images collected on Khartoum city around the confluence between the White and Blue Niles. The~images were used to analyse the changes in the vegetation patterns and greenness through analysing the time series and visualising the dynamics in vegetation coverage. The~standard methods for such tasks are based on using the traditional \hl{GIS} %MDPI: Please add definition of this abbreviation when using it for the first time.
+In this paper, we introduce the application of R libraries for satellite image processing in the context of computing vegetation indices (VIs) from the multispectral bands. Furthermore, we focus on calculating several satellite-derived VIs by discussing their technical details and differences. The~test dataset includes the Landsat 8-9 OLI/TIRS images collected on Khartoum city around the confluence between the White and Blue Niles. The~images were used to analyse the changes in the vegetation patterns and greenness through analysing the time series and visualising the dynamics in vegetation coverage. The~standard methods for such tasks are based on using the traditional Geographic Information System (GIS) %MDPI: Please add definition of this abbreviation when using it for the first time. % Authors' reply: corrected as follows: Geographic Information System (GIS).
  software~\cite{AHMED201829} and involve many routine operations~\cite{Hawash,YOUSSEF2020103777,6621869,Aldoma}. Instead of using such conventional approaches, we apply several libraries of R such as `raster' and `terra' and auxiliary packages in~a principled way designed to obtain a better workflow for the image analysis~involved.
 
 The satellite sensors observing the Earth provide remote sensing data which allow one to highlight the links between the hydrological and climate processes leading to desertification and vegetation responses in environmental studies. The~importance of the use of remote sensing data and advanced methods of image processing was raised in earlier \mbox{studies~\cite{su14137871,ELBASTAWESY2017252,SOSNOWSKI201651,GORSEVSKI201364}.} Satellite images can be used to analyse the links between complex hydrological and climate processes and vegetation responses that lead to desertification. For~example, Landsat images are known to be a reliable source of data for relatively accurate techniques for classifying time-series and detecting forest and land cover types~\cite{WILSON2002385,Lemenkova202227,4293065,SALIH2017S21}, computing vegetation indices~\cite{5416935,Lemenkova202229,1026428} and specifically desertification~\cite{RIVERAMARIN2022104829} to show the advance or retreat of arid areas using the analysis of satellite images. Specifically, for~the Sudan and Nile Basin, the~Landsat data are a precious source of information due to data scarcity~\cite{Ali} regarding regular measurements of rainfall, streams run-off and~weather stations data. This highlights the importance of the remote sensing data for climate-related studies of~Sudan.
@@ -1158,7 +1158,7 @@ Salih, A.A.; Ganawa, E.T.; Elmahl, A.A.
   and semiarid areas (Sudan), using Landsat imagery.
 \newblock {\em  Egypt. J. Remote Sens. Space Sci.} {\bf
   2017}, {\em 20},~S21--S29.
-%\newblock \hl{Water Scarcity and Harvesting,} % Authors' reply: yes, we confirm to delete (not necessary).
+%\newblock Water Scarcity and Harvesting, % Authors' reply: yes, we confirm to delete (not necessary).
   {\url{https://doi.org/10.1016/j.ejrs.2016.12.008}}.
 
 \bibitem[Nori et~al.(2009)Nori, Sulieman, and Niemeyer]{5416935}
@@ -1423,7 +1423,7 @@ Salih, A.A.; Hamid, A.A.
 \newblock Hydrological studies in the White Nile State in Sudan.
 \newblock {\em  Egypt. J. Remote Sens. Space Sci.} {\bf
   2017}, {\em 20},~S31--S38.
-%\newblock \hl{Water scarcity and harvesting,} % Authors' reply: yes, we deleted (unnecessary).
+%\newblock Water scarcity and harvesting, % Authors' reply: yes, we deleted (unnecessary).
   {\url{https://doi.org/10.1016/j.ejrs.2016.12.004}}.
 
 \bibitem[Fuller(1987)]{FULLER198739}
@@ -1572,7 +1572,7 @@ Halwagy, R.
 Billi, P.; {el Badri Ali}, O.
 \newblock Sediment transport of the Blue Nile at Khartoum.
 \newblock {\em Quat. Int.} {\bf 2010}, {\em 226},~12--22.
-%\newblock \hl{Larger Asian Rivers: Climate Change, River Flow, and Watershed Management,}  % Authors' reply: yes, we deleted it (unnecessary).
+%\newblock Larger Asian Rivers: Climate Change, River Flow, and Watershed Management,  % Authors' reply: yes, we deleted it (unnecessary).
  {\url{https://doi.org/10.1016/j.quaint.2009.11.041}}.
 
 \bibitem[Pacini and Harper(2016)]{PACINI2016242}
@@ -1580,7 +1580,7 @@ Pacini, N.; Harper, D.M.
 \newblock Hydrological characteristics and water resources management in the
   Nile Basin.
 \newblock {\em Ecohydrol. Hydrobiol.} {\bf 2016}, {\em 16},~242--254.
-\newblock %\hl{Ecohydrology of large rivers,} % Authors' reply: yes, we confirm.
+\newblock %Ecohydrology of large rivers, % Authors' reply: yes, we confirm.
   {\url{https://doi.org/10.1016/j.ecohyd.2016.09.001}}.
 
 \bibitem[Ayik et~al.(2023)Ayik, Ijumba, Kabiri, and Goffin]{AYIK20232229}
@@ -1604,7 +1604,7 @@ Kobayashi, A.
 \newblock {\url{https://doi.org/10.1016/B978-0-08-102295-5.10005-8}}.
 
 \bibitem[Sulieman (2010)]{sulieman2010expansion}
-Sulieman, H.M.;  %\hl{et~al.} %MDPI: Please include the first ten authors' names before using "et al." in the references. % Authors' reply: corrected -  'et al.' is deleted. There is only one author (Sulieman, H.M.); there are no other authors in this paper.
+Sulieman, H.M.;  %et~al. %MDPI: Please include the first ten authors' names before using "et al." in the references. % Authors' reply: corrected -  'et al.' is deleted. There is only one author (Sulieman, H.M.); there are no other authors in this paper.
 \newblock Expansion of mechanized rain-fed agriculture and land-use/land-cover
   change in the Southern Gadarif, Sudan.
 \newblock {\em Afr. J. Agric. Res.} {\bf 2010}, {\em
@@ -1712,7 +1712,7 @@ Honegger, M.; Williams, M.
 \newblock Human occupations and environmental changes in the Nile valley during
   the Holocene: The case of Kerma in Upper Nubia (northern Sudan).
 \newblock {\em Quat. Sci. Rev.} {\bf 2015}, {\em 130},~141--154.
-%\newblock \hl{The Quaternary History of the River Nile,}  % Authors' reply: yes, we deleted (unnecessary information).
+%\newblock The Quaternary History of the River Nile,  % Authors' reply: yes, we deleted (unnecessary information).
   {\url{https://doi.org/10.1016/j.quascirev.2015.06.031}}.
 
 \bibitem[Omar A.~Abdi(2013)]{Abdi}
@@ -1756,7 +1756,7 @@ Conway, D.
 \newblock From headwater tributaries to international river: Observing and
   adapting to climate variability and change in the Nile basin.
 \newblock {\em Glob. Environ. Chang.} {\bf 2005}, {\em 15},~99--114.
-%\newblock \hl{Adaptation to Climate Change: Perspectives Across Scales,} % Authors' reply: yes, we deleted (unnecessary information).
+%\newblock Adaptation to Climate Change: Perspectives Across Scales, % Authors' reply: yes, we deleted (unnecessary information).
   {\url{https://doi.org/10.1016/j.gloenvcha.2005.01.003}}.
 
 \bibitem[Babiker and Mohamed(2019)]{Babiker}
@@ -1824,7 +1824,7 @@ Roy, D.; Kovalskyy, V.; Zhang, H.; Vermote, E.; Yan, L.; Kumar, S.; Egorov, A.
 \newblock Characterization of Landsat-7 to Landsat-8 reflective wavelength and
   normalized difference vegetation index continuity.
 \newblock {\em Remote Sens. Environ.} {\bf 2016}, {\em 185},~57--70.
-%\newblock \hl{Landsat 8 Science Results,} % Authors' reply: yes, we deleted it (unnecessary information).
+%\newblock Landsat 8 Science Results, % Authors' reply: yes, we deleted it (unnecessary information).
   {\url{https://doi.org/10.1016/j.rse.2015.12.024}}.
 
 \clearpage

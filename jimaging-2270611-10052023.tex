@@ -134,8 +134,8 @@ In this paper, we introduce the application of R libraries for satellite image p
 
 The satellite sensors observing the Earth provide remote sensing data which allow one to highlight the links between the hydrological and climate processes leading to desertification and vegetation responses in environmental studies. The~importance of the use of remote sensing data and advanced methods of image processing was raised in earlier \mbox{studies~\cite{su14137871,ELBASTAWESY2017252,SOSNOWSKI201651,GORSEVSKI201364}.} Satellite images can be used to analyse the links between complex hydrological and climate processes and vegetation responses that lead to desertification. For~example, Landsat images are known to be a reliable source of data for relatively accurate techniques for classifying time-series and detecting forest and land cover types~\cite{WILSON2002385,Lemenkova202227,4293065,SALIH2017S21}, computing vegetation indices~\cite{5416935,Lemenkova202229,1026428} and specifically desertification~\cite{RIVERAMARIN2022104829} to show the advance or retreat of arid areas using the analysis of satellite images. Specifically, for~the Sudan and Nile Basin, the~Landsat data are a precious source of information due to data scarcity~\cite{Ali} regarding regular measurements of rainfall, streams run-off and~weather stations data. This highlights the importance of the remote sensing data for climate-related studies of~Sudan.
 
-GIS was one of the earliest computer-based applications for satellite image processing developed for the empirical investigations of the environmental parameters derived from remote sensing data. Since the 1990s, researchers were able to accurately compute the vegetation indices derived from the images using GIS. Previous studies evaluated the performance of the \hl{ERDAS} %MDPI: Please add definition, the following highlights are the same.
- Imagine in computing vegetation indices to assess desertification in semi-arid regions, emphasising that the \hl{NDVI} classification is suitable for assessing land degradation using the NDVI pixel range~\cite{KUMAR2022100578}. Others examined the links between the NDVI and the salinity characteristics in the surface water, groundwater and~soils using the ArcGIS~\cite{RASHID2023100314}. Furthermore, Ezaidi~et~al. applied \hl{ENVI} GIS for computing the NDVI for a time series of the Landsat images to assess the degradation in vegetation~\cite{EZAIDI2022100800}. All these studies illustrate the traditional approaches for computing vegetation indices by~GIS.
+GIS was one of the earliest computer-based applications for satellite image processing developed for the empirical investigations of the environmental parameters derived from remote sensing data. Since the 1990s, researchers were able to accurately compute the vegetation indices derived from the images using GIS. Previous studies evaluated the performance of the Earth Resources Data Analysis System (ERDAS) %MDPI: Please add definition, the following highlights are the same. % Authors' reply: corrected as follows: Earth Resources Data Analysis System (ERDAS); ENvironment for Visualizing Images (ENVI); Normalized Difference Vegetation Index (NDVI) The abbreviation is also added in the Abbreviations list.
+ Imagine in computing vegetation indices to assess desertification in semi-arid regions, emphasising that the Normalized Difference Vegetation Index (NDVI) classification is suitable for assessing land degradation using the NDVI pixel range~\cite{KUMAR2022100578}. Others examined the links between the NDVI and the salinity characteristics in the surface water, groundwater and~soils using the ArcGIS~\cite{RASHID2023100314}. Furthermore, Ezaidi~et~al. applied ENvironment for Visualizing Images (ENVI) GIS for computing the NDVI for a time series of the Landsat images to assess the degradation in vegetation~\cite{EZAIDI2022100800}. All these studies illustrate the traditional approaches for computing vegetation indices by~GIS.
 
 As a general overview, GIS enables to calculate vegetation indices through the manipulation of Landsat images using map algebra. However, the~efficacy of the computational approaches must be questioned, as~more advanced tools of spatial data analysis enable the application of modelling methods for computing the VIs. Over~the course of the past \mbox{20 years}, there has been significant progress in programming applications in environmental studies towards automation methods in image processing, such as R. Programming methods in geoinformatics have undergone significant evolution in recent decades, and now they generally result in higher accuracy, and diverse computational approaches in a variety of libraries and pre-programmed packages for data~processing. 
 
@@ -157,7 +157,7 @@ In this paper, we address the issue of using the R programming language in geosp
 	\item A summary of R scripts used for computing and mapping vegetation indices is reported, to~provide the reader with the technical reference of the applied methods.
 \end{itemize}
 
-The remainder of this paper is organised as follows. We review the environmental setting of the study area with related works in the following subsection. In~Section~\ref{sect2}, Materials and Methods, we provide a description of the data and methods used in this study. We describe the data used and report their major characteristics in Section~\ref{sect2.1}, Data. We introduce an R language concept, present a principle of R-base libraries for computing vegetation indices and propose the use of `raster' and `terra' libraries in Section~\ref{sect2.2}, Methodology. In~Section~\ref{sect2.3}, Calculating Vegetation Indices, we provide a comprehensive experimental evaluation computing several vegetation indices, providing details on the algorithms,  the differences in their implementation and target applications. In~Section~\ref{sect3}, Results, we report on the results of five computed vegetation indices and compare their performances on the vegetation of southern Sudan. We conclude this paper with a discussion in Section~\ref{sect4} and provide closing remarks in \hl{Section} %MDPI: We changed Section 6 to Section 5, please check.
+The remainder of this paper is organised as follows. We review the environmental setting of the study area with related works in the following subsection. In~Section~\ref{sect2}, Materials and Methods, we provide a description of the data and methods used in this study. We describe the data used and report their major characteristics in Section~\ref{sect2.1}, Data. We introduce an R language concept, present a principle of R-base libraries for computing vegetation indices and propose the use of `raster' and `terra' libraries in Section~\ref{sect2.2}, Methodology. In~Section~\ref{sect2.3}, Calculating Vegetation Indices, we provide a comprehensive experimental evaluation computing several vegetation indices, providing details on the algorithms,  the differences in their implementation and target applications. In~Section~\ref{sect3}, Results, we report on the results of five computed vegetation indices and compare their performances on the vegetation of southern Sudan. We conclude this paper with a discussion in Section~\ref{sect4} and provide closing remarks in Section %MDPI: We changed Section 6 to Section 5, please check. % Authors' reply: yes, correct.
 ~\ref{sect5}. The~main metadata of the satellite images and programming listings of the R scripts are provided in the~Appendices \ref{Appendix A} and \ref{Appendix B}.
 
 \subsection{Study~Area}
@@ -167,11 +167,10 @@ Desertification is one of the most destructive climate-related issues in Sudan, 
 \begin{figure}[H]
 
 \begin{adjustwidth}{-\extralength}{0cm}
-\centering %% If there is a figure in wide page, please release command \centering
-
-	\includegraphics[width=15.5 cm]{Fig_01.jpg}
+%\centering %% If there is a figure in wide page, please release command \centering % Authors' reply: corrected.
+	\hspace{50pt}\includegraphics[width=17.0 cm]{Fig_01.jpg}
 \end{adjustwidth}
-	\caption{\hl{Topographic} %MDPI: The content of the picture is covered, please modify. If the covered area does not affect the readability, please confirm.
+	\caption{Topographic %MDPI: The content of the picture is covered, please modify. If the covered area does not affect the readability, please confirm. % Authors' reply: yes, we confirm that the content of the map is correct. The area of the Sudan is made more bright against the neighboring countries to focus the attention on the target area. This is done on purpose using cartographic technic of transparency added to 40% on the neighbouring countries. The area of Sudan is plotted with 100% opacity. Everything is correct here.
  map of Sudan. Mapping software: Generic Mapping Tools (GMT) scripting toolset version 6.1.1,~\cite{Wessel}. Data source: GEBCO/SRTM. Cartography source: authors.
 	\label{fig01}}
 \end{figure}
@@ -187,22 +186,22 @@ Out of the territory of Sudan, 70\%  belongs to the Nile basin~\cite{Melesse}, w
 	
 \begin{adjustwidth}{-\extralength}{0cm}
 
-\centering %% If there is a figure in wide page, please release command \centering
+%\centering %% If there is a figure in wide page, please release command \centering % Authors' reply: corrected.
 {\captionsetup{position=bottom,justification=centering} 
-\begin{subfigure}[]{.5\textwidth}
-		\centering
-			\includegraphics[width=7cm]{Fig_02a.jpg}
+\begin{subfigure}[]{.55\textwidth}
+		%\centering
+			\hspace{100pt}\includegraphics[width=7cm]{Fig_02a.jpg}
 		\caption{}
 	\end{subfigure}\hspace{3pt}
-	\begin{subfigure}[]{.5\textwidth}
-		\centering
-			\includegraphics[width=7cm]{Fig_02b.jpg}
+	\begin{subfigure}[]{.55\textwidth}
+		%\centering
+			\hspace{100pt}\includegraphics[width=7cm]{Fig_02b.jpg}
 		\caption{}
 	\end{subfigure}}
 \end{adjustwidth}%
 %}
-\caption{\hl{The confluence} %MDPI: Please add the explanation for non-english character in the figure.
- of the White Nile and Blue Nile in Khartoum, visualised based on the map and aerial images from Google Earth: (\textbf{a}) Google Earth Map; and (\textbf{b}) Google Earth~Image.}\label{fig02}
+\caption{The confluence %MDPI: Please add the explanation for non-english character in the figure. % Authors' reply: added explanation as follows: "The non-English characters in the map present the names of the topographic objects added automatically on the Google Map and Google Earth data using national official language of the country. Here the Arabic translations are added for all the settlements and objects represented on a map of Sudan on the Google Map and Google Earth data."
+ of the White Nile and Blue Nile in Khartoum, visualised based on the map and aerial images from Google Earth: (\textbf{a}) Google Earth Map; and (\textbf{b}) Google Earth~Image. The non-English characters in the map present the names of the topographic objects added automatically on the Google Map and Google Earth data using national official language of the country. Here the Arabic translations are added for all the settlements and objects represented on a map of Sudan on the Google Map and Google Earth data.}\label{fig02}
 \end{figure}
 
 The social factors of desertification include processes related to land management and agriculture policymaking~\cite{KOBAYASHI2020257}. Although~agriculture and livestock play an important role in the economy of Sudan and constitute major sources of livelihood~\cite{sulieman2010expansion}, unsustainable agricultural expansion and farming contribute to Sudan's desertification~\cite{Ibrahim} since uncontrolled agriculture results in soil erosion, compaction and nutrient depletion, changed irrigation patterns~\cite{AHMED2020106064} and the increased use of pesticides~\cite{Nesser} which contribute to land cover changes. Moreover, cattle overgrazing also modifies the landscape structure and contributes to desertification~\cite{Ahmed,Sulieman,Akhtar}. The~intense practice of urban agriculture in Khartoum aims to meet the increasing food demands of the growing population~\cite{SCHUMACHER2009399} which results in additional pressure on the environment on the one hand, and~a gradual increase in the built-up area on the other. The~confluence of the Blue Nile and White Nile forming its major artery of the Greater Nile near Khartoum results in a high concentration of the population in this district. Furthermore, consequences of the desertification also drive people into Khartoum, thereby increasing the urbanisation and the environmental pressure in the region~\cite{Babiker1982,Mohammed}, and~the Atbara River (Red Nile) has high levels of mining activities related to resource exploration~\cite{SASMAZ2020106539}. 
@@ -781,6 +780,9 @@ The following abbreviations are used in this manuscript:\\
 
 \noindent 
 \begin{tabular}{@{}ll}
+ENVI & ENvironment for Visualizing Images \\
+ERDAS Imagine & Earth Resources Data Analysis System Imagine \\
+GIS & Geographic Information System \\
 GMT & Generic Mapping Tools \\
 GNDVI & Green Normalised Difference Vegetation Index \\
 IPVI & Infrared Percentage Vegetation Index \\

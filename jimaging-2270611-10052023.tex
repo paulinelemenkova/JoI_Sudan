@@ -1,0 +1,2079 @@
+%  LaTeX support: latex@mdpi.com 
+%  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
+
+%=================================================================
+\documentclass[jimaging,article,accept,pdftex,moreauthors]{Definitions/mdpi} 
+
+%=================================================================
+
+% MDPI internal commands
+
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2023}
+\copyrightyear{2023}
+\externaleditor{Academic Editor: Pierre Gouton
+}
+\datereceived{23 February 2023} 
+\daterevised{4 May 2023} % Comment out if no revised date
+\dateaccepted{8 May 2023} 
+\datepublished{ } 
+%\datecorrected{} % For corrected papers: "Corrected: XXX" date in the original paper.
+%\dateretracted{} % For corrected papers: "Retracted: XXX" date in the original paper.
+\hreflink{https://doi.org/} % If needed use \linebreak
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, soul, multirow, microtype, tikz, totcount, changepage, attrib, upgreek, cleveref, amsthm, hyphenat, natbib, hyperref, footmisc, url, geometry, newfloat, caption
+
+\graphicspath{{figures/}} % path to folder with figures
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{\alph{subfigure}}
+\DeclareCaptionLabelFormat{subcaptionlabel}{\normalfont(\textbf{#2}\normalfont)}
+\captionsetup[subfigure]{labelformat=subcaptionlabel}
+
+
+
+
+
+\usepackage{xcolor}
+\usepackage{gensymb} % for \textdegree
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{multirow}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepmagenta}{RGB}{195,12,214}
+\definecolor{deepgreen}{RGB}{29,122,30}
+\definecolor{mintgreen}{RGB}{192,249,192}
+\definecolor{codepurple}{RGB}{204, 0, 153}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{GainsboroPurple}{RGB}{247,176,247}
+\definecolor{LightSlateGrey}{RGB}{124,118,118}
+%    
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{LightSlateGrey},
+    keywordstyle=\color{deepgreen}\bfseries,
+    emphstyle=\color{deepred},
+    numberstyle=\tiny\color{deepmagenta},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=t,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=tb,
+framerule=1pt,
+framextopmargin=2pt,framexbottommargin=2pt,
+abovecaptionskip=-3pt,belowcaptionskip=3pt,
+xleftmargin=-0em,xrightmargin=4em
+}
+\lstset{style=mystyle}
+ \captionsetup[lstlisting]{position=top, margin=0cm,labelfont={bf, small, stretch=1.17},labelsep=period, textfont={small, stretch=1.17}, aboveskip=6pt, singlelinecheck=off, justification=justified}
+ 
+ \usepackage{hyperref}
+%\makeatletter
+%\g@addto@macro{\UrlBreaks}{\UrlOrds}
+%\makeatother
+\makeatletter
+\def\UrlAlphabet{%
+\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+\do\Y\do\Z}
+\def\UrlDigits{\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0}
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\g@addto@macro{\UrlBreaks}{\UrlAlphabet}
+\g@addto@macro{\UrlBreaks}{\UrlDigits}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%================================================================= in Khartoum Region of Sudan, NE Africa
+% Full title of the paper (Capitalized)
+\Title{Multispectral Satellite Image Analysis for Computing Vegetation Indices by R in the Khartoum Region of Sudan, Northeast Africa}
+
+% MDPI internal command: Title for citation in the left column
+\TitleCitation{Multispectral Satellite Image Analysis for Computing Vegetation Indices by R in the Khartoum Region of Sudan, Northeast Africa}
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
+\newcommand{\orcidauthorB}{0000-0002-6461-1551} % Olivier Add \orcidB{} behind the author's name
+
+% Authors, for the paper (add full first names)
+\Author{\hl{Polina Lemenkova} %MDPI: Please carefully check the accuracy of names and affiliations.
+ *\orcidA{} and Olivier Debeir \orcidB{}}
+
+%\longauthorlist{yes}
+
+% MDPI internal command: Authors, for metadata in PDF
+\AuthorNames{Polina Lemenkova and Olivier Debeir}
+
+% MDPI internal command: Authors, for citation in the left column
+\AuthorCitation{\hl{Lemenkova, P.;} %MDPI: Please check all author names carefully. 
+ Debeir, O.}
+% If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address[1]{%
+\hl{Laboratory} %MDPI: If the information provided presents more than one address, please separate the addresses into different affiliations.
+ of Image Synthesis and Analysis (LISA), École polytechnique de Bruxelles (Brussels Faculty of Engineering), Université Libre de Bruxelles (ULB), Building L, Campus du Solbosch, ULB---LISA CP165/57, Avenue Franklin D. Roosevelt 50, Brussels 1050, Belgium; \hl{olivier.debeir@ulb.be} %MDPI: Newly added information. Please confirm.
+
+}
+
+% Contact information of the corresponding author
+\corres{\hangafter=1 \hangindent=1.05em \hspace{-0.82em}Correspondence: polina.lemenkova@ulb.be; Tel.: +32-471-86-04-59}
+
+% Current address and/or shared authorship
+%\firstnote{Current address: Affiliation 3.} 
+
+\abstract{Desertification is one of the most destructive climate-related issues in the Sudan--Sahel region of Africa. As the assessment of desertification is possible by satellite image analysis using vegetation indices (VIs), this study reports on the technical advantages and capabilities of scripting the `raster' and `terra' R-language packages for computing the VIs. The test area which was considered includes the region of the confluence between the Blue and White Niles in Khartoum, southern Sudan, northeast Africa and the Landsat 8-9 OLI/TIRS images taken for the years 2013, 2018 and 2022, which were chosen as test datasets. The VIs used here are robust indicators of plant greenness, and combined with vegetation coverage, are essential parameters for environmental analytics. Five VIs were calculated to compare both the status and dynamics of vegetation through the differences between the images collected within the nine-year span. Using scripts for computing and visualising the VIs over Sudan demonstrates previously unreported patterns of vegetation to reveal climate--vegetation relationships. The ability of the R packages `raster' and `terra' to process spatial data was enhanced through scripting to automate image analysis and mapping, and choosing Sudan for the case study enables us to present new perspectives for image processing.
+}
+% Keywords
+\keyword{remote sensing; Sudan; Khartoum; Nile river; image analysis; image processing; information retrieval; programming; Africa; computer vision} 
+
+\PACS{91.10.Da; 91.10.Jf; 91.10.Sp; 91.10.Xa; 96.25.Vt; 91.10.Fc; 95.40.+s; 95.75.Qr; 95.75.Rs; 42.68.Wt}
+\MSC{86A30; 86-08; 86A99; 86A04}
+\JEL{Y91; Q20; Q24; Q23; Q3; Q01; R11; O44; O13; Q5; Q51; Q55; N57; C6; C61}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\section{Introduction}
+\unskip
+
+\subsection{Background}
+
+In this paper, we introduce the application of R libraries for satellite image processing in the context of computing vegetation indices (VIs) from the multispectral bands. Furthermore, we focus on calculating several satellite-derived VIs by discussing their technical details and differences. The~test dataset includes the Landsat 8-9 OLI/TIRS images collected on Khartoum city around the confluence between the White and Blue Niles. The~images were used to analyse the changes in the vegetation patterns and greenness through analysing the time series and visualising the dynamics in vegetation coverage. The~standard methods for such tasks are based on using the traditional \hl{GIS} %MDPI: Please add definition of this abbreviation when using it for the first time.
+ software~\cite{AHMED201829} and involve many routine operations~\cite{Hawash,YOUSSEF2020103777,6621869,Aldoma}. Instead of using such conventional approaches, we apply several libraries of R such as `raster' and `terra' and auxiliary packages in~a principled way designed to obtain a better workflow for the image analysis~involved.
+
+The satellite sensors observing the Earth provide remote sensing data which allow one to highlight the links between the hydrological and climate processes leading to desertification and vegetation responses in environmental studies. The~importance of the use of remote sensing data and advanced methods of image processing was raised in earlier \mbox{studies~\cite{su14137871,ELBASTAWESY2017252,SOSNOWSKI201651,GORSEVSKI201364}.} Satellite images can be used to analyse the links between complex hydrological and climate processes and vegetation responses that lead to desertification. For~example, Landsat images are known to be a reliable source of data for relatively accurate techniques for classifying time-series and detecting forest and land cover types~\cite{WILSON2002385,Lemenkova202227,4293065,SALIH2017S21}, computing vegetation indices~\cite{5416935,Lemenkova202229,1026428} and specifically desertification~\cite{RIVERAMARIN2022104829} to show the advance or retreat of arid areas using the analysis of satellite images. Specifically, for~the Sudan and Nile Basin, the~Landsat data are a precious source of information due to data scarcity~\cite{Ali} regarding regular measurements of rainfall, streams run-off and~weather stations data. This highlights the importance of the remote sensing data for climate-related studies of~Sudan.
+
+GIS was one of the earliest computer-based applications for satellite image processing developed for the empirical investigations of the environmental parameters derived from remote sensing data. Since the 1990s, researchers were able to accurately compute the vegetation indices derived from the images using GIS. Previous studies evaluated the performance of the \hl{ERDAS} %MDPI: Please add definition, the following highlights are the same.
+ Imagine in computing vegetation indices to assess desertification in semi-arid regions, emphasising that the \hl{NDVI} classification is suitable for assessing land degradation using the NDVI pixel range~\cite{KUMAR2022100578}. Others examined the links between the NDVI and the salinity characteristics in the surface water, groundwater and~soils using the ArcGIS~\cite{RASHID2023100314}. Furthermore, Ezaidi~et~al. applied \hl{ENVI} GIS for computing the NDVI for a time series of the Landsat images to assess the degradation in vegetation~\cite{EZAIDI2022100800}. All these studies illustrate the traditional approaches for computing vegetation indices by~GIS.
+
+As a general overview, GIS enables to calculate vegetation indices through the manipulation of Landsat images using map algebra. However, the~efficacy of the computational approaches must be questioned, as~more advanced tools of spatial data analysis enable the application of modelling methods for computing the VIs. Over~the course of the past \mbox{20 years}, there has been significant progress in programming applications in environmental studies towards automation methods in image processing, such as R. Programming methods in geoinformatics have undergone significant evolution in recent decades, and now they generally result in higher accuracy, and diverse computational approaches in a variety of libraries and pre-programmed packages for data~processing. 
+
+For instance, ref.~\cite{MARTINEZ2023115155} demonstrated the use of generalised additive models to study the relationships between vegetation types and NDVI. Furthermore, ref.~\cite{OMAR2021e01020} demonstrated the use of Holt-Winters modelling to detect trend and seasonal vegetation patterns using Python's Scikit-Learn library, and~\cite{WANG2022102704} demonstrated the use of the partial least squared regression (PLSR) model in the SIMCA-P software to track the non-linear relationships between the NDVI and climatic variables. The recent development of machine learning tools through the use of the Python programming language enabled the use of a convolutional neural network (CNN) and deep neural networks (DNNs) for the environmental analysis and estimation of the VIs~\cite{BARRIGUINHA2022103069,ROY2021100582,LI2022102818,DAVIDSON2022107396}. Such technical advances are beneficial for image processing and spatial data analysis compared to traditional GIS methods~\cite{6049966,Lemenkova202301,6910592,Lemenkova202228,9323708,1027236}. Considering such advantages of the programming languages in the automation of geospatial data analysis, the~algorithms of R present a faster and more effective approach to implement image processing~scripts.
+
+Compared to the aforementioned programming approaches, the~use of R in the context of computing VIs presents a more straightforward approach. Similarly to GIS approaches, R is adjusted to the processing of the Landsat bands; at the same time, the~flexibility of R being a programming language allows the full control of the data processing and a high level of automation. Examples of R used for computing VIs include the `raster' package for computing the NDVI~\cite{LEVEAU2021127199}, the `npphen' R package to assess the NDVI anomalies and evaluating spatio-temporal changes~\cite{CHAVEZ2023103138}, the `akima' R package to interpolate environmental parameters~\cite{KLIMAVICIUS2023171} or the `RStoolbox' package for computing the NDVI~\cite{PRAVALIE2022108629}. Such methods are comparable to our approach; however, they are largely tied to the formulation of a specific problem applied to the target areas. To~the best of our knowledge, no previous studies reported on the use of R for computing the VIs in Sudan. This study fills this gap and highlights the benefits of using advanced techniques to compute the VIs specifically for the Sahelian landscapes of southern Sudan, which are prone to~desertification.
+
+\subsection{Objectives and~Motivation}
+
+The main purpose of the current paper was to apply an R-based method of satellite image processing that can extract information on several vegetation indices for evaluating the vegetation patterns in the arid environmental setting of southern Sudan. The~method of R utilises the concept of scripting libraries and suggests a way to obtain values of spectral bands for computing diverse vegetation indices that describe the vegetation greenness and health. Subsequently, this builds an approach to analyse the remote sensing data associated with a spectral signature of land surface features visible in the spaceborne data. The~resulting series of the computed vegetation indices can be evaluated to support environmental monitoring and mapping in semi-arid and arid areas of eastern~Africa.
+
+In this paper, we address the issue of using the R programming language in geospatial studies with a particular case of satellite image processing. Compared with the existing literature, the~main contributions of this paper are highlighted as~follows:
+\begin{itemize}
+	\item To the best of our knowledge, this is the first paper in the literature that focuses on the application of R libraries for computing several vegetation indices over the area of Khartoum, Sudan;
+	\item As opposed to previous studies, we present the application of `raster' and `terra' packages of R for remote sensing data analysis instead of the traditional GIS software;
+	\item We further extend the use of Landsat 8-9 OLI/TIRS sensors to extract geospatial information from multispectral images;
+	\item We comprehensively evaluate the performance of different vegetation indices for the case of semi-arid vegetation patterns in southern Sudan. To~this end, we apply the R algorithms to calculate five different VI which differ in computational approaches and tuned to diverse environmental aspects of vegetation: (1) Normalised Difference Vegetation Index (NDVI); (2) Normalised Difference Water Index (NDWI); (3) Infrared Percentage Vegetation Index (IPVI); (4) Optimised Soil-Adjusted Vegetation Index (OSAVI); and~(5) Green Normalised Difference Vegetation Index (GNDVI);
+	\item We provide an overview of the major environmental aspects of Sudan which include recent issues of desertification related to semi-arid climate, land cover changes and hydrology of the Nile which controls the cycle of vegetation growth in Sudan.
+	\item A summary of R scripts used for computing and mapping vegetation indices is reported, to~provide the reader with the technical reference of the applied methods.
+\end{itemize}
+
+The remainder of this paper is organised as follows. We review the environmental setting of the study area with related works in the following subsection. In~Section~\ref{sect2}, Materials and Methods, we provide a description of the data and methods used in this study. We describe the data used and report their major characteristics in Section~\ref{sect2.1}, Data. We introduce an R language concept, present a principle of R-base libraries for computing vegetation indices and propose the use of `raster' and `terra' libraries in Section~\ref{sect2.2}, Methodology. In~Section~\ref{sect2.3}, Calculating Vegetation Indices, we provide a comprehensive experimental evaluation computing several vegetation indices, providing details on the algorithms,  the differences in their implementation and target applications. In~Section~\ref{sect3}, Results, we report on the results of five computed vegetation indices and compare their performances on the vegetation of southern Sudan. We conclude this paper with a discussion in Section~\ref{sect4} and provide closing remarks in \hl{Section} %MDPI: We changed Section 6 to Section 5, please check.
+~\ref{sect5}. The~main metadata of the satellite images and programming listings of the R scripts are provided in the~Appendices \ref{Appendix A} and \ref{Appendix B}.
+
+\subsection{Study~Area}
+
+Desertification is one of the most destructive climate-related issues in Sudan, which is located southwards of the Sahara Desert in the Sudan--Sahel region of Africa, (Figure~\ref{fig01}). The~desertification results from various factors including climate change and human activities. The~climate drivers include rising temperatures, decreased relative humidity~\cite{Alvi}, increased soil salinization~\cite{DAWELBAIT201245}, seasonality and a decline in the rainfall~\cite{MOHAMED20223265}, instability and irregularity of wet and dry seasons~\cite{HULME198689}, variability of precipitation~\cite{Elagib,Ayoub} and overall water deficit~\cite{akhtar1994methods}. Recent studies such as~\cite{SALIH2017S31} reported frequent and severe drought periods in recent decades resulting in several cycles of famine in Sudan affecting farmers and local populations. For~instance, chronic drought was reported in the Sahel region of Darfur~\cite{FULLER198739}, and droughts have been reported in central Sudan~\cite{Salih2022} and~eastern Sudan~\cite{TARIKU2021144863,SULIEMAN2012132}. 
+
+\begin{figure}[H]
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering %% If there is a figure in wide page, please release command \centering
+
+	\includegraphics[width=15.5 cm]{Fig_01.jpg}
+\end{adjustwidth}
+	\caption{\hl{Topographic} %MDPI: The content of the picture is covered, please modify. If the covered area does not affect the readability, please confirm.
+ map of Sudan. Mapping software: Generic Mapping Tools (GMT) scripting toolset version 6.1.1,~\cite{Wessel}. Data source: GEBCO/SRTM. Cartography source: authors.
+	\label{fig01}}
+\end{figure}
+
+Other factors include changed patterns of cloudiness and atmospheric radiation, resulting in high evapotranspiration in the extreme north near the Sahara,~southern Sahel and the savannah, affecting the vegetation growth~\cite{ElKarouri1986}. Hence, the~environmental challenges in the semi-arid climate of Sudan affect vegetation patterns which are controlled by the regional climate setting and variations in rainfall, evaporation, cloudiness, atmospheric radiation and other climate-related processes. Recent droughts and decreased rainfall affect vegetation growth and health due to the lack of humidity in the air. As~a consequence, this initiated gradual processes of desertification in Saharan-Sahelian Africa, with the expansion of drylands and the degradation of the~landscapes.
+
+These processes trigger environmental degradation, especially in vulnerable zones of central and southern Sahelian zone of Sudan~\cite{Pearce,YANG2022106213} and the savannah~\cite{Falkenmark}. The~most endangered region of Sudan prone to the risks of desertification lies between 12° and 18° N, near~its capital---Khartoum. The~flat topography of the country exacerbates the desertification problems and increases the effects of dust and sand storms that often occur in the northern regions of Sudan~\cite{khiry2006mapping,9635812,7948717,7381366}. Specifically, this includes the effects of the creeping sands and dunes from the areas of Sahara, Nubian and Libyan deserts, as can be seen in Figure~\ref{fig01}. The~consequence of this is deforestation, soil desiccation, changed land cover types~\cite{Biro} and decreased biodiversity. The~latter includes the extinction of wild species in oases, and~consequences of land cover changes include the imbalance of ecosystems, spread of invasive species~\cite{insects10110405} and disturbance of natural habitat patterns~\cite{Fuller}. 
+
+Out of the territory of Sudan, 70\%  belongs to the Nile basin~\cite{Melesse}, with five out of the six Cataracts of the Nile located within Sudan (Figure \ref{fig01}). Moreover, roughly 2/3 of the territory of the Nile lies within Sudan with its major tributaries---the While Nile and Blue Nile---joining near Khartoum~\cite{Hamad}. Hence, the~specifics of the Khartoum region are tightly connected to the Nile river system and the confluence of the White Nile and Blue Nile, as shown in Figure~\ref{fig02}. The~impact that the Nile river has on the environment includes occasional floods, soil erosion and the succession of vegetation on the islands and banks~\cite{Halwagy}, the accumulation of sedimentation~\cite{BILLI201012}, or~the growth in aquatic weeds~\cite{PACINI2016242}. While providing a specific place for a wetland habitat of rare species, the~Nile river is also an essential water artery of the country and~plays multiple crucial roles. It is a source of hydropower in Sudan~\cite{AYIK20232229}, an~important transport waterway and~provides water resources for 85\% of the population and irrigated agriculture~\cite{Kauetal2023}. Moreover, the~functionality and structure of the riparian vegetation in Sudan strongly depend upon the hydrology of the Nile, especially in its southern region near the confluence of the White Nile and the Blue~Nile.
+
+\begin{figure}[H]
+%\makebox[1.0\linewidth][r]{%
+	
+\begin{adjustwidth}{-\extralength}{0cm}
+
+\centering %% If there is a figure in wide page, please release command \centering
+{\captionsetup{position=bottom,justification=centering} 
+\begin{subfigure}[]{.5\textwidth}
+		\centering
+			\includegraphics[width=7cm]{Fig_02a.jpg}
+		\caption{}
+	\end{subfigure}\hspace{3pt}
+	\begin{subfigure}[]{.5\textwidth}
+		\centering
+			\includegraphics[width=7cm]{Fig_02b.jpg}
+		\caption{}
+	\end{subfigure}}
+\end{adjustwidth}%
+%}
+\caption{\hl{The confluence} %MDPI: Please add the explanation for non-english character in the figure.
+ of the White Nile and Blue Nile in Khartoum, visualised based on the map and aerial images from Google Earth: (\textbf{a}) Google Earth Map; and (\textbf{b}) Google Earth~Image.}\label{fig02}
+\end{figure}
+
+The social factors of desertification include processes related to land management and agriculture policymaking~\cite{KOBAYASHI2020257}. Although~agriculture and livestock play an important role in the economy of Sudan and constitute major sources of livelihood~\cite{sulieman2010expansion}, unsustainable agricultural expansion and farming contribute to Sudan's desertification~\cite{Ibrahim} since uncontrolled agriculture results in soil erosion, compaction and nutrient depletion, changed irrigation patterns~\cite{AHMED2020106064} and the increased use of pesticides~\cite{Nesser} which contribute to land cover changes. Moreover, cattle overgrazing also modifies the landscape structure and contributes to desertification~\cite{Ahmed,Sulieman,Akhtar}. The~intense practice of urban agriculture in Khartoum aims to meet the increasing food demands of the growing population~\cite{SCHUMACHER2009399} which results in additional pressure on the environment on the one hand, and~a gradual increase in the built-up area on the other. The~confluence of the Blue Nile and White Nile forming its major artery of the Greater Nile near Khartoum results in a high concentration of the population in this district. Furthermore, consequences of the desertification also drive people into Khartoum, thereby increasing the urbanisation and the environmental pressure in the region~\cite{Babiker1982,Mohammed}, and~the Atbara River (Red Nile) has high levels of mining activities related to resource exploration~\cite{SASMAZ2020106539}. 
+
+Desertification leads to many negative environmental consequences such as land degradation in the arid and semi-arid regions of Sudan~\cite{Khiry,ELNASHAR2022152925}. The social consequences of desertification in Sudan include increased droughts and associated famine due to affected food production and soil degradation in the Sahelian zone~\cite{Subramaniam}. The~environmental changes in the past highlighted links between the human occupation and responses from the environment~\cite{HONEGGER2015141}. For~instance, the deep ploughing of the surface increased the susceptibility of soil to wind erosion, which leads to a severe decline in fertility and the formation of sand dunes~\cite{Abdi}. Other examples of the effects of the desertification include reduced biological productivity~\cite{KHALIFA2018790,Jahelnabi} and a decreasing plant biomass, with an increase in the extremely dry desert areas. The~cumulative effect of these factors include unpredictable and severe droughts, desiccation or aridification and dryland degradation or desertification in the dryland regions~\cite{Darkoh}. 
+
+Climatic trends are reflected in the hydrology of the Nile, which shows high levels of variability in the river flow records~\cite{CONWAY200599} and variations in peak discharge~\cite{Babiker}. For~instance, the~increasing trend in the natural water storage variation of the Nile can be detected in northern Sudan~\cite{ABDELMALIK2019103596}. Such fluctuations in the hydrology of the Nile necessarily affect the vegetation coverage in the banks and surrounding areas. Additionally, the~patterns of the vegetation in the Khartoum Province are deeply connected to the regional geologic setting~\cite{ELSHEIKH201182}, the~geomorphic structure and dominating soil types that control the distribution of the specific plants~\cite{Mahmoud}. The~White Nile is sensitive to rainfall and evaporation in lakes and swamps due to the specific hydrology of the region. Therefore, its response to occasional climatic events can be measured over long timescales~\cite{Sene} and the analysis of the vegetation patterns and soil erosion can be used for detecting vulnerable regions prone to desertification~\cite{Bakhit}. Nevertheless, despite efforts being put on water resources conservation and the rational exploitation of resources~\cite{MOHAMEDALI2003237,w10111579}, environmental sustainability in the Sudanese region remains a~challenge.
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Materials and~Methods}\label{sect2}
+
+%----------- subsection ----------->
+\subsection{Data}\label{sect2.1}
+
+We evaluate our approach on three datasets, with the~Landsat 8 OLI/TIRS satellite images covering the region of southern Sudan on three different days, %English editor: Please ensure that the meaning has been retained.
+namely 20 December 2013, 18 December 2018 and 21 December 2022. The~satellite images were selected and downloaded from the \hl{United States Geological Survey (USGS) EarthExplorer} %MDPI: Please add the images source (include the link to the database) in the Data Availability Statement section (Page 21)
+open repository for satellite images, aerial photographs and~cartographic products (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/} \hl{(accessed on Date Month Year)),} %MDPI: Please add the access date (format: Date Month Year), e.g., accessed on 1 January 2020.
+ Figure~\ref{fig03}.
+
+\begin{figure}[H]
+%\makebox[1.0\linewidth][r]{%
+\vspace{-6pt}
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering %% If there is a figure in wide page, please release command \centering
+{\captionsetup{position=bottom,justification=centering} 
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.890\textwidth]{Fig_03a.jpg}
+		\caption{2013}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.890\textwidth]{Fig_03b.jpg}
+		\caption{2018}
+	\end{subfigure}%
+	\begin{subfigure}[b]{.40\textwidth}
+		\centering
+			\includegraphics[width=0.890\textwidth]{Fig_03c.jpg}
+		\caption{2022}
+	\end{subfigure}}%
+\end{adjustwidth}
+%}
+\caption{Landsat 8 OLI/TIRS image of White and Blue Niles in Khartoum, Sudan, in~natural RGB colours in December: (\textbf{a}) 20.12.2013; (\textbf{b}) 18.12.2018; and (\textbf{c}) 21.12.2022.}\label{fig03}
+\end{figure}
+
+The choice of data is explained by the availability of the Landsat OLI/TIRS scenes, sensor spectral band pass, the high spatial resolution of 30 m across the multispectral channels (1--7), the open availability of the cloud-free images (0\% of cloudiness) and a regular survey which provides the comparable gap between the target years (2013 and 2022) when the images were collected for the analysis of changes in vegetation (Figure \ref{fig03}). The~information on the cloudiness of the scenes was extracted, among~all other technical parameters, from~the .xml file of the Landsat OLI/TIRS scenes where all the metadata are listed. The~most important metadata are listed in the Appendix~\ref{Appendix A}, Table~\ref{tabApp}. The metadata on the Landsat OLI/TIRS satellite images were used in this~study.
+
+Among the available Landsat products, the~Landsat OLI/TIRS sensor was selected, which has better technical and spectral characteristics compared to older sensors. Thus, compared to the Landsat-7 ETM+, the~Landsat 8-9 OLI/TIRS has narrower spectral bands, higher calibration, finer radiometric resolution and geometry and better signal-to-noise parameters~\cite{ROY201657}. This results in a more narrow and precise bandwidth in red and NIR channels which differ from older sensors. For~instance, the~Landsat 8-9 OLI/TIRS sensor has 0.64--0.67 \textmu m in the Red band (Band 4) and~0.85--0.88 \textmu m in the NIR (Band 5), while the Landsat 7 ETM+ sensor has a coarser range of 0.63--0.69 \textmu m in the Red (Band 3) and \mbox{0.77--0.90 \textmu m} in NIR (Band 4). The~spectral characteristics of the older Landsat products (Landsat 4-5 TM and Landsat 1-5 MSS) has even coarser parameters. Since the Landsat 8 OLI/TIRS was launched on 11 February 2013, there are no earlier images, and~the earliest possible date for the cloud-free image in the target month of December was 20 December 2013. 
+
+The images were taken within the 5-year gap between December 2013 and December 2018 and~the four-year gap between December 2018 and December 2022, which gives the comparable intervals of the periods between the scenes. Examples of similar studies that also use few satellite images for the analysis of land cover changes or environmental monitoring include the use of the Landsat 5-TM, 7-ETM+, 8-OLI or Sentinel-2 scenes~\cite{Hammad_Mucsi,rs14246284,Talebi,essd2022339,Yilmaz,Nasseri}. Using images over a more frequent period (e.g., every two months) throughout each year is biased by the natural growth cycles of plants: the periods of seedling formation, the development of sprouts, differentiation of leaves and the growth of plants from small to adult stages. Therefore, it is important to observe the difference in vegetation indices between the images taken in a particular month, which remains the same for all the images taken on different years. Hence, in~our case, all the images were collected in December but in different years: 2013, 2018 and 2022.
+
+The selected Landsat images were processed with the aim of computing vegetation indices using the algorithms of R to enable the analysis of the dynamics of vegetation over this period. Using a large dataset (e.g., dozens of scenes) allows detailed environmental investigation. Nevertheless, this creates technical challenges in terms of processing and organising data, which is possible in studies focused on big data processing, where multiple images are analysed as time series using special approaches~\cite{LiWangLu,Veretekhina,Gumma}. Within the scope of this study, we used three Landsat OLI/TIRS images with the aim of investigating the spatio-temporal aspects and trends of short-time variations in vegetation patterns in southern Sudan during nine years. The~images were collected in December in the years 2013, 2018 and 2022, with~a gap enabling the detection of minor changes. Such a time span effectively represents the changes in the vegetation patterns in a given month of the observed years in southern Sudan.
+
+The results of spatial analysis were applied to investigate the changes in vegetation patterns in the Khartoum region using  vegetation indices computed during the period of nine years for each Landsat scene. The summary of the data is presented in Table~\ref{tab1}. All images have 0\% cloudiness and Path/Row ID 173/49. The~sensor ID is common for all scenes: Landsat 8-9 OLI/TIRS (Operational Land Imager and Thermal Infrared Sensor), Collection 2 Level-2. Image source: the USGS~\cite{EROS}. The~major technical and geodetic metadata common for all the images are the following: Datum and Ellipsoid WGS84; Product Map Projection L1---Universal Transverse Mercator (UTM); UTM Zone 36; Sensor ID OLI TIRS; Landsat Processing Software Version LPGS\_16.2.0. The~full list of metadata is provided in Table~\ref{tabApp}.
+
+\begin{table}[H]
+\scriptsize
+\caption{\hl{Satellite} %MDPI: Please add the explanation for superscrip ``1''.
+ images used for computing the VIs: Landsat-8 OLI/TIRS collected from the USGS \textsuperscript{1}.\label{tab1}}
+	\begin{adjustwidth}{-\extralength}{0.5cm}
+%		\newcolumntype{C}{>{\centering\arraybackslash}X}
+		\begin{tabularx}{\fulllength}{ p{3cm}p{2cm}p{7.5cm}p{2.2cm}}
+			\toprule
+			\textbf{Date} & \textbf{Spacecraft} & \textbf{Landsat Product ID} & \textbf{Scene ID} \\
+			\midrule
+20 December 2013 & Lands. 8 & LC08\_L2SP\_173049\_20131220\_20200912\_02\_T1 & LC81730492013354LGN01 \\
+18 December 2013 & Lands. 8 & LC08\_L2SP\_173049\_20181218\_20200830\_02\_T1 & LC81730492018352LGN00 \\
+21 December 2013 & Lands. 9 & LC09\_L2SP\_173049\_20221221\_20221224\_02\_T1 & LC91730492022355LGN00 \\		
+			\bottomrule
+		\end{tabularx}
+	\end{adjustwidth}
+%	\noindent{\footnotesize{\textsuperscript{1} }}
+\end{table}
+\unskip
+
+%----------- subsection ----------->
+\subsection{Methodology}\label{sect2.2}
+
+With this study, we process the satellite images using R version 4.2.2 (R Core Team, 2020) and its packages for the computation of VIs and spatial data analysis~\cite{RCoreTeam}. The~extraction of VIs for the analyses of vegetation health by traditional software, which is conceptually straightforward due to raster algebra, may nevertheless lead to a consequent computing time. The~VIs are used as robust and reliable indicators of plant health and greenness because they indicate at the level of leaf chlorophyll in plants. As such, the~VIs reflect the functional features of canopy and the parameters of vegetation coverage essential for environmental and climate~analytics.
+
+In this study, we compute the VIs and analyse the maps based on these indices for the years between 2013 and 2022. In~a first step, the~necessary libraries `terra' version 1.7-18, `RColorBrewer' version 1.1-3~\cite{Neuwirth}, `Hmisc' version 5.0-1~\cite{Hmisc} and `pals' version 1.7~\cite{Wright} were activated and a working folder was defined. The~`terra' library is the key package which was used for raster algebra and calculation of the VIs, while the other libraries were used as auxiliary packages for the graphical refinements and proper visualisation of the plots. Then, we defined separate functions for each of the VIs using their relevant formulae. Finally, we uploaded the necessary Landsat bands in the active folder and performed the calculation of each of the VIs by R scripts, as~presented below for each corresponding~index.
+
+To compute the VIs, we used the `terra' R package approach which allows  the assessment of the vegetation patterns using computational formulae to study vegetation greenness and to assess the increase in desert areas. There are two important advantages of the R approach with regard to the estimation of vegetation health using histograms showing a data distribution for  the analysis of the phenological changes in canopies: (i) the embedded map algebra is adjusted to describe any type of VI using the function (\mbox{$vi <- function(img, k, i)$}) (see the R scripts in Appendix~\ref{Appendix B}) which  enables one to vary Landsat bands for computational purposes in different formulae; and (ii) it calculates the data frequency distribution showing the number of pixels that correspond to higher greenness, from~which the trends to desertification can be assessed using image analysis for various years. The~full scripts used for plotting the \mbox{Figures~\ref{fig01} and \ref{fig04}--\ref{fig08}} are provided in the GitHub repository: \href{https://github.com/paulinelemenkova/Mapping_Sudan_Scripts}{https://github.com/paulineleme- nkova/Mapping\_Sudan\_Scripts}  \hl{(accessed on Date Month Year).} %MDPI: Please add the access date (format: Date Month Year), e.g., accessed on 1 January 2020.
+
+\begin{figure}[H]
+\vspace{-9pt}
+%\makebox[0.99\linewidth][r]{%
+	
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering %% If there is a figure in wide page, please release command \centering
+{\captionsetup{position=bottom,justification=centering} 
+\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04a.jpg}
+		\caption{}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04b}
+		\caption{}
+	\end{subfigure}}%
+%}
+\end{adjustwidth}
+
+\caption{\textit{Cont}.}
+\label{fig:petit3leaks3D}
+\end{figure}
+
+\begin{figure}[H]\ContinuedFloat
+
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering
+%\centering %% If there is a figure in wide page, please release command \centering
+
+{\captionsetup{position=bottom,justification=centering} 
+%\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04c.jpg}
+		\caption{}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04d}
+		\caption{}
+	\end{subfigure}%
+%}
+\\
+%\vfill 
+\vspace{1mm}
+%\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04e.jpg}
+		\caption{}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\hspace{30pt}\includegraphics[width=0.95\textwidth]{Fig_04f}
+		\caption{}
+	\end{subfigure}}%
+\end{adjustwidth}
+%}
+\caption{NDVI computed from the Landsat 8 OLI/TIRS images of the confluence between the White Nile and Blue Nile, Sudan, for three years (always in December): (\textbf{a}) 2013; (\textbf{b}) 2018; (\textbf{c}) 2022; (\textbf{d}) histogram for 2013; (\textbf{e}) histogram for 2018; and (\textbf{f}) histogram for~2022.}\label{fig04}
+\end{figure}
+
+
+\vspace{-6pt}
+\begin{figure}[H]
+%\makebox[0.99\linewidth][r]{%
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering %% If there is a figure in wide page, please release command \centering
+{\captionsetup{position=bottom,justification=centering} 
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_05a}
+		\caption{2013}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_05b}
+		\caption{2013: histogram}
+	\end{subfigure}%
+%}
+\\
+%\vfill 
+\vspace{6pt}
+%\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_05c}
+		\caption{2018}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_05d}
+		\caption{2018: histogram}
+	\end{subfigure}}%
+%}
+
+
+\end{adjustwidth}
+
+\caption{\textit{Cont}.}
+\label{fig:petit3leaks3D}
+\end{figure}
+
+\begin{figure}[H]\ContinuedFloat
+
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering %% If there is a figure in wide page, please release command \centering
+{\captionsetup{position=bottom,justification=centering} 
+
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_05e}
+		\caption{2022}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_05f}
+		\caption{2022: histogram}
+	\end{subfigure}}%
+\end{adjustwidth}
+%}
+\caption{GNDVI computed from the Landsat 8 OLI/TIRS images of the confluence between the White Nile and Blue Nile, Sudan, for three years (always in December): (\textbf{a}) 2013; (\textbf{b}) 2018; (\textbf{c}) 2022; (\textbf{d}) histogram for 2013; (\textbf{e}) histogram for 2018; and (\textbf{f}) histogram for~2022.}\label{fig05}
+\end{figure}
+
+\vspace{-6pt}
+\begin{figure}[H]
+%\makebox[0.99\linewidth][r]{%
+	
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering %% If there is a figure in wide page, please release command \centering
+{\captionsetup{position=bottom,justification=centering} 
+\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_06a}
+		\caption{2013}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_06b}
+		\caption{2013: histogram}
+	\end{subfigure}%
+\\
+%\vfill 
+\vspace{6pt}
+%\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_06c}
+		\caption{2018}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_06d}
+		\caption{2018: histogram}
+	\end{subfigure}%
+\\
+%\vfill 
+\vspace{6pt}
+%\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_06e}
+		\caption{2022}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_06f}
+		\caption{2022: histogram}
+	\end{subfigure}}%
+\end{adjustwidth}
+%}
+\caption{NDWI computed from the Landsat 8 OLI/TIRS images of the confluence between the White Nile and Blue Nile, Sudan, for three years (always in December): (\textbf{a}) 2013; (\textbf{b}) 2018; (\textbf{c}) 2022; (\textbf{d}) histogram for 2013; (\textbf{e}) histogram for 2018; and (\textbf{f}) histogram for~2022.}\label{fig06}
+\end{figure}
+
+\begin{figure}[H]
+%\makebox[0.99\linewidth][r]{%
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering %% If there is a figure in wide page, please release command \centering
+{\captionsetup{position=bottom,justification=centering} 
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_07a}
+		\caption{2013}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_07b}
+		\caption{2013: histogram}
+	\end{subfigure}%
+\\
+%\vfill 
+\vspace{6pt}
+%\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_07c}
+		\caption{2018}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_07d}
+		\caption{2018: histogram}
+	\end{subfigure}%
+\\
+%\vfill 
+\vspace{6pt}
+%\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_07e}
+		\caption{2022}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_07f}
+		\caption{2022: histogram}
+	\end{subfigure}}%
+\end{adjustwidth}
+%}
+\caption{OSAVI computed from the Landsat 8 OLI/TIRS images of the confluence between the White Nile and Blue Nile, Sudan, for three years (always in December): (\textbf{a}) 2013; (\textbf{b}) 2018; (\textbf{c}) 2022; (\textbf{d}) histogram for 2013; (\textbf{e}) histogram for 2018; and (\textbf{f}) histogram for~2022.}\label{fig07}
+\end{figure}
+
+\vspace{-6pt}
+\begin{figure}[H]
+%\makebox[0.99\linewidth][r]{%
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering %% If there is a figure in wide page, please release command \centering
+{\captionsetup{position=bottom,justification=centering} 
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08a}
+		\caption{2013}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08b}
+		\caption{2013: histogram}
+	\end{subfigure}}%
+
+\end{adjustwidth}
+
+\caption{\textit{Cont}.}
+\label{fig:petit3leaks3D}
+\end{figure}
+
+\begin{figure}[H]\ContinuedFloat
+
+
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering %% If there is a figure in wide page, please release command \centering
+{\captionsetup{position=bottom,justification=centering} 
+
+%\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08c}
+		\caption{2018}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08d}
+		\caption{2018: histogram}
+	\end{subfigure}%
+
+
+%\vfill 
+\vspace{6pt}
+%\makebox[0.99\linewidth][r]{%
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08e}
+		\caption{2022}
+	\end{subfigure}%
+	\hspace{6pt}
+	\begin{subfigure}[b]{.5\textwidth}
+		\centering
+			\includegraphics[width=0.95\textwidth]{Fig_08f}
+		\caption{2022: histogram}
+	\end{subfigure}}%
+\end{adjustwidth}
+%}
+\caption{IPVI computed from the Landsat 8 OLI/TIRS images of the confluence between the White Nile and Blue Nile, Sudan, for three years (always December): (\textbf{a}) 2013; (\textbf{b}) 2018; (\textbf{c}) 2022; (\textbf{d}) histogram for 2013; (\textbf{e}) histogram for 2018; and (\textbf{f}) histogram for~2022.}\label{fig08}
+\end{figure}
+
+
+
+
+%----------- subsection ----------->
+\subsection{Calculating Vegetation~Indices}\label{sect2.3}
+
+\subsubsection{Normalised Difference Vegetation Index (NDVI)}
+The Normalised Difference Vegetation Index (NDVI) \cite{Rouse} is calculated as a ratio between the sum and the difference between the two Landsat bands---near-infrared (NIR) and red. The~NDVI is the most well known and widely used ecological indicator for assessing vegetation conditions due to the optimally created formula that includes the spectral properties of red and NIR bands. Thus, compared to the other bands, the~content of the chlorophyll in healthy vegetation is much more significantly reflected by the NIR band. At~the same time, it absorbs red light. Therefore, using these two bands in a well-established combination gives robust results indicating the presence and amount of chlorophyll in leaves. Such effectiveness of the NDVI resulted in its numerous applications to the environmental analysis~\cite{w13192707,rs12244119,GHEBREZGABHER2020249,RULINDA2012169}. The~NDVI is computed using Equation~(\ref{eq:1}):
+\begin{equation}\label{eq:1}
+NDVI=\dfrac{(NIR-Red)}{(NIR+Red)}
+\end{equation}
+
+\textls[-15]{Using R, we computed the NDVI using a script presented in Appendix~\ref{Appendix B}, \mbox{Listing~\ref{lst01}}. }
+
+\subsubsection{Green Normalised Difference Vegetation Index (GNDVI)}
+
+The GNDVI index is an updated and modified NDVI to remotely sense the presence and vitality of vegetation. Compared to the NDVI, it also uses the NIR Band for computation but replaces the Red Band (i.e., Band 4 for the Landsat 8-9 OLI/TIRS with a spectral band between 640 and 670 nm wavelengths) by the Green Band (Band 3 for the Landsat 8-9 OLI/TIRS with a spectral band between 530 and 590 nm wavelengths) from the visible spectrum. Therefore, the~GNDVI estimates the chlorophyll content more precisely compared to the NDVI and enables the analysis of the photosynthetic activity in plants. The~applications of the GNDVI are mostly intended at detecting wilted, ill or aging plants and monitoring plant~stress. 
+
+Moreover, it is also suitable for estimating the nitrogen content in the plant leaves, as~well as monitoring mature vegetation coverage in the final stages of the crop cycle or vegetation with dense canopy. Similarly to the NDVI, the~range of values in the GNDVI also varies between $-$1 and 1, where negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation. In~this study, the~GNDVI was computed due to its technical and practical advantages. Thus, its advantages include the low number of required spectral bands (only NIR and Green, as~indicated in the formula of Equation~(\ref{eq:5})) which results in easy computation in R, and~reliability in the analysis of vegetation health due to the more precise estimation of the chlorophyll content compared to the NDVI. The~formula for the GNDVI used for computation is given in Equation~(\ref{eq:5}):
+\begin{equation}\label{eq:5}
+	GNDVI=\dfrac{(NIR-Green)}{(NIR+Green)}
+\end{equation}
+
+For the Landsat 8-9 OLI/TIRS bands, the~Green channel corresponds to the Band 3 and Red channel---to Band 4. The~adjustment to the GNDVI is based on the maximum sensitivity of the reflectance of leaves since the reflectance near 670 nm of the Red Band is not sensitive to the chlorophyll concentration due to the saturation of the relationship between absorption and chlorophyll concentration~\cite{GITELSON1996289}. Therefore, the~replacement of the Red Band by the Green Band results in a more accurate estimate of the concentration of chlorophyll and the rate of photosynthesis. Using R syntax, we computed the GNDVI using the script presented in Appendix~\ref{Appendix B} and Listing \ref{lst02}. 
+
+\subsubsection{Normalised Difference Water Index (NDWI)}
+
+Developed by Gao in 1996~\cite{GAO1996257} as a complementary to the NDVI, the~NDWI is strongly related to the plant water content as it is sensitive to the liquid water content of leaves based on the ratio between the difference and sum of NIR and SWIR. The~second version of the NDWI developed by~\cite{rs5073544} uses a Green band instead of SWIR which can be used to detect the surface open water areas as well as evaluate the level of turbidity. In~this case, the~NDWI is computed using the ratio between the difference and sum of the NIR and visible Green Bands~\cite{ZHENG2021129488}. In our study, we used the first version developed by Gao following Equation~(\ref{eq:2}):
+\begin{equation}\label{eq:2}
+	NDWI=\dfrac{(NIR-SWIR)}{(NIR+SWIR)}
+\end{equation}
+
+The advantages of the NDWI include that it lessens the effects from the reflectance of soil and vegetation foliage which makes it suitable for sandy areas such as in Sudenese Sahel%English editor: Please ensure that the meaning has been retained.
+. A~special value of the NDWI for environmental monitoring is that it can be used for indicating areas with water deficit~\cite{TENG2021107260}. Therefore, the~NDWI presents a useful and precise tool in the assessment of the health of vegetation in arid areas prone to droughts, such as Sudanese Sahel, through computing the moisture level in plants as the detected water content in leaves. Thus, during~the drought periods, foliage is strongly affected by the water deficit which results in plant illness. Specifically for the agricultural areas of Khartoum, this leads to the crop failure and decreases the production which affects the harvest. Detecting the plant water stress is essential to evaluate the current state of plants and make a prognosis for future development, e.g.,~by indicating the areas that are in need of irrigation. Using the R library 'terra', we computed the NDWI using the script presented in the Appendix~\ref{Appendix B} in Listing \ref{lst03}.
+
+\subsubsection{Optimised Soil-Adjusted Vegetation Index (OSAVI)}
+
+Originally developed by~\cite{Rondeaux}, the~Optimised Soil-Adjusted Vegetation Index (OSAVI) is well adjusted to monitor vegetation health, specifically in regions with low vegetation coverage, such as the Sahelian region of Sudan, due to corrections of bare soil and desert areas. Specifically, the~OSAVI uses a defined value of 0.16 as a factor to adjust the canopy background, as this value gives higher soil variation compared to the original SAVI. At~the same time, the~OSAVI has a higher sensitivity to vegetation coverage that covers more than a half of the area in percentage. Due to such characteristics, the~OSAVI is suitable for monitoring the existing productivity changes in agricultural areas near Khartoum and along the banks of the Nile river. Moreover, the~corrections of the reflectance from bare soil and lands enables the detection of areas prone to droughts using the comparison of the multi-temporal satellite images. Therefore, the~application of the OSAVI is especially suitable in the regions with sparse vegetation, such as~in southern Sudan, where soil is often visible through the canopy of vegetation. The~OSAVI is computed using Equation~(\ref{eq:4}):
+\begin{equation}\label{eq:4}
+	OSAVI=\dfrac{(NIR-Red)}{(NIR+Red+0.16)}
+\end{equation}
+
+\textls[-5]{In R language, we computed the OSAVI by the script shown in the Appendix~\ref{Appendix B}, \mbox{Listing~\ref{lst04}}.}
+
+\subsubsection{Infrared Percentage Vegetation Index (IPVI)}
+
+The values of the Infrared Percentage Vegetation Index (IPVI) depend on the chlorophyll content in leaves. Developed originally by~\cite{CRIPPEN199071}, it always has positive values ranging from 0 to +1 and indicates the photosynthetic activity of the canopy cover and the total chlorophyll content in the leaves. Furthermore, as~a modified variation of the NDVI, it is especially suitable for indicating yellowish or shed leaves in the semi-arid areas such as southern Sudan, due to the adjusted spectral regions in the formula. Thus, the~chlorophyll content directly depends on the nitrogen level in plants which contributes to the greenness of foliage and is reflected in the optical characteristics of leaves. In~such a way, the~IPVI is suitable for the periods of active vegetation development due to the indication of the leaf pigment content and variations showing always positive values above zero, in~contrast with the NDVI. Therefore, the~IPVI is useful to indicate the yield characterisation and stress level in leaves in the regions affected by droughts in the semi-arid areas to the north of Khartoum. In~this way, the~IPVI is a robust indicator of drought severity in southern Sudan and~its effects on the arid and semi-arid ecosystems of Sudanese Sahel. Using the comparison of images covering the target test area on the given time periods in 2013, 2018 and 2022, the~difference in the vegetation patterns shows the variations in the health conditions of leaves. The~IPVI is computed using Equation~(\ref{eq:3}):
+\begin{equation}\label{eq:3}
+	IPVI=\dfrac{NIR}{NIR + Red}
+\end{equation}
+
+The computation of IPVI using the R library 'terra' was performed by the code presented in the Appendix~\ref{Appendix B}, Listing \ref{lst05}. The~application of RStudio version 2023.03.0+386~\cite{RStudio} for image processing included the image processing, computing and plotting of the vegetation indices index using the Landsat 8 OLI/TIRS~image. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+\section{Results}\label{sect3}
+
+In order to evaluate the performance of our R approach using the `terra' and `raster' libraries, the~experiments on the assessment of the time processing were conducted; the first for an assessment of file processing and reading the data and the second for evaluating the graphical plotting and statistical analysis. While in practice, one would only detect the time of single image processing, which is important to evaluate the effect of the processing speed and the use of computer memory from the viewpoint of the effectiveness of R packages, which is an important characteristic when processing many images as time series~data.
+
+All the computations were performed using a computer MacBook Air with chip Apple M1 2020, operation system MacOS Ventura version 13.2.1, which uses 8 GB of superfast unified memory. On~this machine, the~technical advantages and capabilities of R and its geo-processing packages `terra' and `raster' were evaluated in terms of processing time. We quantified several computational aspects, which demonstrated the following results. 1. Time taken to read data: less than 1 s (i.e., the data were read instantly as soon as 'enter' was pressed); 2. Time taken to process data (s): 9 seconds to process the following commands corresponding to lines 7--20 in the case of Listing \ref{lst01} R code for computing the NDVI\hl{)}: vi <- function(); filenames <- paste0(); landsat <- rast(); ndvi <- vi(landsat, 5, 4); options(scipen = 10,000); and colours <- brewer.rdylgn(100). Next, the~graphical plotting of the image (lines 21--22 in example of the same Listing) was perform during 2 s, and~the plotting of the histogram (lines 24--27) took 1 s. 4. The overall processing speed took seconds\hl{)} %MDPI: Please check if these 2 parentheses are missing the left parentheses. 
+: 12 s for processing each Landsat OLI/TIRS image. 3. Memory utilisation (Mb) demonstrated effective parameters due to the Mac with chip \hl{Apple M} %MDPI: Please check if should be revised to ``Apple M1''
+is powerful in terms of RAM. Therefore, the~highest memory consumption was 60 Mb for 15 maps which includes the computer \mbox{5 vegetation} indices for 3 different calendar~years.
+
+The distribution of vegetation patterns in the Khartoum region varies in different years according to different vegetation indices. The~statistics on these values are collected and summarised in Table~\ref{tab02} for a comparison of the variations in the VI values. Thus, we provide in Table~\ref{tab02} for each set of images their VI values for the years 2013, 2018 and 2022, derived from the R report on data analysis, as~it appears in the output console.  In~the second to fourth columns, we indicate the years of observations and output results obtained by the R 'terra' library algorithm.  For~each image, we collected the data's minimal and maximal values to assess its global range. Thus, the~results of the VI values derived from the Landsat 8 OI/TIRS images over the Khartoum region area are presented in Table~\ref{tab02}. These data show the variations indicating changes in vegetation health. The~maximal values indicate the healthy green vegetation which corresponds to greenness due to the chlorophyll content in the leaves. The~changes between 2013 and 2018 show a decline in the values in the indices NDVI, GNDVI, NDWI and OSAVI, and a very slight increase in the IPVI. The~analysis of data from 2018--2022 shows that there is a slight rise in values for the same indices expected for the IPVI, which demonstrates a slight~decrease.
+
+\begin{table}[H] 
+\caption{Evaluation results of the VI values derived from the Landsat 8 OLI/TIRS images over the Khartoum region area (2013, 2018 and 2022).\label{tab02}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCCC}
+\toprule
+\textbf{VI}	& \textbf{2013}	& \textbf{2018} & \textbf{2022}\\
+\midrule
+	$NDVI_{min}$ & $-$0.2742168 & $-$0.2817099 & $-$0.2791084 \\
+	$NDVI_{max}$ & 0.7246868 & 0.5796811 & 0.6044010 \\\hline
+	$GNDVI_{min}$ & $-$0.2387020 & $-$0.2830099 & $-$0.2253696 \\
+	$GNDVI_{max}$ & 0.6371941 & 0.5690726 & 0.7235179 \\\hline
+	$NDWI_{min}$ & $-$0.4046338 & $-$0.5656914 & $-$0.5743572 \\
+	$NDWI_{max}$ & 0.3880472 & 0.3764042 & 0.4152763\\\hline
+	$OSAVI_{min}$ & $-$0.2742153 & $-$0.2817084 & $-$0.2791067 \\
+	$OSAVI_{max}$ & 0.7246833 & 0.5796785 & 0.6043976 \\\hline
+	$IPVI_{min}$ & 0.1376566 & 0.2101595 & 0.1977995 \\
+	$IPVI_{max}$ & 0.6371084 & 0.6408550 & 0.6395542 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\unskip
+
+\subsection{Normalised Difference Vegetation Index (NDVI)}
+The images of the NDVI (Figure \ref{fig04}) allow the differentiation of vegetation areas or cultivated areas from the soil in the region southwards from Khartoum and along the flow of the Greater Nile. The~differentiation of the crops against other land cover types is possible due to the different values in the NDVI data range. Thus, the~values of the NDVI vary within the range from $-$1 to +1 where negative values indicate water, lower values above 0 show bare soil and land, and~mediocre values (around 1.30--0.50) signify sparsely vegetated areas. Higher values around +1 identify dense vegetation with a healthy canopy and green foliage. More specifically, crops thus have higher values compared to the bare land and cultivated areas. For~instance, sparse vegetation ranges from 0.1 to 0.5, shrubs and meadows range from 0.2 to 0.3, dense green vegetation ranges over 0.6, cultivated areas have small values (less than 0.2) and empty areas of rocks or sand are between 0.1 and 0.2. Negative values indicate water. The~low NDVI values were classified as non-vegetation (i.e., soil and bare land) and~positive NDVI values were classified as~vegetation. 
+
+
+
+The highest NDVI values (0.80--1.0) identify forest areas. For~the desert areas dominated by sands such as Sudan, the~NDVI values do not exceed 0.50. The~minimal values determined according to the histograms obtained from the NDVI images for the years 2013, 2018 and 2022 were 0.27, 0.28 and 0.28 (Table \ref{tab02}), whereas the highest determined values were 0.72, 0.58 and 0.60 for the same years. The~minimum and maximum values were derived from the computed vegetation indices to evaluate the data distribution extremes. These indicate the range in vegetation greenness where higher values represent healthy vegetation with dense canopy and green foliage while lower values represent  bare~land. 
+
+The pixels that were not classified as either soil, water or vegetation classes were identified as sand desert area (mostly beige-coloured in the images in Figure~\ref{fig04}) pixels due to low NDVI values of approximately 0.2 or less. The~lowest NDVI values worth less than 0.1 are classified as rocky surface and bare~land. 
+
+The identification method of soil/water and vegetation is based on the characteristics of the NDVI which ranges from $-$1.0 to 1.0 with negative values indicating clouds and water, positive values near zero (<0.1) indicating  bare soil, barren rock or sand in deserts. Shrubs, grasslands and other types of sparse vegetation have moderate NDVI values between 0.2 and 0.5. Higher positive values of NDVI correspond to dense green vegetation (>0.6 and <0.9) which correspond to crops at their highest growth stage. Broadleaf/boreal and tropical forests can also exhibit these values, but~it is known that the area of Sudan does not have such vegetation types. The~vegetation in Sudan includes sandy arid lands in the deserts, semi-deserts, savannah (grassland), croplands and inland floodplains along the Nile river, which made it easier for us to distinguish between different land surface types. A light ivory colour corresponds to the patterns of the dry creeks or beds of wadi ephemeral streams. The~minimal and maximal values of the NDVI varying for the years 2013, 2018 and 2022 are as follows, from $-$0.2742168 to 0.7246868 in 2013, from~$-$0.2817099 to 0.5796811 in 2018, and~from $-$0.2791084 to 0.6044010 in 2022. As~one can note, the~maximal values decreased from 2013, which indicates the general trend in desertification; however, from~2018 to 2022, there is again a slight increase in the highest values which can be explained by increased precipitation and fluctuations in Nile~hydrology. 
+
+\subsection{Green Normalised Difference Vegetation Index (GNDVI)}
+
+The highest values of the GNDVI did not exceed 0.72 for the area of Sudan due to the scarce vegetation coverage and dominating desert areas, as shown in Figure~\ref{fig05}. Negative values are associated with the areas of water or bare soil, while higher values indicate healthy vegetation and selected agricultural croplands along the banks of the White, Blue and Greater Niles. As~seen from Figure~\ref{fig05}, the~GNDVI captured plant greenness with changes in vegetation health and greenness corresponding to the colour in the images varying from bright green to yellow on a sequence of images for 2013, 2018 and 2022. In~this case, the~variations in shadows of colours indicate the differences in plant vigour, which is a measure of the increase in plant growth or foliage volume through time after planting~\cite{Dictionary}. Moreover, this indicates the plant health which correlates with the irrigated lands with a higher level of moisture in the soil that can be distinguished against drylands and desert~areas. 
+
+Further comparing the values in Table~\ref{tab02}, the~range of values for the GNDVI is narrower than that of the NDVI, with minimal $-$0.24, $-$0.28 and $-$0.23 for the years 2013, 2018 and 2022, while the highest values are 0.64, 0.57 and 0.72 for the same years. Accordingly, with~greener plants visualised in the GNDVI, Figure~\ref{fig05} shows lower and better distinguished values. Moreover, the~histograms present a more diversified range of values for various land classes: water, bare soil and sand, rocky areas of deserts and vegetation with agricultural areas and natural aquatic plants in the Nile river. Finally, the~slight increase in the GNDVI values indicating photo synthetic activity in leaves is affected by changes in the water and N absorption in plants that includes aquatic vegetation in the bank areas of the White~Nile. 
+
+
+\subsection{Normalised Difference Water Index (NDWI)}
+
+The interpretation of the values from the resulting images based on the NDWI (Figure~\ref{fig06}) is as follows: the negative values (from $-$1  to 0) signify areas with no vegetation or water content, while those above 0 show surfaces with a water content where the higher moisture level correlates with higher values of the NDWI, respectively. The~NDWI values vary between $-$1 and +1, which depends on the total amount of water in leaves, the type of vegetation and the percentage of foliage coverage. Thus, sparse vegetation in semi-arid regions of the Sudanese Sahel will naturally have a lower value of the NDWI compared to the regions of dominating forests with dense canopy. The~analysis of the NDWI images reveals contours of the dry creeks in the desert areas with stream patterns and beds of drainage courses that contribute to the differences in moisture content in soil (Figure \ref{fig06}). 
+
+Such patterns are indicative of moist wadi sediments and associated vegetation strips. The~range of values in the NDWI shows slow dynamics in the lowest values that gradually increases from $-$0.40 in 2013 to~$-$0.56 in 2018 and 0.57 in 2022, along with increasing highest values: 0.38 in 2013, 0.38 in 2018 and 0.42 in 2022. The~values of the NDWI rise along with the increased leaf water content as well as the vegetation fraction cover. Therefore, higher values correspond to a higher water content in leaves and to an increase in~canopy. 
+
+
+We suggest that the drivers are climate and hydrological factors such as higher precipitation levels or increased water discharge from the Nile, but we cannot support our surmise with numerical arguments and this pattern should be elucidated in future studies. Since the NDWI is specifically designed to monitor vegetation in drought-affected areas such as Sudan, such variations indicate increases in both the content of vegetation water because of the strong chlorophyll absorption in SWIR and the structure in plant~canopy. 
+
+On the one hand, partial vegetation coverage in the desert areas of central Sudan results in soil effects on the NDWI values, especially for the landscapes with interspersed soils and vegetation patterns. Thus, when the leaf layer in the canopy decreases, the~absolute values of reflectance in the spectral region of the NDWI are decreased, which results in lower values. The~range of the NDWI values in Khartoum is narrow, which is seen on the histograms with most of the values varying from $-$0.20 to +0.20. More specifically, the~interpretation of the values of the NDWI follows the ranges: positive values from +0.2 to +1.0---water area; from 0.0 to +0.2---flooded areas and high humidity; from $-$0.3 to 0.0: moderate drought soil and non-water surfaces; and from $-$1.0 to $-$0.3: drylands, drought and non-water surfaces. The~NDWI indicates the moisture level of vegetation which is suitable for the sandy areas in the Sahelian~Sudan.
+
+%--------------------->
+\subsection{Optimised Soil-Adjusted Vegetation Index (OSAVI)}
+
+The computed OSAVI is illustrated in Figure~\ref{fig07}. 
+
+
+The OSAVI was the highest for 2013 with the maximal value of 0.72 (Figure \ref{fig07}), after~which it dropped to 0.58 in 2018, indicating the decrease in the leaf chlorophyll content reflected in the OSAVI values; between 2018 and 2022, the values stabilised and slightly increased to 0.60 due to the effects of the White Nile hydrology and climatic~variations. 
+
+Being a modified index derived from the NDVI, the~OSAVI also has a range of values varying between $-$0.28 and +0.72, with~negative values indicating the water areas of the White and Blue Niles, lower areas slightly above 0 and lower than 0.2 indicating bare land, sandy areas, soil with no or very sparse vegetation, while higher values close to +0.50 show a healthy vegetation and higher chlorophyll content in leaves. The~OSAVI values typically range from $-$1 to +1 where high values indicate denser, healthier vegetation, lower values indicate less vigour and medium values correspond to the agricultural lands. The~highest and minimum values in this region show the range in data which indicate the changes in the greenness of vegetation and the health of plant~leaves.
+
+The OSAVI image shows that the land classes with values between 0.30 and 0.40 representing sparse vegetation, 0.40--0.50 represent medium vegetated areas typically for agriculture lands and those above 0.50 represent occasional regions with highly vegetated area around the Blue Nile. The~analysis of the OSAVI and comparison with other indices reveals that the OSAVI classifying pixels on the image was more detailed compared to the NDVI and GNDVI as related to resolution. Thus, it identifies vegetation better using spectral reflectance within each cluster of the data range which results in the detection of the biomass and leaf foliage areas in the regions covered by sandy soils and semi-arid lands such as~Sudan. 
+
+%--------------------->
+\subsection{Infrared Percentage Vegetation Index (IPVI)}
+
+The majority of values of the Infrared Percentage Vegetation Index (IPVI) for the area of Sudan, Figure~\ref{fig08}, lies within a very narrow interval of 0.25--0.48, which matches the dominance of sandy dune areas and bare soils in the surrounding deserts. Note that all the values of IPVI are never negative and always positive due to the formula used in computation, which distinguishes this index from the previous~ones. 
+
+
+Figure~\ref{fig08} indicates the results of the computed IPVI for the Khartoum region with the subplots (a,c,e) indicating changes in vegetative patterns related to desertification for the study area between 2013 and 2022, and~the histograms in the subplots (b,d,f) indicating the related statistics obtained from R. The~comparison of the vegetative cover and the expansion of sand coverage on the images produced by applying IPVI algorithms in R reveals that the extent of degraded land in the surroundings of Khartoum in southern Sudan has expanded from 2013 to 2022, as~well as the overall effects of land~degradation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}\label{sect4}
+
+The method of R `raster' and `terra' libraries is advantageous for satellite image processing aiming to compute vegetation indices. The~computations were conducted on a MacBook Air PC (i.e., chip Apple M1 2020, MacOS Ventura v. 13.2.1, 8 GB of main memory). The~evaluated processing speed reported in the Results section of this manuscript demonstrated technical advantages and benefits of R and its libraries 'terra' and 'raster'. The~performance of R libraries was evaluated in terms of a processing time with quantified computational aspects. The high speed of computations demonstrated by R is beneficial for the repetitive workflow of image processing when several scenes need to be processed sequentially for several years. Specifically, the high speed of reading the data and total time of image processing (12 s for each image) confirmed that R is advantageous for remote sensing data processing, computational and mapping~tasks.
+
+Moreover, using scripts enables to save time through the automation of repetitive tasks. This is more advantageous compared to the GIS with  a traditional GUI interface used for satellite image processing, such as ENVI GIS, SAGA GIS or Erdas IMAGINE. This is especially useful for a computation of several images to calculate several VIs using embedded formulae. Furthermore, R scripts result in accurate machine-based graphics when processing the satellite images due to a high level of automation. Applying scripts customised for each scene increases the speed of data processing which is advantageous when working with several images. For~instance, scripts call embedded functions to perform parts of computations and data processing. Moreover, scripts provide the quick plotting of maps and graphics that visualise the results. This helps to highlight the changes in vegetation patterns when maps visualise the VIs across several years for~comparison. 
+
+
+A package-based approach of R is used in this paper as a target tool for remote sensing data processing which enables the computation of VI for the analysis of satellite images. The~presented use of R libraries shows the usefulness of this approach as an analytical tool with which we computed several VI and thus revealed changes in the vegetation patterns of southern Sudan since 2013. The~use of R presents opportunities for the sustainable environmental monitoring of Sudan through the integration of remotely sensed data and advanced programming technologies. In~this paper, we proposed the application of R language for the computation of several vegetation indices using the 'terra' library and satellite images Landsat 8-9 OLI/ITIRS. Compared to traditional GIS approaches, the~proposed method demonstrates high efficiency and effectiveness for geospatial data processing aimed at environmental analysis. In~the performed experiments  calculating VIs over the Landsat 8 OLI/TIRS data, our study has shown that, in~most cases of the indices, a~general trend in the decrease in VI values is notable for the data for 2013, 2018 and 2022, as~shown in Table~\ref{tab02} and visualised in Figures~\ref{fig04}--\ref{fig08}. This is clearly visible from the results obtained using the estimated parameters on indices NDVI, OSAVI and IPVI. 
+
+Using three satellite images that Landsat 8-9 OLI/ITIRS collected for the region of Khartoum area, we detected a slight decrease in vegetation greenness from 2013 to 2022 based on the comparison of the dynamics of the satellite-derived VIs. For~each image, the~computation of five of the presented VIs was performed for three corresponding years by applying our R scripts. The~visualisation of these indices demonstrates a function of vegetation health, greenness and vigour in the conditions of the Sahelian climate of Sudan with variations over the analysed years. The~proposed R implementation shows promising results when detecting anomalies in vegetation conditions in southern Sudan, as~the VIs provide essential information on plant greenness reflected as chlorophyll content. The~chlorophyll content relates to the water content in leaves which in turn is controlled by regional climatic settings and the hydrological processes of the Nile river and its tributaries---the White and Blue~Niles. 
+
+We addressed the processing of satellite images by computing a series of vegetation indices for the regions prone to desertification in the Sahelian area of Sudan. Our approach represents each Landsat 8-9 OLI/TIRS image with five derived vegetation indices, each tuned for various environmental purposes, and~compared them for the years 2013, 2018 and 2022: detecting dense vegetation with healthy canopy and green foliage (NDVI); estimating the canopy background in the regions with sparse vegetation and a low percentage of foliage coverage, which was typical for Sudan (OSAVI); evaluating the maturity of the canopy based on the leaf pigment content and nitrogen level in plants (IPVI); evaluating the concentration of chlorophyll the in leaves and the rate of photosynthesis (GNDVI); and indicating areas with water deficit (NDWI). As such, the~comparative analysis of indices visualised for various periods can be used to identify the vegetation conditions during the environmental monitoring of the Sahel region of northeast~Africa.
+
+We presented further insights into raster image processing by R scripting and optimisation methods for a time series analysis of several scenes. The~computational workflow demonstrated that the proposed algorithms of R perform far better in terms of the processing and analysis of spatial datasets. The~experiments demonstrated that scientific scripting in the R language plays an important role in geospatial image processing, visualisation and analysis, since it enables the integration of various components or libraries including graphical packages used for mapping and plotting as well as packages for spatial data processing which can be integrated into a coherent scripting workflow. This study analysed three Landsat OLI/TIRS images which revealed the effective capabilities of R when testing the packages `terra' and `raster'. However, the~seasonal or interannual analysis should be based on a time series analysis that includes a more representative variety of datasets which is envisaged in future works as a continuation of this~study.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}\label{sect5}
+
+In this paper, we highlighted that the performance of the R packages is effective for a framework of satellite image processing and enables the computation of vegetation indices. With~the presented maps of the VIs made based on the Landsat OLI/TIRS images, we observed the changes in the vegetation patterns in the test area. We further showed that there is a trend to the growth and greenness of vegetation during the period of 2013--2022 in the study area of the confluence of the White and Blue Niles in southern Sudan, which is caused by the rising temperature and decreased precipitation due to the climatic and environmental impacts effects of~desertification.
+
+The Landsat 8-9 OLI/TIRS images contain a complex image texture with distinct values of pixels due to the different spectral reflectance of vegetation and other land cover types. Five VIs of vegetation distribution analysis have been applied and brought to practical applicability by means of R language. Specifically, we tested five VIs for the Landsat 8-9 OLI/TIRS images and compared the results for the following indices: \mbox{(1) Normalised} Difference Vegetation Index (NDVI); (2) Normalised Difference Water Index (NDWI); (3)~Infrared Percentage Vegetation Index (IPVI); (4) Optimised Soil-Adjusted Vegetation Index (OSAVI); and (5) Green Normalised Difference Vegetation Index (GNDVI). 
+
+The computational workflow of R libraries included the extraction of the image sensor DN values of pixels, computing the data range with min/max values, classifying the raster object and visualising the image using selected colour schemes. Within~all of these methods, the data processing velocity can be estimated as higher compared to conventional GIS approaches, which offers additional possibilities for programming geospatial data analysis and image processing. As~such, we demonstrated the usefulness of the R programming language for machine-based information extraction from satellite images. We also showed the effectiveness of the remote sensing data as a source of information derived from Earth observation satellites for regional studies focused on northeast~Africa.
+
+Image analysis in Earth sciences has made big progress due to the introduction of programming applications and scripts that significantly automate the routine of data processing. In~the near future, we can expect the possibility of stream processing applied for large collections of satellite images as a series of data for operative monitoring. Thus, the further environmental applications of image processing could, for instance, include the~monitoring of burned areas in savannah fires using satellite scenes processed straight after they are generated by sensors. Furthermore, the~use of scripts for image processing opens the way for the geospatial analysis of diverse objects and structures of very high complexity that constitute the landscapes of the Earth. This includes the detailed diversification of land cover types, vegetation associations and plant communities that can be identified from~images.
+
+In monitoring the Earth's landscapes, it is important to not only use topographic data, but~also the environmental characteristics that reflect the complex interactions between the climate and hydrological parameters, as~well as vegetation responses to external climatic effects. These can all be derived from  satellite images such as Landsat 8-9 OLI/TIRS using advanced image processing methods, as demonstrated in this paper. Future research will be focused on developing further approaches using scripting algorithms that deal with satellite images to detect other parameters of land surface and vegetation coverage for environmental mapping, such as brightness and saturation indices, or~evaluating other vegetation indices for detecting the salinity of soil in the arid lands of Africa. Such characteristics reflect the climate--vegetation interactions that can be used for operational environmental monitoring based on spaceborne~data.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\vspace{12pt}
+\authorcontributions{Supervision, conceptualisation, methodology, software, resources, funding acquisition and~project administration, O.D.; writing---original draft preparation, methodology, software, data curation, visualisation, formal analysis, validation, writing---review and editing and~investigation, P.L. All authors have read and agreed to the published version of the manuscript.}
+
+\funding{\hl{The publication was funded by the Editorial Office of the \textit{Journal of Imaging}, Multidisciplinary Digital Publishing Institute (MDPI), by~providing a 100\% discount for the APC of this manuscript.} %MDPI: Information regarding the funder and the funding number should be provided. Please check the accuracy of funding data and any other information carefully.
+}
+
+\institutionalreview{Not applicable.}
+
+\informedconsent{Not applicable.}
+
+\dataavailability{\hl{Not applicable.}} %MDPI: Please add information about where the source images were downloaded from, and please include the link to the source.
+
+\acknowledgments{\hl{The authors thank the reviewers for reading and review of this~manuscript.} %MDPI: Please ensure that all individuals included in this section have consented to the acknowledgement.
+}
+
+\conflictsofinterest{The authors declare no conflict of~interest.} 
+
+\abbreviations{Abbreviations}{
+The following abbreviations are used in this manuscript:\\
+
+\noindent 
+\begin{tabular}{@{}ll}
+GMT & Generic Mapping Tools \\
+GNDVI & Green Normalised Difference Vegetation Index \\
+IPVI & Infrared Percentage Vegetation Index \\
+Landsat 8-9 OLI/TIRS & Landsat 8-9 Operational Land Imager (OLI) and Thermal Infrared (TIRS) \\
+NDVI & Normalised Difference Vegetation Index \\
+NDWI & Normalised Difference Water Index \\
+OSAVI & Optimised Soil-Adjusted Vegetation Index \\
+SAVI & Soil-Adjusted Vegetation Index \\
+USGS & United States Geological Survey \\
+UTM & Universal Transverse Mercator \\
+VIs & Vegetation Indices \\
+WGS84 & World Geodetic System 1984
+\end{tabular}
+}
+
+%% Optional
+\appendixtitles{yes} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If~the appendix sections contain a heading then change the argument to "yes".
+\appendixstart
+\appendix
+\section[\appendixname~\thesection]{Metadata on the Landsat 8-9 OLI/TIRS Images (USGS EarthExplorer)}\label{Appendix A}
+
+\begin{table}[H]
+\tablesize{\fontsize{7.5}{7.5}\selectfont}
+\caption{\hl{Metadata} %MDPI: Please add the explanation for superscript ``1''.
+ on the Landsat OLI/TIRS satellite images used in this study \textsuperscript{1}.\label{tabApp}}
+\begin{adjustwidth}{-\extralength}{0cm}
+\begin{tabularx}{\fulllength}{llll}
+    \toprule
+        \textbf{Dataset Attribute} & \textbf{Attributes for Image on 21 December 2018} & \textbf{Attributes for 18 December 2018} & \textbf{Attributes for 20 December 2018} \\ \midrule
+        Landsat Scene Identifier & LC91730492022355LGN01 & LC81730492018352LGN00 & LC81730492013354LGN01 \\ \midrule
+        Date Acquired & 21 December 2018 & 18 December 2018 & 20 December 2018 \\ \midrule
+        Collection Category & T1 & T1 & T1 \\ \midrule
+        Collection Number & 2 & 2 & 2 \\ \midrule
+        WRS Path & 173 & 173 & 173 \\ \midrule
+        WRS Row & 49 & 49 & 49 \\ \midrule
+        Target WRS Path & 173 & 173 & 173 \\ \midrule
+        Target WRS Row & 49 & 49 & 49 \\ \midrule
+        Nadir/Off Nadir & NADIR & NADIR & NADIR \\ \midrule
+        Roll Angle & $-$0.001 & 0.000 & 0.000 \\ \midrule
+        Date Product Generated L2 & 17 March 2023 & 30 August 2020 & 12 September 2020 \\ \midrule
+        Date Product Generated L1 & 17 March 2023 & 30 August 2020 & 12 September 2020 \\ \midrule
+        Start Time & 21 December 2022 08:09:26 & 18 December 2018 08:08:54.736348 & 20 December 2013 08:10:29.988456 \\ \midrule
+        Stop Time & 21 December 2022 08:09:58 & 18 December 2018 08:09:26.506347 & 20 December 2013 08:11:01.758452 \\ \midrule
+        Station Identifier & LGN & LGN & LGN \\ \midrule
+        Day/Night Indicator & DAY & DAY & DAY \\ \midrule
+        Land Cloud Cover & 0.00 & 0.00 & 0.00 \\ \midrule
+        Scene Cloud Cover L1 & 0.00 & 0.00 & 0.00 \\ \midrule
+        Ground Control Points Model & 511 & 521 & 639 \\ \midrule
+        Ground Control Points Version & 5 & 5 & 5 \\ \midrule
+        Geometric RMSE Model & 7.263 & 6.387 & 4.378 \\ \midrule
+        Geometric RMSE Model X & 5.055 & 4.612 & 2.951 \\ \midrule
+        Geometric RMSE Model Y & 5.216 & 4.418 & 3.234 \\ \midrule
+        Processing Software Version & LPGS\_16.2.0 & LPGS\_15.3.1c & LPGS\_15.3.1c \\ \midrule
+        Sun Elevation L0RA & 44.22152569 & 44.38827439 & 44.40055924 \\ \midrule
+        Sun Azimuth L0RA & 148.68774152 & 148.91482828 & 149.05309430 \\ \midrule
+        TIRS SSM Model & N/A & FINAL & ACTUAL \\ \midrule
+        Data Type L2 & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \midrule
+        Sensor Identifier & OLI\_TIRS & OLI\_TIRS & OLI\_TIRS \\ \midrule
+        Satellite & 9 & 8 & 8 \\ 
+        
+        \bottomrule
+\end{tabularx}
+\end{adjustwidth}
+\end{table}
+
+\begin{table}[H]\ContinuedFloat
+\small
+\caption{{\em Cont.}}
+
+        
+        
+\begin{adjustwidth}{-\extralength}{0cm}
+%\centering %% If there is a figure in wide page, please release command \centering
+
+        \begin{tabularx}{\fulllength}{llll}
+    \toprule
+        \textbf{Dataset Attribute} & \textbf{Attributes for Image on 21 December 2018} & \textbf{Attributes for 18 December 2018} & \textbf{Attributes for 20 December 2018} \\ \midrule
+        
+        Product Map Projection L1 & UTM & UTM & UTM \\ \midrule
+        UTM Zone & 36 & 36 & 36 \\ \midrule
+        Datum & WGS84 & WGS84 & WGS84 \\ \midrule
+        Ellipsoid & WGS84 & WGS84 & WGS84 \\ \midrule
+        Scene Center Lat DMS & 15°54$'$03.06$''$ N & 15°54$'$03.56$''$ N & 15°54$'$03.42$''$ N \\ \midrule
+        Scene Center Long DMS & 33°06$'$32.69$''$ E & 33°07$'$35.51$''$ E & 33°05$'$59.28$''$ E \\ \midrule
+        Corner Upper Left Lat DMS & 16°56$'$34.84$''$ N & 16°56$'$44.88$''$ N & 16°56$'$44.41$''$ N \\ \midrule
+        Corner Upper Left Long DMS & 32°02$'$24.68$''$ E & 32°03$'$25.49$''$ E & 32°01$'$44.08$''$ E \\ \midrule
+        Corner Upper Right Lat DMS & 16°56$'$30.70$''$ N & 16°56$'$40.13$''$ N & 16°56$'$40.63$''$ N \\ \midrule
+        Corner Upper Right Long DMS & 34°10$'$42.96$''$ E & 34°11$'$43.87$''$ E & 34°10$'$12.61$''$ E \\ \midrule
+        Corner Lower Left Lat DMS & 14°50$'$38.76$''$ N & 14°50$'$39.01$''$ N & 14°50$'$38.58$''$ N \\ \midrule
+        Corner Lower Left Long DMS & 32°03$'$00.32$''$ E & 32°04$'$00.55$''$ E & 32°02$'$20.18$''$ E \\ \midrule
+        Corner Lower Right Lat DMS & 14°50$'$35.16$''$ N & 14°50$'$34.87$''$ N & 14°50$'$35.34$''$ N \\ \midrule
+        Corner Lower Right Long DMS & 34°09$'$59.18$''$ E & 34°10$'$59.41$''$ E & 34°09$'$29.09$''$ E \\ \midrule
+        Scene Center Latitude & 15.90085 & 15.90099 & 15.90095 \\ \midrule
+        Scene Center Longitude & 33.10908 & 33.12653 & 33.09980 \\ \midrule
+        Corner Upper Left Latitude & 16.94301 & 16.94580 & 16.94567 \\ \midrule
+        Corner Upper Left Longitude & 32.04019 & 32.05708 & 32.02891 \\ \midrule
+        Corner Upper Right Latitude & 16.94186 & 16.94448 & 16.94462 \\ \midrule
+        Corner Upper Right Longitude & 34.17860 & 34.19552 & 34.17017 \\ \midrule
+        Corner Lower Left Latitude & 14.84410 & 14.84417 & 14.84405 \\ \midrule
+        Corner Lower Left Longitude & 32.05009 & 32.06682 & 32.03894 \\ \midrule
+        Corner Lower Right Latitude & 14.84310 & 14.84302 & 14.84315 \\ \midrule
+        Corner Lower Right Longitude & 34.16644 & 34.18317 & 34.15808 \\ \bottomrule
+%    \end{tabular}
+ \end{tabularx}
+ \end{adjustwidth}
+\end{table}
+
+
+
+\section[\appendixname~\thesection]{R Scripts Used for Computing and Plotting the Vegetation Indices}\label{Appendix B}
+\subsection[\appendixname~\thesubsection]{R Code for Computing the NDVI}
+
+
+\setcounter{lstlisting}{0}
+\renewcommand\thelstlisting{A\arabic{lstlisting}}
+
+
+\begin{lstlisting}[language=R,caption=R code for computing the NDVI (here: a case from 2022).,style=mystyle,label={lst01}]
+library(terra)
+library(RColorBrewer)
+library(Hmisc)
+library(pals)
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_NDVI")
+# 1. Normalized Difference Vegetation Index (NDVI) = (NIR - R) / (NIR + R), i.e.,~NDVI = (Band 5 - Band 4) / (Band 5 + Band 4).
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk - bi) / (bk + bi)
+  return(vi)
+}
+# For Landsat NIR = 5, red = 4.
+filenames <- paste0('LC09_L2SP_173049_20221221_20221224_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+ndvi <- vi(landsat, 5, 4)
+options(scipen=10000)
+colors <- brewer.rdylgn(100)
+plot(ndvi, col=colors, font.main = 1, main = "NDVI for Landsat-8 OLI/TIRS C1 image LC09_L2SP_173049_20221221_20221224_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2022)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting the histogram of the NDVI
+hist(ndvi, font.main = 1, main = "NDVI values for Landsat-8 OLI/TIRS C1 image \nLC09_L2SP_173049_20221221_20221224_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2022)", xlab = "NDVI", ylab= "Frequency",
+    col = "darkgoldenrod1", xlim = c(-0.5, 1),  breaks = 30, xaxt = "n")
+axis(side=1, at~= seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
+
+
+
+\subsection[\appendixname~\thesubsection]{R Code for Computing the GNDVI}
+\begin{lstlisting}[language=R,caption=R code for computing the GNDVI (here: a case from 2013).,style=mystyle,label={lst02}]
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_GNDVI")
+# Green Normalized Difference Vegetation Index (GNDVI) = (NIR - Green) / (NIR + Green)
+# Nir = Band 5, Green = Band 3.
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk - bi) / (bk + bi)
+  return(vi)
+}
+# For Landsat 8-9 OLI/TIRS, NIR = 5, Green = 3.
+filenames <- paste0('LC08_L2SP_173049_20131220_20200912_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+gndvi <- vi(landsat, 5, 3)
+options(scipen=10000)
+colors <- brewer.spectral(100)
+plot(gndvi, col=colors, font.main = 1, main = "GNDVI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20131220_20200912_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2013)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting histogram of the GNDVI
+hist(gndvi, font.main = 1, main = "GNDVI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20131220_20200912_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2013)", xlab = "GNDVI", ylab= "Frequency", col = "peachpuff", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
+axis(side=1, at~= seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{R Code for Computing the NDWI}
+\begin{lstlisting}[language=R,caption=R code for computing the NDWI (here: a case from 2018).,style=mystyle,label={lst03}]
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bi - bk) / (bi + bk)
+  return(vi)
+}
+# For Landsat 8-9 OLI/TIRS, NIR = 5, SWIR1 = Band 6.
+filenames <- paste0('LC08_L2SP_173049_20181218_20200830_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+ndwi <- vi(landsat, 5, 6)
+options(scipen=10000)
+colors <- jet(100)
+plot(ndwi, col=colors, font.main = 1, main = "NDWI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20181218_20200830_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2018)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting histogram of the NDWI
+hist(ndwi, font.main = 1, main = "NDWI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20181218_20200830_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2018)", xlab = "NDWI", ylab= "Frequency",
+    col = "mediumpurple1", xlim = c(-0.5, 1),  breaks = 50, xaxt = "n")
+axis(side=1, at~= seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{R Code for Computing the OSAVI}
+\begin{lstlisting}[language=R,caption=R code for computing the OSAVI (here: a case from 2022).,style=mystyle,label={lst04}]
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_OSAVI")
+# 1. Optimized Soil Adjusted Vegetation Index (OSAVI) = (NIR - R) / (NIR + R + 0.16), i.e.,~OSAVI = (Band 5 - Band 4) / (Band 5 + Band 4 + 0.16).
+vi <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk - bi) / (bk + bi + 0.16)
+  return(vi)
+}
+# For Landsat 8-9 OLI/TIRS, NIR = 5, red = 4.
+filenames <- paste0('LC09_L2SP_173049_20221221_20221224_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+osavi <- vi(landsat, 5, 4)
+options(scipen=10000)
+colors <- kovesi.diverging_rainbow_bgymr_45_85_c67(100)
+plot(osavi, col=colors, font.main = 1, main = "OSAVI for Landsat-8 OLI/TIRS C1 image LC09_L2SP_173049_20221221_20221224_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2022)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting the histogram of the OSAVI
+hist(osavi, font.main = 1, main = "OSAVI values for Landsat-8 OLI/TIRS C1 image \nLC09_L2SP_173049_20221221_20221224_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2022)", xlab = "OSAVI", ylab= "Frequency", col = "dodgerblue", xlim = c(-0.5, 1),  breaks = 30, xaxt = "n")
+axis(side=1, at~= seq(-0.6, 1, 0.1), labels = seq(-0.6, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
+
+\subsection[\appendixname~\thesubsection]{R code for computing the IPVI}
+\begin{lstlisting}[language=R,caption=R code for computing the IPVI (here: a case from 2013).,style=mystyle,label={lst05}]
+library(terra)
+library(RColorBrewer)
+library(Hmisc)
+library(pals)
+#
+setwd("/Users/polinalemenkova/Documents/R/52_Image_Processing/Sudan_IPVI")
+# Infrared Percentage Vegetation Index (IPVI) = NIR / (NIR + Red)
+# NIR = Band 5, Red = Band 4
+vi <- function(img, i, k) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk) / (bi + bk)
+  return(vi)
+}
+filenames <- paste0('LC08_L2SP_173049_20131220_20200912_02_T1_SR_B', 1:7, ".tif")
+filenames
+landsat <- rast(filenames)
+landsat
+ipvi <- vi(landsat, 5, 4)
+ipvi
+options(scipen=10000)
+colors <- brewer.rdylgn(100)
+plot(ipvi, col=colors, font.main = 1, main = "IPVI for Landsat-8 OLI/TIRS C1 image LC08_L2SP_173049_20131220_20200912_02_T1_SR_B: \nWhite Nile and Blue Nile confluence, Sudan (2013)", cex.main=0.9)
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+# Plotting the histogram
+hist(ipvi, font.main = 1, main = "IPVI values for Landsat-8 OLI/TIRS C1 image \nLC08_L2SP_173049_20131220_20200912_02_T1_SR_B: White Nile and Blue Nile confluence, Sudan (2013)", xlab = "IPVI", ylab= "Frequency",
+    col = "yellowgreen", xlim = c(0, 1),  breaks = 50, xaxt = "n")
+axis(side=1, at~= seq(0.0, 1, 0.1), labels = seq(0.0, 1, 0.1))
+minor.tick(nx = 10, ny = 10, tick.ratio = 0.3)
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{-\extralength}{0cm}
+%\printendnotes[custom] % Un-comment to print a list of endnotes
+
+\reftitle{References}
+
+%=====================================
+% References, variant A: external bibliography
+%=====================================
+\begin{thebibliography}{999}
+
+\bibitem[Ahmed et~al.(2018)Ahmed, Kheiry, and {Mofadel Hassan}]{AHMED201829}
+Ahmed, S.A.; Kheiry, M.A.; {Mofadel Hassan}, I.
+\newblock 4---Impact of Vegetation Cover Changes on Gum Arabic Production Using
+  Remote Sensing Applications in Gedarif State, Sudan. In {\em Gum Arabic};
+  Mariod, A.A., Ed.; Academic Press: \hl{Cambridge, MA, USA,} %We added the location of publisher. Please confirm
+ 2018; \mbox{pp. 29--43}.
+\newblock {\url{https://doi.org/10.1016/B978-0-12-812002-6.00004-X}}.
+
+\bibitem[Hawash et~al.(2021)Hawash, El-Hassanin, Amer, El-Nahry, and
+  Effat]{Hawash}
+Hawash, E.; El-Hassanin, A.; Amer, W.; El-Nahry, A.; Effat, H.
+\newblock {Change detection and urban expansion of Port Sudan, Red Sea, using
+  remote sensing and GIS}.
+\newblock {\em Environ. Monit. Assess.} {\bf 2021}, {\em
+  193},~723.
+\newblock {\url{https://doi.org/10.1007/s10661-021-09486-0}}.
+
+\bibitem[Youssef et~al.(2020)Youssef, Ibrahem, {El Sayed}, and
+  Masoud]{YOUSSEF2020103777}
+Youssef, A.M.; Ibrahem, S.M.; {El Sayed}, A.N.; Masoud, M.H.
+\newblock Assessment and management of water resources in Wadi El-Deeb using
+  geophysical, hydrological and GIS techniques-Red Sea.
+\newblock {\em J. Afr. Earth Sci.} {\bf 2020}, {\em  164},~103777.
+\newblock {\url{https://doi.org/10.1016/j.jafrearsci.2020.103777}}.
+
+\bibitem[Qu et~al.(2013)Qu, Shao, and Zhang]{6621869}
+Qu, L.; Shao, Y.; Zhang, L.
+\newblock Land suitability evaluation method based on GIS technology.
+\newblock In Proceedings of the 2013 Second International Conference on
+  Agro-Geoinformatics (Agro-Geoinformatics), Fairfax, VA, USA, 12--16 August 2013; pp. 7--12.
+\newblock {\url{https://doi.org/10.1109/Argo-Geoinformatics.2013.6621869}}.
+
+\clearpage
+\bibitem[Aldoma and Mohamed(2014)]{Aldoma}
+Aldoma, A.; Mohamed, M.
+\newblock {Simulation of rainfall runoff process for Khartoum State (Sudan)
+  using remote sensing and geographic information systems (GIS)}.
+\newblock {\em Int. J. Water Resour. Environ. Eng.} {\bf 2014}, {\em 6},~98--105.
+
+\bibitem[Abdekareem et~al.(2022)Abdekareem, Al-Arifi, Abdalla, Mansour, and
+  El-Baz]{su14137871}
+Abdekareem, M.; Al-Arifi, N.; Abdalla, F.; Mansour, A.; El-Baz, F.
+\newblock Fusion of Remote Sensing Data Using GIS-Based AHP-Weighted Overlay
+  Techniques for Groundwater Sustainability in Arid Regions.
+\newblock {\em Sustainability} {\bf 2022}, {\em 14}, 7871.
+\newblock {\url{https://doi.org/10.3390/su14137871}}.
+
+\bibitem[{El Bastawesy} et~al.(2017){El Bastawesy}, Cherif, and
+  Sultan]{ELBASTAWESY2017252}
+{El Bastawesy}, M.; Cherif, O.; Sultan, M.
+\newblock The geomorphological evidences of subsidence in the Nile Delta:
+  Analysis of high resolution topographic DEM and multi-temporal satellite
+  images.
+\newblock {\em J. Afr. Earth Sci.} {\bf 2017}, {\em  136},~252--261.
+\newblock \hl{Phanerozoic Geology of Egypt,} %MDPI: can it be deleted?
+  {\url{https://doi.org/10.1016/j.jafrearsci.2016.10.013}}.
+
+\bibitem[Sosnowski et~al.(2016)Sosnowski, Ghoneim, Burke, Hines, and
+  Halls]{SOSNOWSKI201651}
+Sosnowski, A.; Ghoneim, E.; Burke, J.J.; Hines, E.; Halls, J.
+\newblock Remote regions, remote data: A spatial investigation of
+  precipitation, dynamic land covers, and conflict in the Sudd wetland of South
+  Sudan.
+\newblock {\em Appl. Geogr.} {\bf 2016}, {\em 69},~51--64.
+\newblock {\url{https://doi.org/10.1016/j.apgeog.2016.02.007}}.
+
+\bibitem[Gorsevski et~al.(2013)Gorsevski, Geores, and
+  Kasischke]{GORSEVSKI201364}
+Gorsevski, V.; Geores, M.; Kasischke, E.
+\newblock Human dimensions of land use and land cover change related to civil
+  unrest in the Imatong Mountains of South Sudan.
+\newblock {\em Appl. Geogr.} {\bf 2013}, {\em 38},~64--75.
+\newblock {\url{https://doi.org/10.1016/j.apgeog.2012.11.019}}.
+
+\bibitem[Wilson and Sader(2002)]{WILSON2002385}
+Wilson, E.H.; Sader, S.A.
+\newblock Detection of forest harvest type using multiple dates of Landsat TM
+  imagery.
+\newblock {\em Remote Sens. Environ.} {\bf 2002}, {\em 80},~385--396.
+\newblock {\url{https://doi.org/10.1016/S0034-4257(01)00318-2}}.
+
+\bibitem[Lemenkova and Debeir(2022)]{Lemenkova202227}
+Lemenkova, P.; Debeir, O.
+\newblock {Satellite Image Processing by Python and R Using Landsat 9 OLI/TIRS
+  and SRTM DEM Data on Côte d’Ivoire, West Africa}.
+\newblock {\em J. Imaging} {\bf 2022}, {\em 8},~317.
+\newblock {\url{https://doi.org/10.3390/jimaging8120317}}.
+
+\bibitem[Khiry and Csaplovics(2007)]{4293065}
+Khiry, M.A.; Csaplovics, E.
+\newblock Appropriate Methods for Monitoring and Mapping Land Cover Changes in
+  Semi-arid Areas in North Kordofan (Sudan) by Using Satellite Imagery and
+  Spectral Mixture Analysis.
+\newblock In Proceedings of the 2007 International Workshop on the Analysis of
+  Multi-temporal Remote Sensing Images, Leuven, Belgium, 18--20 July 2007; pp. 1--4.
+\newblock {\url{https://doi.org/10.1109/MULTITEMP.2007.4293065}}.
+
+\bibitem[Salih et~al.(2017)Salih, Ganawa, and Elmahl]{SALIH2017S21}
+Salih, A.A.; Ganawa, E.T.; Elmahl, A.A.
+\newblock Spectral mixture analysis (SMA) and change vector analysis (CVA)
+  methods for monitoring and mapping land degradation/desertification in arid
+  and semiarid areas (Sudan), using Landsat imagery.
+\newblock {\em  Egypt. J. Remote Sens. Space Sci.} {\bf
+  2017}, {\em 20},~S21--S29.
+\newblock \hl{Water Scarcity and Harvesting,} 
+  {\url{https://doi.org/10.1016/j.ejrs.2016.12.008}}.
+
+\bibitem[Nori et~al.(2009)Nori, Sulieman, and Niemeyer]{5416935}
+Nori, W.; Sulieman, H.M.; Niemeyer, I.
+\newblock {Detection of land cover changes in El Rawashda Forest, Sudan: A
+  systematic comparison}.
+\newblock In Proceedings of the 2009 IEEE International Geoscience and Remote
+  Sensing Symposium, Cape Town, South Africa, 12--17 July 2009; Volume 1, pp. 88--91.
+\newblock {\url{https://doi.org/10.1109/IGARSS.2009.5416935}}.
+
+\bibitem[Lemenkova and Debeir(2022)]{Lemenkova202229}
+Lemenkova, P.; Debeir, O.
+\newblock {R Libraries for Remote Sensing Data Classification by k-means
+  Clustering and NDVI Computation in Congo River Basin, DRC}.
+\newblock {\em Appl. Sci.} {\bf 2022}, {\em 12},~12554.
+\newblock {\url{https://doi.org/10.3390/app122412554}}.
+
+\bibitem[Seaquist et~al.(2002)Seaquist, Chappell, and Eklundh]{1026428}
+Seaquist, J.; Chappell, A.; Eklundh, L.
+\newblock Exploring and improving NOAA AVHRR NDVI image quality for African
+  drylands.
+\newblock In Proceedings of the IEEE International Geoscience and Remote
+  Sensing Symposium, Toronto, ON, Canada, 24--28 June 2002; Volume 4, pp. 2006--2008.
+\newblock {\url{https://doi.org/10.1109/IGARSS.2002.1026428}}.
+
+\bibitem[Rivera-Marin et~al.(2022)Rivera-Marin, Dash, and
+  Ogutu]{RIVERAMARIN2022104829}
+Rivera-Marin, D.; Dash, J.; Ogutu, B.
+\newblock The use of remote sensing for desertification studies: A review.
+\newblock {\em J. Arid Environ.} {\bf 2022}, {\em 206},~104829.
+\newblock {\url{https://doi.org/10.1016/j.jaridenv.2022.104829}}.
+
+\bibitem[Ali and Zahran(2023)]{Ali}
+Ali, R.; Zahran, S.
+\newblock {Evaluation of NASA land information system in prediction stream
+  runoff: Case study of Atbara and Blue Nile Sub-Basins}.
+\newblock In {\em Modeling Earth Systems and Environment}; \hl{Publisher: City, Country}, 2023; %MDPI: Please add the name of the publisher and their location.
+\newblock {\url{https://doi.org/10.1007/s40808-022-01663-5}}.
+
+\bibitem[Kumar et~al.(2022)Kumar, Babu, Anusha, and
+  Rajasekhar]{KUMAR2022100578}
+Kumar, B.; Babu, K.; Anusha, B.; Rajasekhar, M.
+\newblock Geo-environmental monitoring and assessment of land degradation and
+  desertification in the semi-arid regions using Landsat 8 OLI / TIRS, LST, and
+  NDVI approach.
+\newblock {\em Environ. Challenges} {\bf 2022}, {\em 8},~100578.
+\newblock {\url{https://doi.org/10.1016/j.envc.2022.100578}}.
+
+\bibitem[Rashid et~al.(2023)Rashid, Sheik, Haque, Siddique, Habib, and
+  Patwary]{RASHID2023100314}
+Rashid, M.B.; Sheik, M.R.; Haque, A.E.; Siddique, M.A.B.; Habib, M.A.; Patwary,
+  M.A.A.
+\newblock Salinity-induced change in green vegetation and land use patterns
+  using remote sensing, NDVI, and GIS techniques: A case study on the
+  southwestern coast of Bangladesh.
+\newblock {\em Case Stud. Chem. Environ. Eng.} {\bf
+  2023}, {\em 7},~100314.
+\newblock {\url{https://doi.org/10.1016/j.cscee.2023.100314}}.
+
+\bibitem[Ezaidi et~al.(2022)Ezaidi, Aydda, Kabbachi, Althuwaynee, Ezaidi,
+  Haddou, Idoumskine, Thorpe, Park, and Kim]{EZAIDI2022100800}
+Ezaidi, S.; Aydda, A.; Kabbachi, B.; Althuwaynee, O.F.; Ezaidi, A.; Haddou,
+  M.A.; Idoumskine, I.; Thorpe, J.; Park, H.J.; Kim, S.W.
+\newblock Multi-temporal Landsat-derived NDVI for vegetation cover degradation
+  for the period 1984-2018 in part of the Arganeraie Biosphere Reserve
+  (Morocco).
+\newblock {\em Remote Sens. Appl. Soc. Environ.} {\bf
+  2022}, {\em 27},~100800.
+\newblock {\url{https://doi.org/10.1016/j.rsase.2022.100800}}.
+
+\bibitem[de~la Iglesia~Martinez and Labib(2023)]{MARTINEZ2023115155}
+de~la Iglesia~Martinez, A.; Labib, S.
+\newblock Demystifying normalized difference vegetation index (NDVI) for
+  greenness exposure assessments and policy interventions in urban greening.
+\newblock {\em Environ. Res.} {\bf 2023}, {\em 220},~115155.
+\newblock {\url{https://doi.org/10.1016/j.envres.2022.115155}}.
+
+\bibitem[Omar and Kawamukai(2021)]{OMAR2021e01020}
+Omar, M.S.; Kawamukai, H.
+\newblock Prediction of NDVI using the Holt-Winters model in high and low
+  vegetation regions: A case study of East Africa.
+\newblock {\em Sci. Afr.} {\bf 2021}, {\em 14},~e01020.
+\newblock {\url{https://doi.org/10.1016/j.sciaf.2021.e01020}}.
+
+\bibitem[Wang et~al.(2022)Wang, Wang, Guo, Li, and Zang]{WANG2022102704}
+Wang, C.; Wang, A.; Guo, D.; Li, H.; Zang, S.
+\newblock Off-peak NDVI correction to reconstruct Landsat time series for
+  post-fire recovery in high-latitude forests.
+\newblock {\em Int. J. Appl. Earth Obs. Geoinf.} {\bf 2022}, {\em 107},~102704.
+\newblock {\url{https://doi.org/10.1016/j.jag.2022.102704}}.
+
+\bibitem[Barriguinha et~al.(2022)Barriguinha, Jardim, {de Castro Neto}, and
+  Gil]{BARRIGUINHA2022103069}
+Barriguinha, A.; Jardim, B.; {de Castro Neto}, M.; Gil, A.
+\newblock Using NDVI, climate data and machine learning to estimate yield in
+  the Douro wine region.
+\newblock {\em Int. J. Appl. Earth Obs. Geoinf.} {\bf 2022}, {\em 114},~103069.
+\newblock {\url{https://doi.org/10.1016/j.jag.2022.103069}}.
+
+\bibitem[Roy(2021)]{ROY2021100582}
+Roy, B.
+\newblock Optimum machine learning algorithm selection for forecasting
+  vegetation indices: MODIS NDVI \& EVI.
+\newblock {\em Remote Sens. Appl. Soc. Environ.} {\bf
+  2021}, {\em 23},~100582.
+\newblock {\url{https://doi.org/10.1016/j.rsase.2021.100582}}.
+
+\clearpage
+\bibitem[Li et~al.(2022)Li, Li, Xu, Feng, Zhao, Long, Meng, Chen, Yang, and
+  Yang]{LI2022102818}
+Li, J.; Li, C.; Xu, W.; Feng, H.; Zhao, F.; Long, H.; Meng, Y.; Chen, W.; Yang,
+  H.; Yang, G.
+\newblock Fusion of optical and SAR images based on deep learning to
+  reconstruct vegetation NDVI time series in cloud-prone regions.
+\newblock {\em Int. J. Appl. Earth Obs. Geoinf.} {\bf 2022}, {\em 112},~102818.
+\newblock {\url{https://doi.org/10.1016/j.jag.2022.102818}}.
+
+\bibitem[Davidson et~al.(2022)Davidson, Jaganathan, Sivakumar, Czarnecki, and
+  Chowdhary]{DAVIDSON2022107396}
+Davidson, C.; Jaganathan, V.; Sivakumar, A.N.; Czarnecki, J.M.P.; Chowdhary, G.
+\newblock NDVI/NDRE prediction from standard RGB aerial imagery using deep
+  learning.
+\newblock {\em Comput. Electron. Agric.} {\bf 2022}, {\em
+  203},~107396.
+\newblock {\url{https://doi.org/10.1016/j.compag.2022.107396}}.
+
+\bibitem[Zhao et~al.(2011)Zhao, Wang, and Zhang]{6049966}
+Zhao, J.; Wang, Y.; Zhang, H.
+\newblock Automated batch processing of mass remote sensing and geospatial data
+  to meet the needs of end users.
+\newblock In Proceedings of the 2011 IEEE International Geoscience and Remote
+  Sensing Symposium, Vancouver, BC, Canada, 24--29 July 2011; pp. 3464--3467.
+\newblock {\url{https://doi.org/10.1109/IGARSS.2011.6049966}}.
+
+\bibitem[Lemenkova and Debeir(2023)]{Lemenkova202301}
+Lemenkova, P.; Debeir, O.
+\newblock {Quantitative Morphometric 3D Terrain Analysis of Japan Using Scripts
+  of GMT and R}.
+\newblock {\em Land} {\bf 2023}, {\em 12},~261.
+\newblock {\url{https://doi.org/10.3390/land12010261}}.
+
+\bibitem[Zhang et~al.(2014)Zhang, Yue, and Guo]{6910592}
+Zhang, M.; Yue, P.; Guo, X.
+\newblock GIScript: Towards an interoperable geospatial scripting language for
+  GIS programming.
+\newblock In Proceedings of the 2014 The Third International Conference on
+  Agro-Geoinformatics,  Beijing, China, 11--14 August 2014; pp. 1--5.
+\newblock {\url{https://doi.org/10.1109/Agro-Geoinformatics.2014.6910592}}.
+
+\bibitem[Lemenkova and Debeir(2022)]{Lemenkova202228}
+Lemenkova, P.; Debeir, O.
+\newblock {Seismotectonics of Shallow-Focus Earthquakes in Venezuela with Links
+  to Gravity Anomalies and Geologic Heterogeneity Mapped by a GMT Scripting
+  Language}.
+\newblock {\em Sustainability} {\bf 2022}, {\em 14},~15966.
+\newblock {\url{https://doi.org/10.3390/su142315966}}.
+
+\bibitem[Pandit et~al.(2020)Pandit, Sawant, Mohite, and Pappula]{9323708}
+Pandit, A.; Sawant, S.; Mohite, J.; Pappula, S.
+\newblock Development of Geospatial Processing Frameworks for Sentinel-1, -2
+  Satellite Data.
+\newblock In Proceedings of the IGARSS 2020--2020 IEEE International
+  Geoscience and Remote Sensing Symposium, Waikoloa, HI, USA, 26 September--2 October 2020; pp. 3123--3126.
+\newblock {\url{https://doi.org/10.1109/IGARSS39084.2020.9323708}}.
+
+\bibitem[Walter et~al.(2002)Walter, Warmerdam, and Farris-Manning]{1027236}
+Walter, G.; Warmerdam, F.; Farris-Manning, P.
+\newblock An open source tool for geospatial image exploitation.
+\newblock In Proceedings of the IEEE International Geoscience and Remote
+  Sensing Symposium, Toronto, ON, Canada, 24--28 June 2002; Volume 6, pp. 3522--3524.
+\newblock {\url{https://doi.org/10.1109/IGARSS.2002.1027236}}.
+
+\bibitem[Leveau and Isla(2021)]{LEVEAU2021127199}
+Leveau, L.M.; Isla, F.I.
+\newblock Predicting bird species presence in urban areas with NDVI: An
+  assessment within and between cities.
+\newblock {\em Urban For. Urban Green.} {\bf 2021}, {\em 63},~127199.
+\newblock {\url{https://doi.org/10.1016/j.ufug.2021.127199}}.
+
+\bibitem[Chávez et~al.(2023)Chávez, Meseguer-Ruiz, Olea, Calderón-Seguel,
+  Yager, {Isela Meneses}, Lastra, Núñez-Hidalgo, Sarricolea,
+  Serrano-Notivoli, and Prieto]{CHAVEZ2023103138}
+Chávez, R.O.; Meseguer-Ruiz, O.; Olea, M.; Calderón-Seguel, M.; Yager, K.;
+  {Isela Meneses}, R.; Lastra, J.A.; Núñez-Hidalgo, I.; Sarricolea, P.;
+  Serrano-Notivoli, R.;  et~al.
+\newblock Andean peatlands at risk? Spatiotemporal patterns of extreme NDVI
+  anomalies, water extraction and drought severity in a large-scale mining area
+  of Atacama, northern Chile.
+\newblock {\em Int. J. Appl. Earth Obs. Geoinf.} {\bf 2023}, {\em 116},~103138.
+\newblock {\url{https://doi.org/10.1016/j.jag.2022.103138}}.
+
+\bibitem[Klimavičius et~al.(2023)Klimavičius, Rimkus, Stonevičius, and
+  Mačiulytė]{KLIMAVICIUS2023171}
+Klimavičius, L.; Rimkus, E.; Stonevičius, E.; Mačiulytė, V.
+\newblock Seasonality and long-term trends of NDVI values in different land use
+  types in the eastern part of the Baltic Sea basin.
+\newblock {\em Oceanologia} {\bf 2023}, {\em 65},~171--181.
+\newblock {\url{https://doi.org/10.1016/j.oceano.2022.02.007}}.
+
+\bibitem[Prăvălie et~al.(2022)Prăvălie, Sîrodoev, Nita, Patriche,
+  Dumitraşcu, Roşca, Tişcovschi, Bandoc, Săvulescu, Mănoiu, and
+  Birsan]{PRAVALIE2022108629}
+Prăvălie, R.; Sîrodoev, I.; Nita, I.A.; Patriche, C.; Dumitraşcu, M.;
+  Roşca, B.; Tişcovschi, A.; Bandoc, G.; Săvulescu, I.; Mănoiu, V.;  et~al.
+\newblock NDVI-based ecological dynamics of forest vegetation and its
+  relationship to climate change in Romania during 1987--2018.
+\newblock {\em Ecol. Indic.} {\bf 2022}, {\em 136},~108629.
+\newblock {\url{https://doi.org/10.1016/j.ecolind.2022.108629}}.
+
+\bibitem[Alvi(1994)]{Alvi}
+Alvi, S.H.
+\newblock {Climatic changes, desertification and the Republic of Sudan}.
+\newblock {\em GeoJournal} {\bf 1994}, {\em 33},~393--399.
+\newblock {\url{https://doi.org/10.1007/BF00806422}}.
+
+\bibitem[Dawelbait and Morari(2012)]{DAWELBAIT201245}
+Dawelbait, M.; Morari, F.
+\newblock Monitoring desertification in a Savannah region in Sudan using
+  Landsat images and spectral mixture analysis.
+\newblock {\em J. Arid Environ.} {\bf 2012}, {\em 80},~45--55.
+\newblock {\url{https://doi.org/10.1016/j.jaridenv.2011.12.011}}.
+
+\bibitem[Mohamed et~al.(2022)Mohamed, {El Afandi}, and
+  El-Mahdy]{MOHAMED20223265}
+Mohamed, M.A.; {El Afandi}, G.S.; El-Mahdy, M.E.S.
+\newblock Impact of climate change on rainfall variability in the Blue Nile
+  basin.
+\newblock {\em Alex. Eng. J.} {\bf 2022}, {\em
+  61},~3265--3275.
+\newblock {\url{https://doi.org/10.1016/j.aej.2021.08.056}}.
+
+\bibitem[Hulme(1986)]{HULME198689}
+Hulme, M.
+\newblock The adaptability of a rural water supply system to extreme rainfall
+  anomalies in central Sudan.
+\newblock {\em Appl. Geogr.} {\bf 1986}, {\em 6},~89--105.
+\newblock {\url{https://doi.org/10.1016/0143-6228(86)90013-5}}.
+
+\bibitem[Elagib(2011)]{Elagib}
+Elagib, N.A.
+\newblock Changing rainfall, seasonality and erosivity in the hyper-arid zone
+  of Sudan.
+\newblock {\em Land Degrad. Dev.} {\bf 2011}, {\em 22},~505--512.
+\newblock {\url{https://doi.org/10.1002/ldr.1023}}.
+
+\bibitem[Ayoub(1999)]{Ayoub}
+Ayoub, A.T.
+\newblock Land degradation, rainfall variability and food production in the
+  Sahelian zone of the Sudan.
+\newblock {\em Land Degrad. Dev.} {\bf 1999}, {\em 10},~489--500.
+\newblock
+  {\url{https://doi.org/10.1002/(SICI)1099-145X(199909/10)10:5<489::AID-LDR336>3.0.CO;2-U}}.
+
+\bibitem[Akhtar et~al.(1994)Akhtar, Mensching, and Domnick]{akhtar1994methods}
+Akhtar, M.; Mensching, H.; Domnick, I.
+\newblock Methods applied for recording desertification and their results from
+  Sahel region of the Republic of Sudan.
+\newblock {\em Desertif. Control Bull.} {\bf 1994}, {\em 25},~40--47.
+
+\bibitem[Salih and Hamid(2017)]{SALIH2017S31}
+Salih, A.A.; Hamid, A.A.
+\newblock Hydrological studies in the White Nile State in Sudan.
+\newblock {\em  Egypt. J. Remote Sens. Space Sci.} {\bf
+  2017}, {\em 20},~S31--S38.
+\newblock \hl{Water scarcity and harvesting,}
+  {\url{https://doi.org/10.1016/j.ejrs.2016.12.004}}.
+
+\bibitem[Fuller(1987)]{FULLER198739}
+Fuller, T.D.
+\newblock Resettlement as a desertification control measure: A case study in
+  Darfur Region, Sudan---Part II: Recommendations.
+\newblock {\em Agric. Adm. Ext.} {\bf 1987}, {\em
+  26},~39--55.
+\newblock {\url{https://doi.org/10.1016/0269-7475(87)90026-2}}.
+
+\bibitem[Salih and Hassaballa(2022)]{Salih2022}
+Salih, A.; Hassaballa, A.A. Quantitative Assessment of Land Sensitivity to
+  Desertification in Central Sudan: An Application of Remote Sensing-Based
+  MEDALUS Model.
+\newblock In {\em Applications of Space Techniques on the Natural Hazards in
+  the MENA Region}; Springer International Publishing: Cham, Switzerland,
+  2022; pp. 419--446.
+\newblock {\url{https://doi.org/10.1007/978-3-030-88874-9_18}}.
+
+\bibitem[Tariku et~al.(2021)Tariku, Gan, Tan, Gan, Shi, and
+  Tilmant]{TARIKU2021144863}
+Tariku, T.B.; Gan, K.E.; Tan, X.; Gan, T.Y.; Shi, H.; Tilmant, A.
+\newblock Global warming impact to River Basin of Blue Nile and the optimum
+  operation of its multi-reservoir system for hydropower production and
+  irrigation.
+\newblock {\em Sci. Total Environ.} {\bf 2021}, {\em 767},~144863.
+\newblock {\url{https://doi.org/10.1016/j.scitotenv.2020.144863}}.
+
+\clearpage
+\bibitem[Sulieman and Elagib(2012)]{SULIEMAN2012132}
+Sulieman, H.; Elagib, N.
+\newblock Implications of climate, land-use and land-cover changes for
+  pastoralism in eastern Sudan.
+\newblock {\em J. Arid Environ.} {\bf 2012}, {\em 85},~132--141.
+\newblock {\url{https://doi.org/10.1016/j.jaridenv.2012.05.001}}.
+
+\bibitem[Wessel et~al.(2019)Wessel, Luis, Uieda, Scharroo, Wobbe, Smith, and
+  Tian]{Wessel}
+Wessel, P.; Luis, J.F.; Uieda, L.; Scharroo, R.; Wobbe, F.; Smith, W.H.F.;
+  Tian, D.
+\newblock The Generic Mapping Tools Version 6.
+\newblock {\em Geochem. Geophys. Geosystems} {\bf 2019}, {\em
+  20},~5556--5564.
+\newblock {\url{https://doi.org/10.1029/2019GC008515}}.
+
+\bibitem[El-Karouri(1986)]{ElKarouri1986}
+El-Karouri, M.O.H. The Impact of Desertification on Land Productivity in
+  Sudan.
+\newblock In {\em Physics of Desertification}; Springer: Dordrecht, The Netherlands, 1986; pp. 52--58.
+\newblock {\url{https://doi.org/10.1007/978-94-009-4388-9_5}}.
+
+\bibitem[Pearce(1988)]{Pearce}
+Pearce, D.
+\newblock {Natural resource management and anti-desertification policy in the
+  Sahel-Sudan zone: A case study of Gum Arabic}.
+\newblock {\em GeoJournal} {\bf 1988}, {\em 17},~349--355.
+\newblock {\url{https://doi.org/10.1007/BF00181046}}.
+
+\bibitem[Yang et~al.(2022)Yang, Gao, Lei, Meng, and Zhou]{YANG2022106213}
+Yang, Z.; Gao, X.; Lei, J.; Meng, X.; Zhou, N.
+\newblock Analysis of spatiotemporal changes and driving factors of
+  desertification in the Africa Sahel.
+\newblock {\em CATENA} {\bf 2022}, {\em 213},~106213.
+\newblock {\url{https://doi.org/10.1016/j.catena.2022.106213}}.
+
+\bibitem[Falkenmark and Rockström(2008)]{Falkenmark}
+Falkenmark, M.; Rockström, J.
+\newblock Building resilience to drought in desertification-prone savannas in
+  Sub-Saharan Africa: The water perspective.
+\newblock {\em Nat. Resour. Forum} {\bf 2008}, {\em 32},~93--102.
+\newblock {\url{https://doi.org/10.1111/j.1477-8947.2008.00177.x}}.
+
+\bibitem[Khiry et~al.(2006)Khiry, Dafalla, and Csaplovics]{khiry2006mapping}
+Khiry, M.; Dafalla, M.; Csaplovics, E.
+\newblock Mapping and assessment of sand encroachment by spectral mixture
+  analysis in arid and semi-arid areas: Case study North Kordofan, Sudan.
+\newblock In Proceedings of the 6th International Conference
+  on ``Earth Observation \& Geoinformation Sciences in Support of Africa’s
+  Development'' (AARSE2006), Cairo, Egypt, 30 October--2 November 2006; pp.~1--7.
+
+\bibitem[Shamim et~al.(2021)Shamim, Elsheikh, Salih, and Islam]{9635812}
+Shamim, M.Z.M.; Elsheikh, E.A.A.; Salih, F.E.M.S.; Islam, M.R.
+\newblock Signal Attenuation Prediction Model for a 22 GHz Terrestrial
+  Communication Link in Sudan Due to Dust and Sand Storms Using Machine
+  Learning.
+\newblock {\em IEEE Access} {\bf 2021}, {\em 9},~164632--164642.
+\newblock {\url{https://doi.org/10.1109/ACCESS.2021.3132700}}.
+
+\bibitem[Elsheikh et~al.(2017)Elsheikh, Islam, Habaebi, Ismail, and
+  Zyoud]{7948717}
+Elsheikh, E.A.A.; Islam, M.R.; Habaebi, M.H.; Ismail, A.F.; Zyoud, A.
+\newblock Dust Storm Attenuation Modeling Based on Measurements in Sudan.
+\newblock {\em IEEE Trans. Antennas Propag.} {\bf 2017}, {\em
+  65},~4200--4208.
+\newblock {\url{https://doi.org/10.1109/TAP.2017.2715369}}.
+
+\bibitem[Elsheikh et~al.(2015)Elsheikh, Rafiqul, Ismail, Habaebi, and
+  Chebil]{7381366}
+Elsheikh, E.A.A.; Rafiqul, I.M.; Ismail, A.F.; Habaebi, M.; Chebil, J.
+\newblock Dust storms attenuation measurements at 14 GHz and 21 GHz in Sudan.
+\newblock In Proceedings of the 2015 International Conference on Computing,
+  Control, Networking, Electronics and Embedded Systems Engineering (ICCNEEE), Khartoum, Sudan, 7--9 September 2015; pp. 11--16.
+\newblock {\url{https://doi.org/10.1109/ICCNEEE.2015.7381366}}.
+
+\bibitem[Biro et~al.(2013)Biro, Pradhan, Buchroithner, and Makeschin]{Biro}
+Biro, K.; Pradhan, B.; Buchroithner, M.; Makeschin, F.
+\newblock Land Use/Land Cover Change Analysis and its Impact on Soil Properties
+  in the Northern Part of Gadarif Region, Sudan.
+\newblock {\em Land Degrad. Dev.} {\bf 2013}, {\em 24},~90--102.
+\newblock {\url{https://doi.org/10.1002/ldr.1116}}.
+
+\bibitem[El-Niweiri et~al.(2019)El-Niweiri, Moritz, and
+  Lattorff]{insects10110405}
+El-Niweiri, M.A.A.; Moritz, R.F.A.; Lattorff, H.M.G.
+\newblock The Invasion of the Dwarf Honeybee, Apis florea, along the River Nile
+  in Sudan.
+\newblock {\em Insects} {\bf 2019}, {\em 10}, 405.
+\newblock {\url{https://doi.org/10.3390/insects10110405}}.
+
+\bibitem[Fuller et~al.(2012)Fuller, Parenti, Hassan, and Beier]{Fuller}
+Fuller, D.; Parenti, M.; Hassan, A.; Beier, J.C.
+\newblock {Linking land cover and species distribution models to project
+  potential ranges of malaria vectors: An example using Anopheles arabiensis in
+  Sudan and Upper Egypt}.
+\newblock {\em Malar. J.} {\bf 2012}, {\em 11},~264.
+\newblock {\url{https://doi.org/10.1186/1475-2875-11-264}}.
+
+\bibitem[Melesse et~al.(2016)Melesse, Abtew, and Setegn]{Melesse}
+Melesse, A.M.; Abtew, W.; Setegn, S.G.
+\newblock {\em Nile River Basin}, 1st ed.; Ecohydrological Challenges, Climate Change and Hydropolitics; Springer: Cham, Switzerland,  2016.
+
+\bibitem[Hamad and El-Battahani(2005)]{Hamad}
+Hamad, O.; El-Battahani, A.
+\newblock {Sudan and the Nile Basin}.
+\newblock {\em Aquat. Sci.} {\bf 2005}, {\em 67},~28--41.
+\newblock {\url{https://doi.org/10.1007/s00027-004-0767-9}}.
+
+\bibitem[Halwagy(1963)]{Halwagy}
+Halwagy, R.
+\newblock {Studies on the succession of vegetation on some islands and sand
+  banks in the nile near Khartoum, Sudan}.
+\newblock {\em Vegetatio} {\bf 1963}, {\em 11},~217--234.
+\newblock {\url{https://doi.org/10.1007/BF00298834}}.
+
+\bibitem[Billi and {el Badri Ali}(2010)]{BILLI201012}
+Billi, P.; {el Badri Ali}, O.
+\newblock Sediment transport of the Blue Nile at Khartoum.
+\newblock {\em Quat. Int.} {\bf 2010}, {\em 226},~12--22.
+\newblock \hl{Larger Asian Rivers: Climate Change, River Flow, and Watershed
+  Management,} 
+ {\url{https://doi.org/10.1016/j.quaint.2009.11.041}}.
+
+\bibitem[Pacini and Harper(2016)]{PACINI2016242}
+Pacini, N.; Harper, D.M.
+\newblock Hydrological characteristics and water resources management in the
+  Nile Basin.
+\newblock {\em Ecohydrol. Hydrobiol.} {\bf 2016}, {\em 16},~242--254.
+\newblock \hl{Ecohydrology of large rivers,} 
+  {\url{https://doi.org/10.1016/j.ecohyd.2016.09.001}}.
+
+\bibitem[Ayik et~al.(2023)Ayik, Ijumba, Kabiri, and Goffin]{AYIK20232229}
+Ayik, A.; Ijumba, N.; Kabiri, C.; Goffin, P.
+\newblock Preliminary assessment of small hydropower potential using the Soil
+  and Water Assessment Tool model: A case study of Central Equatoria State,
+  South Sudan.
+\newblock {\em Energy Rep.} {\bf 2023}, {\em 9},~2229--2246.
+\newblock {\url{https://doi.org/10.1016/j.egyr.2023.01.014}}.
+
+\bibitem[Kau et~al.(2023)Kau, Gramlich, and Sewilam]{Kauetal2023}
+Kau, A.; Gramlich, R.; Sewilam, H.
+\newblock {Modelling land suitability to evaluate the potential for irrigated
+  agriculture in the Nile region in Sudan}.
+\newblock {\em Sustain. Water Resour. Manag.} {\bf 2023}, {\em 9},~10.
+\newblock {\url{https://doi.org/10.1007/s40899-022-00773-3}}.
+
+\bibitem[Kobayashi(2020)]{KOBAYASHI2020257}
+Kobayashi, A.
+\newblock Desertification. In {\em International Encyclopedia of Human
+  Geography}, 2nd ed.;  Kobayashi, A., Ed.;
+  Elsevier: Oxford, UK, 2020; pp. 257--262.
+\newblock {\url{https://doi.org/10.1016/B978-0-08-102295-5.10005-8}}.
+
+\bibitem[Sulieman et~al.(2010)]{sulieman2010expansion}
+Sulieman, H.M.;  \hl{et~al.} %MDPI: Please include the first ten authors' names before using "et al." in the references.
+\newblock Expansion of mechanized rain-fed agriculture and land-use/land-cover
+  change in the Southern Gadarif, Sudan.
+\newblock {\em Afr. J. Agric. Res.} {\bf 2010}, {\em
+  5},~1609--1615.
+\newblock {\url{https://doi.org/10.5897/AJAR09.078}}.
+
+\bibitem[Ibrahim(1978)]{Ibrahim}
+Ibrahim, F.
+\newblock {Anthropogenic causes of desertification in Western Sudan}.
+\newblock {\em GeoJournal} {\bf 1978}, {\em 2},~243--254.
+\newblock {\url{https://doi.org/10.1007/BF00208640}}.
+
+\bibitem[Ahmed(2020)]{AHMED2020106064}
+Ahmed, S.M.
+\newblock Impacts of drought, food security policy and climate change on
+  performance of irrigation schemes in Sub-saharan Africa: The case of Sudan.
+\newblock {\em Agric. Water Manag.} {\bf 2020}, {\em 232},~106064.
+\newblock {\url{https://doi.org/10.1016/j.agwat.2020.106064}}.
+
+\bibitem[Nesser et~al.(2020)Nesser, Abdelbagi, Ishag, Hammad, and
+  Tagelseed]{Nesser}
+Nesser, G.; Abdelbagi, A.; Ishag, A.; Hammad, A.M.A.; Tagelseed, M.
+\newblock {Seasonal levels of pesticide residues in the main and the Blue Nile
+  waters in Sudan}.
+\newblock {\em Arab. J. Geosci.} {\bf 2020}, {\em 13},~994.
+\newblock {\url{https://doi.org/10.1007/s12517-020-05969-5}}.
+
+\bibitem[Ahmed(1982)]{Ahmed}
+Ahmed, A.
+\newblock {Land use history of Jebel Marra, Sudan, as related to the present
+  distribution of woody vegetation}.
+\newblock {\em GeoJournal} {\bf 1982}, {\em 6},~5--14.
+\newblock {\url{https://doi.org/10.1007/BF00446587}}.
+
+\clearpage
+\bibitem[Sulieman and Ahmed(2013)]{Sulieman}
+Sulieman, H.; Ahmed, A.
+\newblock {Monitoring changes in pastoral resources in eastern Sudan: A
+  synthesis of remote sensing and local knowledge}.
+\newblock {\em Pastoralism} {\bf 2013}, {\em 3},~22.
+\newblock {\url{https://doi.org/10.1186/2041-7136-3-22}}.
+
+\bibitem[Akhtar and Mensching(1993)]{Akhtar}
+Akhtar, M.; Mensching, H.
+\newblock {Desertification in the Butana}.
+\newblock {\em GeoJournal} {\bf 1993}, {\em 31},~41--50.
+\newblock {\url{https://doi.org/10.1007/BF00815902}}.
+
+\bibitem[Schumacher et~al.(2009)Schumacher, Luedeling, Gebauer, Saied,
+  El-Siddig, and Buerkert]{SCHUMACHER2009399}
+Schumacher, J.; Luedeling, E.; Gebauer, J.; Saied, A.; El-Siddig, K.; Buerkert,
+  A.
+\newblock Spatial expansion and water requirements of urban agriculture in
+  Khartoum, Sudan.
+\newblock {\em J. Arid Environ.} {\bf 2009}, {\em 73},~399--406.
+\newblock {\url{https://doi.org/10.1016/j.jaridenv.2008.12.005}}.
+
+\bibitem[Babiker(1982)]{Babiker1982}
+Babiker, A.
+\newblock {Urbanization and desertification in the Sudan with special reference
+  to Khartoum}.
+\newblock {\em GeoJournal} {\bf 1982}, {\em 6},~69--76.
+\newblock {\url{https://doi.org/10.1007/BF00446596}}.
+
+\bibitem[Mohammed et~al.(2015)Mohammed, Alawad, Zeinelabdein, and
+  Ali]{Mohammed}
+Mohammed, E.; Alawad, H.; Zeinelabdein, K.; Ali, A.
+\newblock {Urban expansion and population growth in Omdurman city, Sudan using
+  geospatial technologies and statistical approaches}.
+\newblock {\em Am. J. Earth Sci.} {\bf 2015}, {\em 2},~1--7.
+
+\bibitem[Sasmaz(2020)]{SASMAZ2020106539}
+Sasmaz, A.
+\newblock The Atbara porphyry gold–copper systems in the Red Sea Hills,
+  Neoproterozoic Arabian–Nubian Shield, NE Sudan.
+\newblock {\em J. Geochem. Explor.} {\bf 2020}, {\em
+  214},~106539.
+\newblock {\url{https://doi.org/10.1016/j.gexplo.2020.106539}}.
+
+\bibitem[Khiry(2007)]{Khiry}
+Khiry, M.A.
+\newblock {\em Spectral Mixture Analysis for Monitoring and Mapping
+  Desertification Processes in Semi-Arid Areas in North Kordofan State, Sudan};
+  University of Dresden: Dresden, Germany, 2007.
+\newblock \url {http://hdl.handle.net/11858/00-1735-0000-0001-31BE-7},
+  {\url{https://doi.org/10.23689/fidgeo-307}}.
+
+\bibitem[Elnashar et~al.(2022)Elnashar, Zeng, Wu, Gebremicael, and
+  Marie]{ELNASHAR2022152925}
+Elnashar, A.; Zeng, H.; Wu, B.; Gebremicael, T.G.; Marie, K.
+\newblock Assessment of environmentally sensitive areas to desertification in
+  the Blue Nile Basin driven by the MEDALUS-GEE framework.
+\newblock {\em Sci. Total Environ.} {\bf 2022}, {\em 815},~152925.
+\newblock {\url{https://doi.org/10.1016/j.scitotenv.2022.152925}}.
+
+\bibitem[Subramaniam et~al.(2013)Subramaniam, Bunka, and Park]{Subramaniam}
+Subramaniam, M.; Bunka, C.; Park, S.S. Desertification.
+\newblock In {\em The Wiley‐Blackwell Encyclopedia of Globalization}; John
+  Wiley \& Sons, Ltd.: \hl{Hoboken, NJ, USA,} %We added the location of publisher. Please confirm
+  2013; pp. 1--10.
+\newblock {\url{https://doi.org/10.1002/9780470670590.wbeog604}}.
+
+\bibitem[Honegger and Williams(2015)]{HONEGGER2015141}
+Honegger, M.; Williams, M.
+\newblock Human occupations and environmental changes in the Nile valley during
+  the Holocene: The case of Kerma in Upper Nubia (northern Sudan).
+\newblock {\em Quat. Sci. Rev.} {\bf 2015}, {\em 130},~141--154.
+\newblock \hl{The Quaternary History of the River Nile,} 
+  {\url{https://doi.org/10.1016/j.quascirev.2015.06.031}}.
+
+\bibitem[Omar A.~Abdi(2013)]{Abdi}
+Omar A.~Abdi, Edinam K.~Glover, O.L.
+\newblock {Causes and Impacts of Land Degradation and Desertification: Case
+  Study of the Sudan}.
+\newblock {\em Int. J. Agric. For.} {\bf 2013},
+  {\em 3},~40--51.
+\newblock {\url{https://doi.org/10.5923/j.ijaf.20130302.03}}.
+
+\bibitem[Khalifa et~al.(2018)Khalifa, Elagib, Ribbe, and
+  Schneider]{KHALIFA2018790}
+Khalifa, M.; Elagib, N.A.; Ribbe, L.; Schneider, K.
+\newblock Spatio-temporal variations in climate, primary productivity and
+  efficiency of water and carbon use of the land cover types in Sudan and
+  Ethiopia.
+\newblock {\em Sci. Total Environ.} {\bf 2018}, {\em
+  624},~790--806.
+\newblock {\url{https://doi.org/10.1016/j.scitotenv.2017.12.090}}.
+
+\bibitem[Jahelnabi et~al.(2016)Jahelnabi, Zhao, Fadoul, Shi, Bsheer, and
+  Yagoub]{Jahelnabi}
+Jahelnabi, A.; Zhao, J.; Li, C.; Fadoul, S.M.; Shi, Y.; Bsheer, A.K.; Yagoub,
+  Y.E.
+\newblock {Assessment of the contribution of climate change and human
+  activities to desertification in Northern Kordofan-Province, Sudan using net
+  primary productivity as an indicator}.
+\newblock {\em Contemp. Probl. Ecol.} {\bf 2016}, {\em 9},~674--683.
+\newblock {\url{https://doi.org/10.1134/S1995425516060068}}.
+
+\bibitem[Darkoh(1998)]{Darkoh}
+Darkoh, M.B.K.
+\newblock The nature, causes and consequences of desertification in the
+  drylands of Africa.
+\newblock {\em Land Degrad. Dev.} {\bf 1998}, {\em 9},~1--20.
+\newblock
+  {\url{https://doi.org/10.1002/(SICI)1099-145X(199801/02)9:1<1::AID-LDR263>3.0.CO;2-8}}.
+
+\bibitem[Conway(2005)]{CONWAY200599}
+Conway, D.
+\newblock From headwater tributaries to international river: Observing and
+  adapting to climate variability and change in the Nile basin.
+\newblock {\em Glob. Environ. Chang.} {\bf 2005}, {\em 15},~99--114.
+\newblock \hl{Adaptation to Climate Change: Perspectives Across Scales,} 
+  {\url{https://doi.org/10.1016/j.gloenvcha.2005.01.003}}.
+
+\bibitem[Babiker and Mohamed(2019)]{Babiker}
+Babiker, I.S.; Mohamed, M.A.A.
+\newblock {Use of NRCS-curve number method for peak discharge estimation in
+  Sharqu ElNeil locality, Khartoum, Sudan}.
+\newblock {\em Arab. J. Geosci.} {\bf 2019}, {\em 12},~541.
+\newblock {\url{https://doi.org/10.1007/s12517-019-4685-5}}.
+
+\bibitem[Abdelmalik and Abdelmohsen(2019)]{ABDELMALIK2019103596}
+Abdelmalik, K.W.; Abdelmohsen, K.
+\newblock GRACE and TRMM mission: The role of remote sensing techniques for
+  monitoring spatio-temporal change in total water mass, Nile basin.
+\newblock {\em J. Afr. Earth Sci.} {\bf 2019}, {\em
+  160},~103596.
+\newblock {\url{https://doi.org/10.1016/j.jafrearsci.2019.103596}}.
+
+\bibitem[Elsheikh et~al.(2011)Elsheikh, Abdelsalam, and Mickus]{ELSHEIKH201182}
+Elsheikh, A.; Abdelsalam, M.G.; Mickus, K.
+\newblock Geology and geophysics of the West Nubian Paleolake and the Northern
+  Darfur Megalake (WNPL–NDML): Implication for groundwater resources in
+  Darfur, northwestern Sudan.
+\newblock {\em J. Afr. Earth Sci.} {\bf 2011}, {\em 61},~82--93.
+\newblock {\url{https://doi.org/10.1016/j.jafrearsci.2011.05.004}}.
+
+\bibitem[Mahmoud and Obeid(1971)]{Mahmoud}
+Mahmoud, A.; Obeid, M.
+\newblock {Ecological studies in the vegetation of the Sudan}.
+\newblock {\em Plant Ecol.} {\bf 1971}, {\em 23},~153--176.
+\newblock {\url{https://doi.org/10.1007/BF02326660}}.
+
+\bibitem[Sene et~al.(2001)Sene, Tate, and Farquharson]{Sene}
+Sene, K.; Tate, E.; Farquharson, F.
+\newblock {Sensitivity Studies of the Impacts of Climate Change on White Nile
+  Flows}.
+\newblock {\em Clim. Chang.} {\bf 2001}, {\em 50},~177--208.
+\newblock {\url{https://doi.org/10.1023/A:1010693129672}}.
+
+\bibitem[Bakhit and Ibrahim(1982)]{Bakhit}
+Bakhit, A.; Ibrahim, F.
+\newblock {Geomorphological aspects of the process of desertification in
+  Western Sudan}.
+\newblock {\em GeoJournal} {\bf 1982}, {\em 6},~19--24.
+\newblock {\url{https://doi.org/10.1007/BF00446589}}.
+
+\bibitem[{Mohamed Ali}(2003)]{MOHAMEDALI2003237}
+{Mohamed Ali}, O.M.
+\newblock From vision to action: Towards a national policy for integrated water
+  management in Sudan. In {\em Water Resources Perspectives: Evaluation,
+  Management and Policy}; Developments in Water Science; Alsharhan, A.S., Wood, W.W., Eds.; Elsevier: \hl{Amsterdam, The Netherlands,} %We added the location of publisher. Please confirm
+  2003;
+  Volume 50, pp. 237--244.
+\newblock {\url{https://doi.org/10.1016/S0167-5648(03)80021-7}}.
+
+\bibitem[Elshaikh et~al.(2018)Elshaikh, Yang, Jiao, and Elbashier]{w10111579}
+Elshaikh, A.E.; Yang, S.H.; Jiao, X.; Elbashier, M.M.
+\newblock Impacts of Legal and Institutional Changes on Irrigation Management
+  Performance: A Case of the Gezira Irrigation Scheme, Sudan.
+\newblock {\em Water} {\bf 2018}, {\em 10}, 1579.
+\newblock {\url{https://doi.org/10.3390/w10111579}}.
+
+\bibitem[Roy et~al.(2016)Roy, Kovalskyy, Zhang, Vermote, Yan, Kumar, and
+  Egorov]{ROY201657}
+Roy, D.; Kovalskyy, V.; Zhang, H.; Vermote, E.; Yan, L.; Kumar, S.; Egorov, A.
+\newblock Characterization of Landsat-7 to Landsat-8 reflective wavelength and
+  normalized difference vegetation index continuity.
+\newblock {\em Remote Sens. Environ.} {\bf 2016}, {\em 185},~57--70.
+\newblock \hl{Landsat 8 Science Results,} 
+  {\url{https://doi.org/10.1016/j.rse.2015.12.024}}.
+
+\clearpage
+\bibitem[Hammad et~al.(2018)Hammad, Mucsi, and van Leeuwen]{Hammad_Mucsi}
+Hammad, M.; Mucsi, L.; van Leeuwen, B.
+\newblock Land Cover Change Investigation in the Southern Syrian Coastal Basins
+  During the Past 30-Years Using Landsat Remote Sensing Data.
+\newblock {\em J. Environ. Geogr.} {\bf 2018}, {\em
+  11},~45--51.
+\newblock {\url{https://doi.org/10.2478/jengeo-2018-0006}}.
+
+\bibitem[Liang et~al.(2022)Liang, Yin, Xie, Liu, Zhang, and Ashraf]{rs14246284}
+Liang, Y.; Yin, F.; Xie, D.; Liu, L.; Zhang, Y.; Ashraf, T.
+\newblock Inversion and Monitoring of the TP Concentration in Taihu Lake Using
+  the Landsat-8 and Sentinel-2 Images.
+\newblock {\em Remote Sens.} {\bf 2022}, {\em 14}, 6284.
+\newblock {\url{https://doi.org/10.3390/rs14246284}}.
+
+\bibitem[Talebi et~al.(2023)Talebi, Samadianfard, and Kamran]{Talebi}
+Talebi, H.; Samadianfard, S.; Kamran, K.V.
+\newblock {A novel method based on Landsat 8 and MODIS satellite images to
+  estimate monthly reference evapotranspiration in arid and semi-arid climats}.
+\newblock {\em Water SOil Manag. Model.} {\bf 2023}, {\em
+  3},~180--195.
+\newblock {\url{https://doi.org/10.22098/mmws.2023.12048.1198}}.
+
+\bibitem[Wang et~al.(2023)Wang, Xiao, Qin, Dong, Zhang, Yang, Wu, Biradar, and
+  Hu]{essd2022339}
+Wang, J.; Xiao, X.; Qin, Y.; Dong, J.; Zhang, G.; Yang, X.; Wu, X.; Biradar,
+  C.; Hu, Y.
+\newblock Annual forest maps in the contiguous United States during 2015--2017
+  from analyses of PALSAR-2 and Landsat images.
+\newblock {\em Earth Syst. Sci. Data Discuss.} {\bf 2023}, {\em
+  2023},~1--29.
+\newblock {\url{https://doi.org/10.5194/essd-2022-339}}.
+
+\bibitem[Yilmaz et~al.(2023)Yilmaz, Gulgen, Balik~Sanli, and Ates]{Yilmaz}
+Yilmaz, O.S.; Gulgen, F.; Balik~Sanli, F.; Ates, A.M.
+\newblock {The Performance Analysis of Different Water Indices and Algorithms
+  Using Sentinel-2 and Landsat-8 Images in Determining Water Surface:
+  Demirkopru Dam Case Study}.
+\newblock In {\em Arabian Journal for Science and Engineering}; \hl{Publisher: City, Country}, 2023; %MDPI: Please add the name of the publisher and their location.
+\newblock {\url{https://doi.org/10.1007/s13369-022-07583-x}}.
+
+\bibitem[Nasseri et~al.(2023)Nasseri, Farhadi~Bansouleh, and Azari]{Nasseri}
+Nasseri, S.; Farhadi~Bansouleh, B.; Azari, A.
+\newblock Estimation of land surface temperature in agricultural lands using
+  Sentinel 2 images: A case study for sunflower fields.
+\newblock {\em Irrig. Drain.} {\bf 2023}, \hl{volume, page.} %MDPI: Please add the volume and pages.
+\newblock {\url{https://doi.org/https://doi.org/10.1002/ird.2802}}.
+
+\bibitem[Li et~al.(2023)Li, Wang, and Lu]{LiWangLu}
+Li, R.; Wang, L.; Lu, Y.
+\newblock A comparative study on intra-annual classification of invasive
+  saltcedar with Landsat 8 and Landsat 9.
+\newblock {\em Int. J. Remote Sens.} {\bf 2023}, {\em
+  44},~2093--2114.
+\newblock {\url{https://doi.org/10.1080/01431161.2023.2195573}}.
+
+\bibitem[Veretekhina et~al.(2022)Veretekhina, Sergey, Pronkina, Khalyukin,
+  Alla, Khudyakova, and Stepantsevich]{Veretekhina}
+Veretekhina, S.; Sergey, K.; Pronkina, T.; Khalyukin, V.; Alla, M.; Khudyakova,
+  E.; Stepantsevich, M.
+\newblock Comparative Analysis of Big Data Acquisition Technology from Landsat
+  8 and Sentinel-2 Satellites.
+\newblock In \emph{Proceedings of the Cybernetics Perspectives in Systems}; Silhavy,
+  R., Ed.; \hl{Publisher: Cham, Switzerland,} %MDPI: Please add the publisher.
+ 2022; pp. 41--53.
+
+\bibitem[Gumma et~al.(2020)Gumma, Thenkabail, Teluguntla, Oliphant, Xiong,
+  Giri, Pyla, Dixit, and Whitbread]{Gumma}
+Gumma, M.K.; Thenkabail, P.S.; Teluguntla, P.G.; Oliphant, A.; Xiong, J.; Giri,
+  C.; Pyla, V.; Dixit, S.; Whitbread, A.M.
+\newblock Agricultural cropland extent and areas of South Asia derived using
+  Landsat satellite 30-m time-series big-data using random forest machine
+  learning algorithms on the Google Earth Engine cloud.
+\newblock {\em GIScience Remote Sens.} {\bf 2020}, {\em 57},~302--322.
+\newblock {\url{https://doi.org/10.1080/15481603.2019.1690780}}.
+
+\bibitem[{Earth Resources Observation and Science (EROS) Center}(2020)]{EROS}
+{Earth Resources Observation and Science (EROS) Center}.
+\newblock \hl{Collection 2 Landsat 8-9 OLI (Operational Land Imager) and TIRS
+  (Thermal Infrared Sensor) Level-2 Science Product.} %MDPI: Please provide more information about the article type, such as book (please provide the name and location of the publisher); online resource (please provide the URL of the website and the date it was accessed (Date Month Year)); or journal article (please provide the name of the journal, the year and volume in which it was published, and the page number). Please refer to https://www.mdpi.com/authors/references for full reference formatting guides.
+\newblock Online. 2020.
+\newblock Dataset, {\url{https://doi.org/10.5066/P9OGBGM6}}.
+
+\bibitem[{R Core Team}(2022)]{RCoreTeam}
+{R Core Team}.
+\newblock {\em R: A Language and Environment for Statistical Computing};
+\newblock R Foundation for Statistical Computing: Vienna, Austria,  2022.
+
+\bibitem[Neuwirth(2022)]{Neuwirth}
+Neuwirth, E.
+\newblock Package `RColorBrewer'. Version 1.1-3. 2022.
+\newblock  Available online: \url{https://cran.r-project.org/web/packages/RColorBrewer/index.html}  \hl{(accessed on Date Month Year).} %MDPI: Please add the access date (format: Date Month Year), e.g., accessed on 1 January 2020.
+
+
+\bibitem[{Harrell Jr.}(2023)]{Hmisc}
+{Harrell}, F.E., Jr.
+\newblock Hmisc: Harrell Miscellaneous. Version: 5.0-1. 2023.
+\newblock Available online: \url{https://hbiostat.org/R/Hmisc/}  \hl{(accessed on Date Month Year).} %MDPI: Please add the access date (format: Date Month Year), e.g., accessed on 1 January 2020.
+
+
+\bibitem[Wright(2021)]{Wright}
+Wright, K.
+\newblock Pals. License GPL-3. 2021.
+\newblock Available online: \url{https://kwstat.github.io/pals/}  \hl{(accessed on Date Month Year).} %MDPI: Please add the access date (format: Date Month Year), e.g., accessed on 1 January 2020.
+
+
+\bibitem[Rouse et~al.(1974)Rouse, Haas, Scheel, and Deering]{Rouse}
+Rouse, J.; Haas, R.; Scheel, J.; Deering, D.
+\newblock {Monitoring Vegetation Systems in the Great Plains with ERTS}.
+\newblock In Proceedings of the 3rd Earth Resource Technology
+  Satellite (ERTS) Symposium, NASA. Goddard Space Flight Center 3d ERTS-1
+  Symp., Washington, DC, USA, 10--14 December 1974; Section A, Volume 1,  pp. 48--62.
+
+\bibitem[Gwapedza et~al.(2021)Gwapedza, Hughes, Slaughter, and
+  Mantel]{w13192707}
+Gwapedza, D.; Hughes, D.A.; Slaughter, A.R.; Mantel, S.K.
+\newblock Temporal Influences of Vegetation Cover (C) Dynamism on MUSLE
+  Sediment Yield Estimates: NDVI Evaluation.
+\newblock {\em Water} {\bf 2021}, {\em 13}, 2707.
+\newblock {\url{https://doi.org/10.3390/w13192707}}.
+
+\bibitem[Wu et~al.(2020)Wu, Gao, Lei, Zhou, and Wang]{rs12244119}
+Wu, S.; Gao, X.; Lei, J.; Zhou, N.; Wang, Y.
+\newblock Spatial and Temporal Changes in the Normalized Difference Vegetation
+  Index and Their Driving Factors in the Desert/Grassland Biome Transition Zone
+  of the Sahel Region of Africa.
+\newblock {\em Remote Sens.} {\bf 2020}, {\em 12}, 4119.
+\newblock {\url{https://doi.org/10.3390/rs12244119}}.
+
+\bibitem[Ghebrezgabher et~al.(2020)Ghebrezgabher, Yang, Yang, and {Eyassu
+  Sereke}]{GHEBREZGABHER2020249}
+Ghebrezgabher, M.G.; Yang, T.; Yang, X.; {Eyassu Sereke}, T.
+\newblock Assessment of NDVI variations in responses to climate change in the
+  Horn of Africa.
+\newblock {\em  Egypt. J. Remote Sens. Space Sci.} {\bf
+  2020}, {\em 23},~249--261.
+\newblock {\url{https://doi.org/10.1016/j.ejrs.2020.08.003}}.
+
+\bibitem[Rulinda et~al.(2012)Rulinda, Dilo, Bijker, and Stein]{RULINDA2012169}
+Rulinda, C.; Dilo, A.; Bijker, W.; Stein, A.
+\newblock Characterising and quantifying vegetative drought in East Africa
+  using fuzzy modelling and NDVI data.
+\newblock {\em J. Arid Environ.} {\bf 2012}, {\em 78},~169--178.
+\newblock {\url{https://doi.org/10.1016/j.jaridenv.2011.11.016}}.
+
+\bibitem[Gitelson et~al.(1996)Gitelson, Kaufman, and Merzlyak]{GITELSON1996289}
+Gitelson, A.A.; Kaufman, Y.J.; Merzlyak, M.N.
+\newblock Use of a green channel in remote sensing of global vegetation from
+  EOS-MODIS.
+\newblock {\em Remote Sens. Environ.} {\bf 1996}, {\em 58},~289--298.
+\newblock {\url{https://doi.org/10.1016/S0034-4257(96)00072-7}}.
+
+\bibitem[Gao(1996)]{GAO1996257}
+Gao, B.
+\newblock NDWI -- A normalized difference water index for remote sensing of
+  vegetation liquid water from space.
+\newblock {\em Remote Sens. Environ.} {\bf 1996}, {\em 58},~257--266.
+\newblock {\url{https://doi.org/10.1016/S0034-4257(96)00067-3}}.
+
+\bibitem[McFeeters(2013)]{rs5073544}
+McFeeters, S.K.
+\newblock Using the Normalized Difference Water Index (NDWI) within a
+  Geographic Information System to Detect Swimming Pools for Mosquito
+  Abatement: A Practical Approach.
+\newblock {\em Remote Sens.} {\bf 2013}, {\em 5},~3544--3561.
+\newblock {\url{https://doi.org/10.3390/rs5073544}}.
+
+\bibitem[Zheng et~al.(2021)Zheng, Tang, and Wang]{ZHENG2021129488}
+Zheng, Y.; Tang, L.; Wang, H.
+\newblock An improved approach for monitoring urban built-up areas by combining
+  NPP-VIIRS nighttime light, NDVI, NDWI, and NDBI.
+\newblock {\em J. Clean. Prod.} {\bf 2021}, {\em 328},~129488.
+\newblock {\url{https://doi.org/10.1016/j.jclepro.2021.129488}}.
+
+\bibitem[Teng et~al.(2021)Teng, Xia, Liu, Yu, Duan, Xiao, and
+  Zhao]{TENG2021107260}
+Teng, J.; Xia, S.; Liu, Y.; Yu, X.; Duan, H.; Xiao, H.; Zhao, C.
+\newblock Assessing habitat suitability for wintering geese by using Normalized
+  Difference Water Index (NDWI) in a large floodplain wetland, China.
+\newblock {\em Ecol. Indic.} {\bf 2021}, {\em 122},~107260.
+\newblock {\url{https://doi.org/10.1016/j.ecolind.2020.107260}}.
+
+\bibitem[Rondeaux et~al.(1996)Rondeaux, Steven, and Baret]{Rondeaux}
+Rondeaux, G.; Steven, M.; Baret, F.
+\newblock {Optimization of Soil-Adjusted Vegetation Indices}.
+\newblock {\em Remote Sens. Environ.} {\bf 1996}, {\em 55},~95--107.
+
+\bibitem[Crippen(1990)]{CRIPPEN199071}
+Crippen, R.E.
+\newblock Calculating the vegetation index faster.
+\newblock {\em Remote Sens. Environ.} {\bf 1990}, {\em 34},~71--73.
+\newblock {\url{https://doi.org/10.1016/0034-4257(90)90085-Z}}.
+
+\bibitem[{RStudio Team}(2020)]{RStudio}
+{RStudio Team}.
+\newblock RStudio, PBC. In {\em RStudio: Integrated Development for R}; \hl{Publisher: Boston, MA, USA,} %MDPI: Please add the publisher.
+ 2020.
+\newblock  Available online: \url{http://www.rstudio.com/}  \hl{(accessed on Date Month Year).} %MDPI: Please add the access date (format: Date Month Year), e.g., accessed on 1 January 2020. 
+
+\bibitem[Dictionary(2023)]{Dictionary}
+Dictionary.
+\newblock Biology Online. 2023.
+\newblock Available online: \url{https://www.biologyonline.com/dictionary/vigor}  \hl{(accessed on Date Month Year).} %MDPI: Please add the access date (format: Date Month Year), e.g., accessed on 1 January 2020.
+
+
+\end{thebibliography}
+
+%\nocite{*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PublishersNote{}
+\end{adjustwidth}
+\end{document}
